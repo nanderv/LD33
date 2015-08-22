@@ -9,20 +9,53 @@ Boe
   <script src="words.js"></script> 
 
  <script src="base.js"></script> 
+ <script src="location.js"></script> 
+ <script src="location_handler.js"></script> 
 
  <script src="interpret.js"></script> 
 
  <script src="tokenize.js"></script> 
+<style type="text/css">
+#wrap {
+   width:100%;
+   margin:0 auto;
+}
+#left_col {
+   float:left;
+   width:50%;
+}
+#right_col {
+   float:right;
+   width:50%;
+}
+</style>
+
 
 </head>
 
-<body>
-<div Id="out">
+<body bgcolor="black">
+<div id="wrap">
+    <div id="left_col">
+        <div Id="out" style='height: 90%; color:white;     font-family: "Courier New", Courier, monospace; overflow-y: scroll;' ></div>
+  		<input Id="in" style="width: 100%; color:grey; background-color:black;">
+    </div>
+    <div id="right_col">
+        Right Column
+    </div>
+</div>
+<div id="wrapper">
+  <div id="left" height="100%">
+  <div id="right">Column 2 (fixed)</div>
+  <div id="cleared"></div>
 </div>
 
-<input Id="in">
+
+
+
 
 </body>
  <script src="console.js"></script> 
-
+<script>
+enter(map[here])
+</script>
 </html>

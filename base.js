@@ -19,10 +19,9 @@ functionList = [pickup]
 
 home  = {name: "Home", state: {}, functionList}
 
-path      = {from : location, to: location, methods  : methods}
 
-map       = { locations: {}, directions : {}}
 
+events = []
 inventory = []
 
 here = home
