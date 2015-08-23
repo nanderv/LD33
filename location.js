@@ -1,4 +1,5 @@
 map = {}
+here = "room_west_14"
 
 immovable = ["lying","sleeping"]
 
@@ -13,7 +14,7 @@ dir[1]      = {to: "window", methods  : [words.jump], direction: words.west, hid
 
 objects = [[words.toothbrush, words.sink, false, false], [words.sink,"",  false, true], [words.bed, "", false, true], [words.window, "", false, true]]
 action_reaction = {}
-action_reaction.stand = ["Even though the room is dimly lit, you still see a window on the west, a door on the east, your bed and a sink.", "Damm, I have a headache."]
+action_reaction.stand = ["Even though the room is dimly lit, you still see a window on the west, a door on the east, your bed and a sink.", "Damm, I have a headache.", function() { code[code.length] =  Math.floor((Math.random() * 98) + 1); }]
 map.room_west_14 = {enter: "You wake up, alone, in a dark room. <br / > You don't remember this place at all.", 
    thoughts : "Where am I?",
    enter_again: "You are back at the hospital room where you woke up",
@@ -34,7 +35,6 @@ time_reaction[1] = [4, "", "I don't think this is going to end well",no_function
 time_reaction[2] = [6, "You are dead", "",no_function,false]
 map.window = {enter: "The ground is approaching you in an increasing pace." , enter_again: "This is really strange, why am I here again?", description : ["You are dead",""], directions: [], objects : [] , image: "", cond: {dead: 1}, action_reaction : {},time_reaction: time_reaction}
 
-here = "hallway_centereast_14"
 
 for (var key in map) {
   	if (map.hasOwnProperty(key)) {
