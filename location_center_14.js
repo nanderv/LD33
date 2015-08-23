@@ -63,3 +63,31 @@ map.room_center_southeast_14 = {
 	objects: objects,
 	cond : {"closed":1},
 	action_reaction:  action_reaction}
+
+/*******************************************
+* Hospital center southwest room, on the 14th floor.
+*
+*******************************************/
+dir = []
+dir[0]      = {to: "hallway_centerwest_14", methods  : [words.walk], direction: words.south, hidden: 1, cond: []}
+// word, where, explained, visible
+objects = [[words.master, "", true, true]]
+action_reaction = {}
+action_reaction.move_obj = ["You found a safe.", "", reactions.makevisible(words.safe)]
+action_reaction.open = ["You find a parachute in the safe.", "Why would someone store a parachute here?", reactions.makevisible(words.parachute)]
+map.room_center_northwest_14 = {
+	enter: "Cheater.", 
+	thoughts : "I shouldn't be here.",
+	enter_again: "Cheater.",
+	description : ["Cheater.","I shouldn't be here."],
+	directions: dir,
+	objects: objects,
+	cond : {"closed":1},
+	action_reaction:  action_reaction}
+
+
+
+
+
+
+
