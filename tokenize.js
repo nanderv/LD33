@@ -57,7 +57,11 @@ function tokenize(sentence)
 			if(err)
 				w = null
 		}
-
+		if(w== null)
+		{
+			konsole.print("Word not understood")
+			return false
+		}
 
 		if (result[w.type] != undefined && w.type != null)
 		{
