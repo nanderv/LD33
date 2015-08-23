@@ -3,7 +3,7 @@
   *
   *******************************************/
 dir = []
-dir[0]      = {to: "hallway_center_14", methods  : [words.walk], direction: words.north, hidden: 1, cond: [has_item(words.copper), condition_false("sitting")]}
+dir[0]      = {to: "hallway_centercenter_14", methods  : [words.walk], direction: words.north, hidden: 1, cond: [has_item(words.copper), condition_false("sitting")]}
 dir[1]      = {to: "hallway_southeast_14", methods  : [words.walk], direction: words.east, hidden: 1, cond: [condition_false("sitting")]}
 dir[2]      = {to: "hallway_south_14", methods  : [words.walk], direction: words.south, hidden: 1, cond: [condition_false("sitting")]}
 dir[3]      = {to: "hallway_southwest_14", methods  : [words.walk], direction: words.west, hidden: 1, cond: [condition_false("sitting")]}

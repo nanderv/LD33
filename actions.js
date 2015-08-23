@@ -1,4 +1,6 @@
 actions = {}
+code = [4, 51, 42, 13, 37]
+code_pointer = 0
 actions.assist = function(tok)
 {
 	return false;
@@ -419,6 +421,7 @@ actions.sit = function (tok) {
 	}
 	return false
 }
+
 actions.open = function (tok) {
 	if (tok.object && tok.object.is_a == words.container) {
 		var i = 0 ; 
@@ -429,19 +432,56 @@ actions.open = function (tok) {
 				break
 			}
 		}
+
 		if(!found) {
 			konsole.print(get_text(tok.object) + " is not found")
 			return false
 		}
+		if (tok.object == words.drawer) {
+			object_reaction.drawer.examine = ["An open drawer.", ""]
+		}
+		if (tok.object == words.safe) 
+		{	
+			if(map[here].cond["closed"] == 0)
+				{
+					konsole.think("I already opened the safe")
+					return false
+				}
+			konsole.think("I have to enter the code. I don't think I have it.")
+			konsole.over_ride_func = function()
+			{
+				var input = konsole.input_field.value
+				var safe = tok.object
+				if(input == code[code_pointer])
+				{
+					konsole.print("The mechanics of the lock seem to work")
+					code_pointer ++
+				}
+				else
+					{
+						konsole.print("The mechanics of the lock reset into base position.")
+						code_pointer =0
+						konsole.over_ride_func = null
+					}
+				if(code_pointer == code.length)
+				{
+					konsole.print("The lock unlocks itself")
+					object_reaction.safe.examine=["","I still don't understand how I managed to unlock it."]
+					map[here].cond["closed"] = 0
+					konsole.over_ride_func = null
+				}
+
+			}
+			return true
+		}
+		
 		if (map[here].cond["closed"]) {
 			map[here].cond["closed"] = 0
 		} else {
 			konsole.think("The " + get_text(tok.object) + " is already open.")
 			return false
 		}
-		if (tok.object == words.drawer) {
-			object_reaction.drawer.examine = ["An open drawer.", ""]
-		}
+
 		konsole.print("You open the " + get_text(tok.object))
 		return true
 	} else {

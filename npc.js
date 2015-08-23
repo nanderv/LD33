@@ -39,10 +39,10 @@ npc.talk = "Hello"
 npc.name = "Henk"
 
 npc.type = "Guard"
-npc.hit_points = 3
+npc.hit_points = 5
 npc.reply = "My name is Henk"
 npc.ticks = 0
-npc.timeout = 3
+npc.timeout = 2
 npc.current_room = "room_northeast_14"
 npc.sleeps = true
 npc.in_combat = false

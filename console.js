@@ -95,15 +95,16 @@ $(document).keypress(function (e) {
 
         	konsole.input_field.value = ""
         }
-        if(! konsole.output )
+        
+          } else
+            konsole.over_ride_func()
+            konsole.output = true
+    }
+if(! konsole.output )
             if(interp)
                 konsole.print("Action succesful")
             else
                 konsole.print("Action failed")
-
-          } else
-            konsole.over_ride_func()
-    }
 
        
 })
