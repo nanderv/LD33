@@ -1,33 +1,25 @@
 /*******************************************
-  * Hospital hallway 14, secretary
-  *
-  *******************************************/
-dir = []
- dir[0]      = {to: "room_southwest_14", methods  : [words.walk], direction: words.south, cond: []}
- dir[1]      = {to: "hallway_southwest_14", methods  : [words.walk], direction: words.south, cond: []}
- dir[2]      = {to: "hallway_southeast_14", methods  : [words.walk], direction: words.east, cond: []}
- dir[3]      = {to: "hallway_centercenter_14", methods  : [words.walk], direction: words.north, cond: [has_item(words.copper)]}
-
- objects =[[words.towel,"",  true, true]]
-map.room_reception_14 = {enter: "You are in a hallway" , enter_again: "This hallway is in the northwest corner of the building.", description : "It's a hallway, nothing special", directions: dir, objects : objects , image: "", cond : {}, action_reaction : {}}
-
-/*******************************************
   * Hospital reception, on the 14th floor, southeast room.
   *
   *******************************************/
 dir = []
-dir[0]      = {to: "hallway_center_14", methods  : [words.walk], direction: words.north, hidden: 1, cond: []}
-dir[1]      = {to: "hallway_southeast_14", methods  : [words.walk], direction: words.east, hidden: 1, cond: []}
-dir[2]      = {to: "hallway_south_14", methods  : [words.walk], direction: words.south, hidden: 1, cond: []}
-dir[3]      = {to: "hallway_southwest_14", methods  : [words.walk], direction: words.west, hidden: 1, cond: []}
+dir[0]      = {to: "hallway_center_14", methods  : [words.walk], direction: words.north, hidden: 1, cond: [has_item(words.copper), condition_false("sitting")]}
+dir[1]      = {to: "hallway_southeast_14", methods  : [words.walk], direction: words.east, hidden: 1, cond: [condition_false("sitting")]}
+dir[2]      = {to: "hallway_south_14", methods  : [words.walk], direction: words.south, hidden: 1, cond: [condition_false("sitting")]}
+dir[3]      = {to: "hallway_southwest_14", methods  : [words.walk], direction: words.west, hidden: 1, cond: [condition_false("sitting")]}
 // word, where, explained, visible
-objects = []
+objects = [[words.newspaper, "", false, false], [words.drawer, words.desk, false, true], [words.desk, "", false, true]]
 action_reaction = {}
-map.room_reception_14 = {enter: "You enter a dark room and can't really see anything", 
-   thoughts : "I can smell... some kind of meat?",
-   enter_again: "You are back in the kitchen",
-   description : "It's a kitchen.",
+action_reaction.sit = ["As you sit down, you notice an unlocked drawer.",
+	""]
+action_reaction.open = ["You open the drawer and see a newspaper inside.",
+	"",
+	reactions.makevisible(words.newspaper)]
+map.room_reception_14 = {enter: "You are at the reception. You see large desk with a nice chair.", 
+   thoughts : "That chair looks comfortable.",
+   enter_again: "You are at the reception.",
+   description : "This is the reception area. There is a large desk with a nice chair. To the east and west are small waiting areas with a few simple wooden chairs.",
    directions: dir,
    objects: objects,
-   cond : {"lights":0},
+   cond : {sitting:0},
    action_reaction:  action_reaction}

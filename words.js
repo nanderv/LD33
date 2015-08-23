@@ -10,6 +10,7 @@ abstract = "abstract"
 words = {}
 
 words.food = {type: abstract}
+words.container = {type: abstract}
 
 words.walk = {type:verb, eat : "to", method: "move"}
 words.stumble = {type:verb, synonym: words.walk}
@@ -55,6 +56,7 @@ words.clock = {type: obj}
 words.countertop = {type: obj}
 words.dial = {type: obj}
 words.desk = {type:obj}
+words.drawer = {type:obj, is_a: words.container}
 words.panel = {type:obj}
 words.porkchops = {type: obj, is_a: words.food}
 words.sink = {type: obj}
@@ -149,6 +151,15 @@ object_reaction.small = {examine: ["A small key with a label that reads: floors 
 		""],
 	 pickup: ["You obtained a small key",
 	 	 ""]}
-
-
-
+object_reaction.desk = {examine: ["It is a handcarved oaken desk that looks slightly worn. There is one unlocked drawer.", 
+		""],
+	 pickup: ["",
+	 	 "Am I a hacker??"]}
+object_reaction.drawer = {examine: ["A closed drawer.", 
+		"I can't see into a closed drawer."],
+	 pickup: ["",
+	 	 ""]}
+object_reaction.newspaper = {examine: ["It's a newspaper dated Friday the 27th of June 1969.", 
+		"At least I know the date now."],
+	 pickup: ["You pick up the newspaper.",
+	 	 ""]}
