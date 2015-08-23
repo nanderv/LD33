@@ -1,6 +1,8 @@
 konsole = {}
 konsole.out = document.getElementById("out");
 konsole.input_field = document.getElementById("in");
+konsole.history = []
+konsole.back = 0
 function capitalizeFirstLetter(string) {
     return string.charAt(0).toUpperCase() + string.slice(1);
 }
@@ -22,9 +24,7 @@ konsole.print = function(text)
 	konsole.out.innerHTML = konsole.out.innerHTML + "<br>" + text
 	konsole.out.scrollTop = konsole.out.scrollHeight;
 	}
-konsole.in = function()
-{
-}
+
 function debug (tok, interp)
 {
 
@@ -56,18 +56,30 @@ $(document).keydown(function(e){
         		konsole.input_field.value += sentence[i]
         	}
 	}
+    if(e.which == 38) {
+        if(konsole.back < konsole.history.length)
+        {
+            konsole.back = konsole.back + 1
+            konsole.input_field.value = konsole.history[konsole.history.length- konsole.back]
+        } else {
+            konsole.print("- End of history")
+        }
+    }
 })
 $(document).keypress(function (e) {
     if (e.which == 13) {
-
+        konsole.history[konsole.history.length] = konsole.input_field.value
+        konsole.back = 0
         konsole.line_in("- "+konsole.input_field.value)
         var tok = tokenize(konsole.input_field.value)
         if (tok != false)
         {
         	var interp = interpret(tok)
         	//debug(tok, interp)
+
         	konsole.input_field.value = ""
         }
+
           
     }
 

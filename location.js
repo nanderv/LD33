@@ -11,7 +11,7 @@ dir = []
 dir[0]      = {to: "hallway_west_14", methods  : [words.walk], direction: words.east, hidden: 1, cond: [condition_false("lying down")]}
 dir[1]      = {to: "window", methods  : [words.jump], direction: words.west, hidden: 1, cond: [condition_false("lying down")]}
 // word, where, explained, visible
-objects = [[words.toothbrush, words.sink, false, false], [words.sink,"",  false, true], [words.bed, "", false, true]]
+objects = [[words.toothbrush, words.sink, false, false], [words.sink,"",  false, false], [words.bed, "", false, false]]
 action_reaction = {}
 action_reaction.stand = ["Even though the room is dimly lit, you still see a window on the west, a door on the east, your bed and a sink.", "Damm, I have a headache."]
 map.room_west_14 = {enter: "You wake up, alone, in a dark room. <br / > You don't remember this place at all."
