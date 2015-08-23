@@ -204,13 +204,13 @@ actions.turn_lights = function (tok) {
 }
 
 actions.eat = function (tok) {
-	if(tok.obj)
+	if(tok.object)
 	{
 	var i = 0 ; 
 	var found = false;
 	for( i  = 0; i < map[here].objects.length ; i++)
 	{
-		if( map[here].objects[i][0] == tok.obj && map[here].objects[i][3] )
+		if( map[here].objects[i][0] == tok.object && map[here].objects[i][3] )
 		{
 			found = 1
 			break
@@ -219,16 +219,16 @@ actions.eat = function (tok) {
 	map[here].objects.splice(i, 1)
 	if(!found)
 	{
-		konsole.print(get_text(tok.obj) + " is not found")
+		konsole.print(get_text(tok.object) + " is not found")
 		return false
 	}
-		if(tok.obj.is_a == words.food)
+		if(tok.object.is_a == words.food)
 		{
-			// do stuff
+			object_reaction.teeth.examine = ["", "My teeth are perfectly clean"]
 			konsole.think("I feel refreshed")
 			return true
 		} else {
-			konsole.think("I can't eat the " + get_text(tok.obj))
+			konsole.think("I can't eat the " + get_text(tok.object))
 			return false
 		}
 	}	
