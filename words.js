@@ -78,7 +78,7 @@ words.desk = {type:obj}
 words.drawer = {type:obj, is_a: words.container}
 words.lights = {type: obj}
 words.light = {type: obj, synonym: words.lights}
-words.painting = {type: obj, is_a: movable}
+words.painting = {type: obj, is_a: words.movable}
 words.panel = {type:obj}
 words.porkchops = {type: obj, is_a: words.food}
 words.rubbish = {type: obj}
@@ -94,7 +94,7 @@ words.coin = {type: item}
 words.documents = {type: item}
 words.knife = {type:item}
 words.newspaper = {type:item, is_a: words.readable}
-words.parachute = {type: item, is_a: container}
+words.parachute = {type: item, is_a: words.container}
 words.pen = {type:item}
 
 words.toothbrush = {type: item, long_name : "dirty toothbrush"}
