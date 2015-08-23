@@ -109,10 +109,10 @@ dir = []
 dir[0]      = {to: "hallway_northeast_14", methods  : [words.walk], direction: words.south, hidden: 1, cond: []}
 
 // word, where, explained, visible
-objects = [[words.panel, "", false, true], [words.dial, "", false, true]]
+objects = [[words.copper, "", false, true]]
 action_reaction = {}
 map.room_northeast_14 = {enter: "This room appears to be a security room. There is a desk with 6 monitors on it. A guard is supposed to look at them, but he's sleeping. In his right hand he has a key.", 
-   thoughts : "I should get the key.",
+   thoughts : "I should get the key. This guard doesn't look that strong.",
    enter_again: "Welcome to the guardroom.",
    description : ["", ""],
    directions: dir,
