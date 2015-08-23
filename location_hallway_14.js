@@ -110,10 +110,10 @@ dir = []
  dir[2]      = {to: "hallway_west_14", methods  : [words.walk], direction: words.west, cond: []}
  dir[3]      = {to: "hallway_centercenter_14", methods  : [words.walk], direction: words.east, cond: []}
  objects =[]
-map.hallway_center_14 = {enter: "You are in a hallway" , enter_again: "This hallway is in the northwest corner of the building.", description : "It's a hallway, nothing special", directions: dir, objects : objects , image: "", cond : {}, action_reaction : {}}
+map.hallway_centerwest_14 = {enter: "You are in a hallway" , enter_again: "This hallway is in the northwest corner of the building.", description : "It's a hallway, nothing special", directions: dir, objects : objects , image: "", cond : {}, action_reaction : {}}
 
 /*******************************************
-  * Hospital hallway 14, centerwest
+  * Hospital hallway 14, center
   *
   *******************************************/
 dir = []
@@ -134,4 +134,4 @@ dir = []
  dir[2]      = {to: "hallway_centercenter_14", methods  : [words.walk], direction: words.west, cond: []}
  dir[3]      = {to: "hallway_east_14", methods  : [words.walk], direction: words.east, cond: []}
  objects =[]
-map.hallway_center_14 = {enter: "You are in a hallway" , enter_again: "This hallway is in the northwest corner of the building.", description : "It's a hallway, nothing special", directions: dir, objects : objects , image: "", cond : {}, action_reaction : {}}
+map.hallway_centereast_14 = {enter: "You are in a hallway" , enter_again: "This hallway is in the northwest corner of the building.", description : "It's a hallway, nothing special", directions: dir, objects : objects , image: "", cond : {}, action_reaction : {}}
