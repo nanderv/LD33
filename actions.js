@@ -4,16 +4,16 @@ actions.assist = function(tok)
 	return false;
 
 }
-actions.examine = function (tok)
+function find_in_inventory ( item) 
 {
-
-	if(tok.item)
-	{
 		var found = false
+		var syn = false
+	do {
+		syn = false
 	for(var i=0;i<map[here].objects.length; i++)
 		{
 			var obj = map[here].objects[i]
-			if(obj[0] == tok.item)
+			if(obj[0] == item)
 			{
 				if (! obj[3])
 					{
@@ -21,17 +21,128 @@ actions.examine = function (tok)
 						return false
 					}
 					found = true
+					break
 			}
 		}
-	for(var i=0;i<inventory.length; i++)
+		if(item.synonym)
 		{
-			var obj = inventory[i]
-			if(obj == tok.item)
+			item = item.synonym
+			syn = true
+		}
+		} while (!found && syn)
+		if(found)
+			return item
+		else
+			return null
+}
+
+function find_on_map_with_i_internally (item)
+{
+			var found = false
+					var syn = false
+						var i=0;
+
+	do {
+		syn = false
+	for(i=0;i<map[here].objects.length; i++)
+		{
+			var obj = map[here].objects[i]
+			if(obj[0] == item)
 			{
-				
+			
 					found = true
+					break
 			}
 		}
+				if(item.synonym)
+		{
+			item = item.synonym
+			syn = true
+		}
+		} while (!found && syn)
+
+		if(found)
+			return [item,i]
+		else
+			return null}
+
+function find_on_map_with_i (item)
+{
+			var found = false
+					var syn = false
+						var i=0;
+
+	do {
+		syn = false
+	for(i=0;i<map[here].objects.length; i++)
+		{
+			var obj = map[here].objects[i]
+			if(obj[0] == item)
+			{
+				if (! obj[3])
+					{
+						konsole.think("I don't know anything about this")
+						return false
+					}
+					found = true
+					break
+			}
+		}
+				if(item.synonym)
+		{
+			item = item.synonym
+			syn = true
+		}
+		} while (!found && syn)
+
+		if(found)
+			return [item,i]
+		else
+			return null}
+function find_on_map (item)
+{
+			var found = false
+					var syn = false
+						var i=0;
+
+	do {
+		syn = false
+	for(i=0;i<map[here].objects.length; i++)
+		{
+			var obj = map[here].objects[i]
+			if(obj[0] == item)
+			{
+				if (! obj[3])
+					{
+						konsole.think("I don't know anything about this")
+						return false
+					}
+					found = true
+					break
+			}
+		}
+				if(item.synonym)
+		{
+			item = item.synonym
+			syn = true
+		}
+		} while (!found && syn)
+
+		if(found)
+			return item
+		else
+			return null}
+actions.examine = function (tok)
+{
+
+	if(tok.item)
+	{
+		var ot = tok.item
+		tok.item =  find_in_inventory(tok.item)
+		if(tok.item == null)
+		 tok.item =  find_on_map(ot)
+	found = !(! tok.item)
+
 	if (!found)
 	{
 			konsole.think("I can't see that, so I can't examine that.")
@@ -54,21 +165,8 @@ actions.examine = function (tok)
 	if(tok.object)
 	{
 
-	var found = false
-	for(var i=0;i<map[here].objects.length; i++)
-		{
-			var obj = map[here].objects[i]
-			if(obj[0] == tok.object)
-			{
-				if (! obj[3])
-					{
-						konsole.think("I don't know anything about this")
-						return false
-					}
-					found = true
-			}
-		}
-
+		 tok.object =  find_on_map(tok.object)
+	found = !(! tok.object)
 	if (!found)
 	{
 			konsole.think("I can't see that, so I can't examine that.")
@@ -100,7 +198,12 @@ actions.examine = function (tok)
 		return true;
 		
 	}
-		konsole.think("What do you want to examine?")
+	if(map[here].description[0])
+		konsole.print(map[here].description[0])
+	if(map[here].description[1])
+		konsole.print(map[here].description[1])
+		return true
+	
 
 }
 actions.pickup = function(tok)
@@ -112,21 +215,18 @@ actions.pickup = function(tok)
 		return false;
 	}
 	var i = 0 ; 
-	var found = false;
-	for( i  = 0; i < map[here].objects.length ; i++)
-	{
-		if( map[here].objects[i][0] == tok.item && map[here].objects[i][3] )
-		{
-			found = 1
-			break
-		}
-	}
+	var aa = find_on_map_with_i(tok.item)
+	i = aa[1]
+	tok.item = aa[0]
+
+	found = ! ( ! tok.item)
 	if(!found)
 	{
 		konsole.print(get_text(tok.item) + " is not found")
 		return false
 	}
-	map[here].objects[i] = 0
+	i = tok.item.i
+	map[here].objects.splice(i,0)
 	inventory[inventory.length] = tok.item
 	if(object_reaction[tok.item.text])
 	{
@@ -161,6 +261,12 @@ actions.move = function (tok) {
 					return false
 				}
 			}
+			if(!map[dir.to])
+			{
+				konsole.print("ERROR ERROR, room doesn't exist. This is not good, sorry.")
+				return false
+			}
+
 			here = dir.to
 			enter(map[here])
 
@@ -233,22 +339,18 @@ actions.turn_lights = function (tok) {
 actions.eat = function (tok) {
 	if(tok.object)
 	{
-	var i = 0 ; 
-	var found = false;
-	for( i  = 0; i < map[here].objects.length ; i++)
-	{
-		if( map[here].objects[i][0] == tok.object && map[here].objects[i][3] )
-		{
-			found = 1
-			break
-		}
-	}
-	map[here].objects.splice(i, 1)
-	if(!found)
+	var aa =  find_on_map_with_i(tok.object)
+	tok.object = aa[0]
+	found = !(! tok.object)
+		if(!found)
 	{
 		konsole.print(get_text(tok.object) + " is not found")
 		return false
 	}
+	var i =  aa[1]
+
+	map[here].objects.splice(i, 1)
+
 		if(tok.object.is_a == words.food)
 		{
 			object_reaction.teeth.examine = ["", "My teeth are dirty from the porkchops I ate."]

@@ -3,8 +3,13 @@ function interpret(t)
 
 	if (! t.verb)
 	{
+		if(t.direction)
+		{
+			t.verb = words.go
+		}else {
 		konsole.print("no verb, sentence doens't make sense")
 		return false
+	}
 	}
 	action_exec = false
 	if( actions[t.verb.method])
@@ -39,6 +44,8 @@ function interpret(t)
 			konsole.think(map[here].action_reaction[t.verb.method][1])
 		map[here].action_reaction[t.verb.method][0] = ""
 		map[here].action_reaction[t.verb.method][1] = ""
+		if ( map[here].action_reaction[t.verb.method][2])
+			map[here].action_reaction[t.verb.method][2]()
 		}
 
 		if (world_reaction[t.verb.method])

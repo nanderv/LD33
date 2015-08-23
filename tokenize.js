@@ -38,6 +38,7 @@ function tokenize(sentence)
 		for(var i = 0;  i< map[here].objects.length && err == false; i++)
 			{
 				var o = map[here].objects[i]
+				
 				if(o[0].is_a)
 
 				if( o == 0 )
