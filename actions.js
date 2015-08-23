@@ -297,15 +297,20 @@ actions.lie = function (tok) {
 actions.stand = function (tok) {
 	if (map[here].cond["lying down"])
 	{
-		map[here].cond["lying down"]= false
+		map[here].cond["lying down"] = false
+		konsole.print("You're now standing up.")
+		return true
+	}
+	else if (map[here].cond["sitting"]) 
+	{
+		map[here].cond["sitting"] = false
 		konsole.print("You're now standing up.")
 		return true
 	}
 	else
-		konsole.print("you're not lying down")
+		konsole.print("You are already standing.")
 	return false
 }
-
 actions.brush = function (tok) {
 	var has_brush = false
 	for(var i= 0 ; i < inventory.length ; i++)
@@ -320,7 +325,6 @@ actions.brush = function (tok) {
 		konsole.print("You need a toothbrush to brush your teeth.")
 	}
 }
-
 actions.turn_lights = function (tok) {
 	if (!map[here].cond["lights"])
 	{
@@ -332,7 +336,6 @@ actions.turn_lights = function (tok) {
 		konsole.think("Why would I want to turn the lights back off again?")
 	return false
 }
-
 actions.eat = function (tok) {
 	if(tok.object)
 	{
@@ -359,5 +362,75 @@ actions.eat = function (tok) {
 		}
 	}	
 	konsole.think("What should I eat?" )
+	return false
+}
+actions.sit = function (tok) {
+	if (!map[here].cond["sitting"])
+	{
+		map[here].cond["sitting"]= true
+		konsole.print("You sit down in the chair.")
+		konsole.think("This is very comfortable.")
+		return true
+	}
+	else
+		konsole.print("You are already sitting.")
+	return false
+}
+actions.open = function (tok) {
+	if (tok.object && tok.object.is_a == words.container) {
+		var i = 0 ; 
+		var found = false;
+		for( i  = 0; i < map[here].objects.length ; i++) {
+			if( map[here].objects[i][0] == tok.object && map[here].objects[i][3] ) {
+				found = 1
+				break
+			}
+		}
+		if(!found) {
+			konsole.print(get_text(tok.object) + " is not found")
+			return false
+		}
+		if (map[here].cond["closed"]) {
+			map[here].cond["closed"] = 0
+		} else {
+			konsole.think("The " + get_text(tok.object) + " is already open.")
+			return false
+		}
+		if (tok.object == words.drawer) {
+			object_reaction.drawer.examine = ["An open drawer.", ""]
+		}
+		return true
+	} else {
+		konsole.think("I cannot open this.")
+	}
+	return false
+}
+actions.close = function (tok) {
+	if (tok.object && tok.object.is_a == words.container) {
+		var i = 0 ; 
+		var found = false;
+		for( i  = 0; i < map[here].objects.length ; i++) {
+			if( map[here].objects[i][0] == tok.object && map[here].objects[i][3] ) {
+				found = 1
+				break
+			}
+		}
+		if(!found) {
+			konsole.print(get_text(tok.object) + " is not found")
+			return false
+		}
+		if (!map[here].cond["closed"]) {
+			map[here].cond["closed"] = 1
+		} else {
+			konsole.think("The " + get_text(tok.object) + " is already closed.")
+			return false
+		}
+		if (tok.object == words.drawer) {
+			object_reaction.drawer.examine = ["A closed drawer.", "I can't see into a closed drawer."]
+		}
+		return true
+	} else {
+		konsole.think("I cannot close this.")
+	}
 	return false
 }
