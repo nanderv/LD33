@@ -5,6 +5,7 @@ item = "item"
 nil = "nil"
 person = "person"
 obj = "object"
+abstract = "abstract"
 words = {}
 words.walk = {type:verb, eat : "to", method: "move"}
 words.stumble = {type:verb, synonym: words.walk}
@@ -42,7 +43,9 @@ words.cabinet = {type: obj}
 words.chair = {type: obj}
 words.clock = {type: obj}
 words.desk = {type:obj}
-words.sink = {type: obj}
+words.bruh = {type: abstract}
+
+words.sink = {type: obj, is_a: words.bruh}
 words.teeth = {type: obj}
 words.telephone = {type:obj }
 
@@ -51,10 +54,11 @@ words.coin = {type: item}
 words.documents = {type: item}
 words.newspaper = {type:item}
 words.pen = {type:item}
-words.toothbrush = {type: item}
-words.towel = {type : item}
 
-words.copper = {type : item, eat: "key"}
+words.toothbrush = {type: item, is_a: words.bruh, long_name : "dirty toothbrush"}
+words.towel = {type : item}
+words.key = {type: abstract}
+words.copper = {type : item, eat: "key",long_name : "copper key", is_a : words.key}
 
 
 
@@ -67,7 +71,12 @@ for (var key in words) {
   	}
 }
 
-
+function get_text (w)
+{
+	if(w.long_name)
+		return w.long_name
+	return w.text
+}
 object_reaction = {}
 object_reaction.toothbrush = {examine: ["", 
 		"It is mine."],
