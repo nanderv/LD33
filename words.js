@@ -16,7 +16,7 @@ words.readable = {type: abstract}
 words.movable = {type: abstract}
 
 words.walk = {type:verb, eat : "to", method: "move"}
-words.move = {type: verb, method: move_obj, synonym: words.walk}
+words.move = {type: verb, method: "move_obj", synonym: words.walk}
 words.stumble = {type:verb, synonym: words.walk}
 words.run = {type:verb, synonym: words.walk}
 words.head = {type:verb, synonym: words.walk}
