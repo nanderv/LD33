@@ -502,9 +502,16 @@ actions.read = function (tok) {
 	}
 }
 actions.move_obj = function (tok) {
-	if (tok.obj) {
-		return true
-	} else{
-		return false
+	if (tok.object) {
+		if (tok.object.is_a == words.movable) {
+			konsole.print("You move the " + get_text(tok.object) + ".")
+			if (tok.object == words.painting) {
+				map[here].enter_again = "You enter the room with the painting and the safe.",
+				map[here].description = ["The walls of this mostly empty room are painted a light beige. You see a painting standing next to the safe in the far wall.","This room somehow calmes me."]
+			}
+			return true
+		}
+	} else {
+		
 	}
 }
