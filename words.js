@@ -28,6 +28,7 @@ words.lie = {type: verb, method: "lie", eat: "down"}
 
 words.grab = {type:verb, method: "pickup"}
 words.pick = {type: verb, eat: "up", synonym : words.grab}
+words.take = {type: verb, synonym: words.grab}
 
 words.brush = {type: verb, method : "brush"}
 
@@ -52,7 +53,7 @@ words.chair = {type: obj}
 words.clock = {type: obj}
 words.countertop = {type: obj}
 words.desk = {type:obj}
-words.porkchops = {type:obj, is_a: words.food}
+words.porkchops = {type: obj, is_a: words.food}
 words.sink = {type: obj}
 words.stove = {type: obj}
 words.teeth = {type: obj}
@@ -117,7 +118,7 @@ object_reaction.window = {examine: ["You look out the window and see a city you 
 	 pickup: ["",
 	 	 "Am I a hacker??"]}
 object_reaction.porkchops = {examine: ["These are cooked porkchops.", 
-		"It looks tasty."],
+		"Did I... cook this? <br />It looks tasty."],
 	 pickup: ["",
 	 	 "Am I a hacker??"]}
 object_reaction.knife = {examine: ["It is a fairly large kitchen knife.", 
@@ -128,7 +129,7 @@ object_reaction.stove = {examine: ["It is a gas stove used for cooking.",
 		"It is still warm..."],
 	 pickup: ["",
 	 	 "Am I a hacker??"]}
-object_reaction.countertop = {examine: ["There is a plate of porkchops lying on the countertop.", 
-		"Did I... cook this?"],
+object_reaction.countertop = {examine: ["It is a countertop used for cooking.", 
+		""],
 	 pickup: ["",
 	 	 "Am I a hacker??"]}
