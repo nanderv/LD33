@@ -4,37 +4,88 @@ inverse_direction = "inv"
 item = "item"
 nil = "nil"
 person = "person"
+obj = "object"
 words = {}
-words.walk = {type:verb, eat : "to", method: actions.move}
+words.walk = {type:verb, eat : "to", method: "move"}
 words.stumble = {type:verb, synonym: words.walk}
 words.run = {type:verb, synonym: words.walk}
-words.stand = {type: verb, method: actions.stand, eat: "up"}
-words.lie = {type: verb, method: actions.lie, eat: "down"}
-words.jump = {type:verb, method: actions.move}
-words.grab = {type:verb, method: actions.pickup}
+words.head = {type:verb, synonym: words.walk}
+words.go = {type:verb, synonym: words.walk}
+words.jump = {type:verb, method: "move"}
+
+words.examine = {type:verb, method : "examine"}
+
+words.help = {type: verb, method : "help"}
+words.assist = {type:verb, synonym: words.help, method: "assist"}
+
+words.stand = {type: verb, method: "stand", eat: "up"}
+words.lie = {type: verb, method: "lie", eat: "down"}
+
+words.grab = {type:verb, method: "pickup"}
 words.pick = {type: verb, eat: "up", synonym : words.grab}
+
+words.brush = {type: verb, method : "brush"}
+
+words.east = {type:direction}
 words.north = {type:direction}
 words.south = {type:direction}
-words.east = {type:direction}
 words.west = {type:direction}
 words.up = {type:direction}
 words.down = {type:direction}
 words.away = {type: inverse_direction}
 
-
 words.from = {type: nil}
 
+words.bed = {type: obj}
+words.blackboard = {type: obj}
+words.cabinet = {type: obj}
+words.chair = {type: obj}
+words.clock = {type: obj}
+words.desk = {type:obj}
+words.sink = {type: obj}
+words.teeth = {type: obj}
+words.telephone = {type:obj }
+
+
 words.coin = {type: item}
-words.help = {type: verb, method : actions.help}
-words.assist = {type:verb, synonym: words.help, method: actions.assist}
-words.john = {type: person}
-
-
-
+words.documents = {type: item}
+words.newspaper = {type:item}
+words.pen = {type:item}
 words.toothbrush = {type: item}
 words.towel = {type : item}
+
+words.copper = {type : item, eat: "key"}
+
+
+
+// Secretary
+words.secretary = {type: person}
+
 for (var key in words) {
   	if (words.hasOwnProperty(key)) {
   		words[key].text = key
   	}
 }
+
+
+object_reaction = {}
+object_reaction.toothbrush = {examine: ["", 
+		"It is mine."],
+	 pickup: ["",
+	 	 "Did I brush my teeth yesterday?<br / > Come to think of it, what day is it?"]}
+object_reaction.teeth = {examine: ["", 
+		"I should clean them more often."],
+	 pickup: ["",
+	 	 "Áre you a hacker??"]}	 	 
+object_reaction.clock = {examine: ["", 
+		"It tells  the time."],
+	 pickup: ["",
+	 	 "Áre you a hacker??"]}	 
+object_reaction.towel = {examine: ["", 
+		"It's a towel."],
+	 pickup: ["",
+	 	 "I now have a towel"]}	 
+object_reaction.copper = {examine: ["The label states it can be used to open the staff area on floor 14.", 
+		""],
+	 pickup: ["",
+	 	 "I found a copper key."]}	 

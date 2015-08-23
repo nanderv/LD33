@@ -7,9 +7,8 @@ function interpret(t)
 		return false
 	}
 	action_exec = false
-
-	if( t.verb.method)
-			if(t.verb.method(t))
+	if( actions[t.verb.method])
+			if(actions[t.verb.method](t))
 				action_exec = true
 	while((t.verb.synonym != null && t.verb.synonym != undefined) && !action_exec)
 	{
@@ -20,14 +19,27 @@ function interpret(t)
 
 			t.verb = t.verb.synonym
 		}
-		if( t.verb.method)
-			if(t.verb.method(t))
+		if( actions[t.verb.method])
+			if(actions[t.verb.method](t))
 				action_exec = true
+
 	}
 
 	
 		
 	if(! action_exec)
 		konsole.print("Action failed")
+	else
+	{
+		if (map[here].action_reaction[t.verb.method])
+		{
+		if (map[here].action_reaction[t.verb.method][0] != "")
+			konsole.print(map[here].action_reaction[t.verb.method][0])
+		if (map[here].action_reaction[t.verb.method][1] != "")
+			konsole.think(map[here].action_reaction[t.verb.method][1])
+		map[here].action_reaction[t.verb.method][0] = ""
+		map[here].action_reaction[t.verb.method][1] = ""
+		}
+	}
 	return action_exec
 }

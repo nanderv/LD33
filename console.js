@@ -7,7 +7,7 @@ function capitalizeFirstLetter(string) {
 konsole.line_in = function(text)
 {
 	text = capitalizeFirstLetter(text) 
-	konsole.out.innerHTML = konsole.out.innerHTML + "<br><b>" + text + "</b>"
+	konsole.out.innerHTML =  konsole.out.innerHTML + "<br><br/ > <b>" + text + "</b>"
 	konsole.out.scrollTop = konsole.out.scrollHeight;	
 }
 konsole.think = function(text)
@@ -65,7 +65,7 @@ $(document).keypress(function (e) {
         if (tok != false)
         {
         	var interp = interpret(tok)
-        	debug(tok, interp)
+        	//debug(tok, interp)
         	konsole.input_field.value = ""
         }
           

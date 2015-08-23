@@ -4,7 +4,72 @@ actions.assist = function(tok)
 	return false;
 
 }
+actions.examine = function (tok)
+{
 
+	if(tok.item)
+	{
+		var found = false
+	for(var i=0;i<map[here].objects.length; i++)
+		{
+			var obj = map[here].objects[i]
+			if(obj[0] == tok.item)
+			{
+				if (! obj[3])
+					{
+						konsole.think("I don't know anything about this")
+						return false
+					}
+					found = true
+			}
+		}
+
+	if (!found)
+	{
+			konsole.think("I can't see that, so I can't examine that.")
+
+			return false
+	}
+	if(object_reaction[tok.item.text]  )
+	{
+		if (object_reaction[tok.item.text].examine[0] != "")
+			konsole.print(object_reaction[tok.item.text].examine[0])
+		if (object_reaction[tok.item.text].examine[1] != "")
+			konsole.think(object_reaction[tok.item.text].examine[1])
+
+	} else {
+		konsole.think("I don't know anything about this")
+	}
+		return true;
+	}
+
+	if(tok.object)
+	{
+	if(object_reaction[tok.object.text])
+	{
+		if (object_reaction[tok.object.text].examine[0] != "")
+			konsole.print(object_reaction[tok.object.text].examine[0])
+		if (object_reaction[tok.object.text].examine[1] != "")
+			konsole.think(object_reaction[tok.object.text].examine[1])
+		
+	} else {
+		konsole.think("I don't know anything about this")
+		for(var i=0;i<map[here].objects.length; i++)
+		{
+			var obj = map[here].objects[i]
+			if(obj[0].type == item && obj [1] == tok.object)
+			{
+				konsole.print("You found a "+ obj[0].text)
+				obj[3] = true
+			}
+		}
+	}
+		return true;
+		
+	}
+		konsole.think("What do you want to examine?")
+
+}
 actions.pickup = function(tok)
 {
 	
@@ -17,7 +82,7 @@ actions.pickup = function(tok)
 	var found = false;
 	for( i  = 0; i < map[here].objects.length ; i++)
 	{
-		if( map[here].objects[i] == tok.item)
+		if( map[here].objects[i][0] == tok.item && map[here].objects[i][3] )
 		{
 			found = 1
 			break
@@ -25,11 +90,19 @@ actions.pickup = function(tok)
 	}
 	if(!found)
 	{
-		konsole.print(tok.item.text + " is not here")
+		konsole.print(tok.item.text + " is not found")
 		return false
 	}
 	map[here].objects[i] = 0
 	inventory[inventory.length] = tok.item
+	if(object_reaction[tok.item.text])
+	{
+		if (object_reaction[tok.item.text].pickup[0] != "")
+			konsole.print(object_reaction[tok.item.text].pickup[0])
+		if (object_reaction[tok.item.text].pickup[1] != "")
+			konsole.think(object_reaction[tok.item.text].pickup[1])
+
+	}
 	return true
 }
 
@@ -44,7 +117,7 @@ actions.move = function (tok) {
 				var dir = get_path_to(map[here],tok.location,tok.verb)
 	}
 	if (! dir)
-		konsole.print("moving failed")
+		return false
 	else 
 		{
 			for(var i = 0; i < dir.cond.length ; i++)
@@ -72,9 +145,9 @@ actions.help = function(tok)
 
 }
 actions.lie = function (tok) {
-	if (!map[here].cond.lying)
+	if (!map[here].cond["lying down"])
 	{
-		map[here].cond.lying= true
+		map[here].cond["lying down"]= true
 		konsole.print("you're now lying down")
 		return true
 	}
@@ -83,13 +156,28 @@ actions.lie = function (tok) {
 	return false
 }
 actions.stand = function (tok) {
-	if (map[here].cond.lying)
+	if (map[here].cond["lying down"])
 	{
-		map[here].cond.lying= false
-		konsole.print("you're now standing")
+		map[here].cond["lying down"]= false
+		konsole.print("You're now standing up.")
 		return true
 	}
 	else
 		konsole.print("you're not lying down")
 	return false
+}
+
+actions.brush = function (tok) {
+	var has_brush = false
+	for(var i= 0 ; i < inventory.length ; i++)
+	{
+		has_brush = has_brush || inventory[i] == words.toothbrush
+	}
+	if (has_brush) {
+		object_reaction.teeth.examine = ["", "My teeth are perfectly clean"]
+		konsole.print("You cleaned your teeth")
+		return true
+	} else {
+		konsole.print("You need a toothbrush to brush your teeth.")
+	}
 }
