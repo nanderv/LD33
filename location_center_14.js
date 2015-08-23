@@ -60,5 +60,5 @@ map.room_center_southeast_14 = {
 	description : ["The walls of this mostly empty room are painted a light beige. There is a painting on the far wall.","This room somehow calmes me."],
 	directions: dir,
 	objects: objects,
-	cond : {},
+	cond : {"closed":1},
 	action_reaction:  action_reaction}
