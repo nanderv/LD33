@@ -77,7 +77,7 @@ function enter(loc)
 		for(var i = 0; i< loc.objects.length ; i++)
 	{
 		var d = loc.objects[i]
-		if(d[3])
+		if(d[2])
 			konsole.print( "You see a "+ d[0].text)
 	}
 }
