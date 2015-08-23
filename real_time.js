@@ -53,6 +53,8 @@
  }
  function update_time()
  {
+ 	if(stop_time)
+ 		return false
  	central_time += dt
  	if(! map[here].time )
  		map[here].time = 0

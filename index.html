@@ -5,29 +5,7 @@
 Boe
 </title>
 
- <script src="world_events.js"></script> 
-
- <script src="jquery.js"></script> 
-   <script src="actions.js"></script> 
-
-  <script src="words.js"></script> 
-
- <script src="base.js"></script> 
-  <script src="location_handler.js"></script> 
-
-<script src="npc.js"></script> 
-
-<script src="reactions.js"></script> 
- <script src="location.js"></script> 
-  <script src="location_hallway_12.js"></script> 
-
- <script src="location_hallway_14.js"></script> 
- <script src="location_center_14.js"></script> 
-
- <script src="interpret.js"></script> 
-
- <script src="tokenize.js"></script> 
- 
+<script src= "jquery.js"></script>
 
 <style type="text/css">
 #wrap {
@@ -63,14 +41,58 @@ Boe
 </div>
 
 
+<script>
+stop_time = true
+var
+script_list = ["words","world_events", "actions","base", "location_handler","npc","reactions", "location","location_hallway_12", "location_hallway_14", "location_center_14", "interpret", "tokenize", "real_time","console"]
+ function load_js(src) {
+      var my_awesome_script = document.createElement('script');
+      my_awesome_script.setAttribute('src',src+'.js');
+       my_awesome_script.async = false;
 
+      document.head.appendChild(my_awesome_script);
+    }
+    function unload_js(src){
+              $('script[src="' + src + '.js"]').remove();
+
+    }
+    $(document).ready(function(){/*do stuff here*/});
+    function add_sc(b,i)
+    {
+          load_js(script_list[i])
+
+      if(i < script_list.length)
+        setTimeout(function(){add_sc(b,i+1)},0)
+      else
+      {
+        setTimeout(function(){ enter(map[here]) }, 10);
+      }
+
+    }
+function add_scripts(b)
+{
+  add_sc(b,0)
+  murderer = b
+
+}
+function reset(b)
+{
+  konsole.print("")
+  konsole.print("")
+  konsole.print("")
+  konsole.print("")
+  stop_time = true
+  for(var i = 0 ; i < script_list.length ; i++)
+    unload_js(script_list[i])
+  add_scripts(b)
+  return true
+}
+add_scripts(0)
+</script>
 
 
 </body>
- <script src="console.js"></script> 
- <script src="real_time.js"></script> 
 
 <script>
-enter(map[here])
 </script>
 </html>
