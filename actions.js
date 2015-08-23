@@ -53,6 +53,30 @@ actions.examine = function (tok)
 
 	if(tok.object)
 	{
+
+	var found = false
+	for(var i=0;i<map[here].objects.length; i++)
+		{
+			var obj = map[here].objects[i]
+			if(obj[0] == tok.object)
+			{
+				if (! obj[3])
+					{
+						konsole.think("I don't know anything about this")
+						return false
+					}
+					found = true
+			}
+		}
+
+	if (!found)
+	{
+			konsole.think("I can't see that, so I can't examine that.")
+
+			return false
+	}
+
+
 	if(object_reaction[tok.object.text])
 	{
 		if (object_reaction[tok.object.text].examine[0] != "")
