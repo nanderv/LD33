@@ -58,7 +58,7 @@ map.room_center_southeast_14 = {
 	enter: "You enter a room which is completely empty except for a painting some flowers on the far wall.", 
 	thoughts : "I like this painting.",
 	enter_again: "You enter the room with the painting.",
-	description : ["The walls of this mostly empty room are painted a light beige. There is a painting on the far wall.","This room somehow calmes me."],
+	description : ["The walls of this mostly empty room are painted a light beige. There is a painting on the far wall. There are some scuff marks next to the painting.","This room somehow calmes me."],
 	directions: dir,
 	objects: objects,
 	cond : {"closed":1},
