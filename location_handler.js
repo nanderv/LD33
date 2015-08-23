@@ -64,6 +64,9 @@ function condition_false(cond)
 		return !map[here].cond[cond] 
 	}
 }
+
+
+
 function enter(loc)
 {
 	if(loc.entered)

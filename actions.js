@@ -35,6 +35,37 @@ function find_in_inventory ( item)
 		else
 			return null
 }
+
+function find_on_map_with_i_internally (item)
+{
+			var found = false
+					var syn = false
+						var i=0;
+
+	do {
+		syn = false
+	for(i=0;i<map[here].objects.length; i++)
+		{
+			var obj = map[here].objects[i]
+			if(obj[0] == item)
+			{
+			
+					found = true
+					break
+			}
+		}
+				if(item.synonym)
+		{
+			item = item.synonym
+			syn = true
+		}
+		} while (!found && syn)
+
+		if(found)
+			return [item,i]
+		else
+			return null}
+
 function find_on_map_with_i (item)
 {
 			var found = false
