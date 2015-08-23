@@ -34,7 +34,7 @@ dir = []
  dir[1]      = {to: "hallway_northwest_14", methods  : [words.walk], direction: words.west, cond: []}
  dir[2]      = {to: "hallway_northeast_14", methods  : [words.walk], direction: words.east, cond: []}
  dir[3]      = {to: "hallway_centercenter_14", methods  : [words.walk], direction: words.south, cond: [has_item(words.copper)]}
-descr = "You are in a hallway. To your west is the room you woke up in, the hallway runs north to south. To your east is a locked door." 
+descr = "You are in a hallway. To the north a room. The hallway runs west to east. To the south is a locked door." 
 
  objects =[]
 map.hallway_north_14 = {enter: descr , enter_again: descr, description : "It's a hallway, nothing special", directions: dir, objects : objects , image: "", cond : {}, action_reaction : {}}
@@ -48,6 +48,8 @@ dir = []
  dir[1]      = {to: "hallway_north_14", methods  : [words.walk], direction: words.west, cond: []}
  dir[2]      = {to: "hallway_east_14", methods  : [words.walk], direction: words.south, cond: []}
  objects =[]
+ descr = "You are in a hallway...." 
+
 map.hallway_northeast_14 = {enter: descr , enter_again: descr, description : "It's a hallway, nothing special", directions: dir, objects : objects , image: "", cond : {}, action_reaction : {}}
 
 /*******************************************
