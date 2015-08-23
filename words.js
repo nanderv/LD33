@@ -11,6 +11,8 @@ words = {}
 
 words.food = {type: abstract}
 words.container = {type: abstract}
+words.sittable = {type: abstract}
+words.readable = {type: abstract}
 
 words.walk = {type:verb, eat : "to", method: "move"}
 words.stumble = {type:verb, synonym: words.walk}
@@ -20,16 +22,21 @@ words.go = {type:verb, synonym: words.walk, method: "move"}
 words.jump = {type:verb, method: "move"}
 
 words.examine = {type:verb, method : "examine"}
+words.read = {type:verb, method: "read"}
 
 words.help = {type: verb, method : "help"}
 words.assist = {type:verb, synonym: words.help, method: "assist"}
 
 words.stand = {type: verb, method: "stand", eat: "up"}
 words.lie = {type: verb, method: "lie", eat: "down"}
+words.sit = {type: verb, eat: "down", method: "sit"}
 
 words.grab = {type:verb, method: "pickup"}
 words.pick = {type: verb, eat: "up", synonym : words.grab}
 words.take = {type: verb, synonym: words.grab}
+
+words.open = {type: verb, method: "open"}
+words.close = {type: verb, method: "close"}
 
 words.brush = {type: verb, method : "brush"}
 
@@ -51,17 +58,21 @@ words.hall = {type: here}
 words.room = {type: here}
 
 words.from = {type: nil}
+words.in = {type: nil}
+words.on = {type: nil}
 
-words.bed = {type: obj}
+words.bed = {type: obj, is_a: words.sittable}
 words.blackboard = {type: obj}
 words.buttons = {type:obj, synonym: words.panel}
 words.cabinet = {type: obj}
-words.chair = {type: obj}
+words.chair = {type: obj, is_a: words.sittable}
 words.clock = {type: obj}
 words.countertop = {type: obj}
 words.dial = {type: obj}
 words.desk = {type:obj}
 words.drawer = {type:obj, is_a: words.container}
+words.lights = {type: obj}
+words.light = {type: obj, synonym: words.lights}
 words.panel = {type:obj}
 words.porkchops = {type: obj, is_a: words.food}
 words.sink = {type: obj}
@@ -74,7 +85,7 @@ words.window = {type: obj}
 words.coin = {type: item}
 words.documents = {type: item}
 words.knife = {type:item}
-words.newspaper = {type:item}
+words.newspaper = {type:item, is_a: words.readable}
 words.pen = {type:item}
 
 words.toothbrush = {type: item, long_name : "dirty toothbrush"}
@@ -156,7 +167,7 @@ object_reaction.dial = {examine: ["A dial with the numbers 1 to 14. It has a poi
 object_reaction.small = {examine: ["A small key with a label that reads: floors 12 - 14", 
 		""],
 	 pickup: ["You obtained a small key",
-	 	 ""]}
+	 	 "Am I a hacker??"]}
 object_reaction.desk = {examine: ["It is a handcarved oaken desk that looks slightly worn. There is one unlocked drawer.", 
 		""],
 	 pickup: ["",
@@ -164,8 +175,10 @@ object_reaction.desk = {examine: ["It is a handcarved oaken desk that looks slig
 object_reaction.drawer = {examine: ["A closed drawer.", 
 		"I can't see into a closed drawer."],
 	 pickup: ["",
-	 	 ""]}
+	 	 "Am I a hacker??"]}
 object_reaction.newspaper = {examine: ["It's a newspaper dated Friday the 27th of June 1969.", 
 		"At least I know the date now."],
 	 pickup: ["You pick up the newspaper.",
-	 	 ""]}
+	 	 ""],
+	 read: ["Lorem ipsum...",
+	 	 "bla bla bla..."]}

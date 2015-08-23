@@ -365,15 +365,34 @@ actions.eat = function (tok) {
 	return false
 }
 actions.sit = function (tok) {
-	if (!map[here].cond["sitting"])
-	{
-		map[here].cond["sitting"]= true
-		konsole.print("You sit down in the chair.")
-		konsole.think("This is very comfortable.")
-		return true
+	if (tok.object && tok.object.is_a == words.sittable) {
+		var i = 0 ; 
+		var found = false;
+		for( i  = 0; i < map[here].objects.length ; i++) {
+			if( map[here].objects[i][0] == tok.object && map[here].objects[i][3] ) {
+				found = 1
+				break
+			}
+		}
+		if(!found) {
+			konsole.print("The " + get_text(tok.object) + " is not found")
+			return false
+		}
+		if (!map[here].cond["sitting"]) {
+			map[here].cond["sitting"]= true
+			konsole.print("You sit down on the " + get_text(tok.object))
+			if (tok.object == words.chair) {
+				konsole.think("This is very comfortable.")
+			} 
+			return true
+		} else {
+			konsole.think("I am already sitting.")
+			return false
+		}
 	}
-	else
-		konsole.print("You are already sitting.")
+	else {
+		konsole.think("I cannot sit here.")
+	}
 	return false
 }
 actions.open = function (tok) {
@@ -399,6 +418,7 @@ actions.open = function (tok) {
 		if (tok.object == words.drawer) {
 			object_reaction.drawer.examine = ["An open drawer.", ""]
 		}
+		konsole.print("You open the " + get_text(tok.object))
 		return true
 	} else {
 		konsole.think("I cannot open this.")
@@ -428,9 +448,37 @@ actions.close = function (tok) {
 		if (tok.object == words.drawer) {
 			object_reaction.drawer.examine = ["A closed drawer.", "I can't see into a closed drawer."]
 		}
+		konsole.print("You close the " + get_text(tok.object))
 		return true
 	} else {
 		konsole.think("I cannot close this.")
 	}
 	return false
+}
+actions.read = function (tok) {
+	if (find_in_inventory(tok.item)) {
+		if (tok.item.is_a == words.readable) {
+			if (object_reaction[tok.item.text].read[0] != "") {
+				konsole.print(object_reaction[tok.item.text].read[0])
+			}
+			if (object_reaction[tok.item.text].read[1] != "") {
+				konsole.think(object_reaction[tok.item.text].read[1])
+			}
+			return true
+		} else {
+			konsole.think("I cannot read that.")
+			return false
+		}
+	} else if (tok.item || tok.object) {
+		var item = get_text(tok.item)
+		var article = "a "
+		if (item[0].indexOf("aeiou") >= 0) {
+			article = "an "
+		}
+		konsole.think("I do not have " + article + item)
+		return false
+	} else {
+		konsole.think("I cannot read that.")
+		return false
+	}
 }
