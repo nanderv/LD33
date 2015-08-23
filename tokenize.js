@@ -10,8 +10,13 @@ function tokenize(sentence)
 		if(my_word.length < 1)
 			continue
 		var w = words[my_word]
-
+		if (w== null)
+		{
+			konsole.print(my_words[i])
+			w = get_npc(my_words[i])
+		}
 		if (w == null){
+
 			konsole.print( my_word + " - wasn't understood")
 			return false
 		}

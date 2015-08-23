@@ -1,3 +1,3 @@
 world_reaction = {}
-world_reaction.move = ["Hello hello", "hi"]
+//world_reaction.move = ["Hello hello", "hi"]
 

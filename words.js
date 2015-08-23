@@ -15,11 +15,15 @@ words.sittable = {type: abstract}
 words.readable = {type: abstract}
 
 words.walk = {type:verb, eat : "to", method: "move"}
+words.move = {type: verb, method: move_obj, synonym: words.walk}
 words.stumble = {type:verb, synonym: words.walk}
 words.run = {type:verb, synonym: words.walk}
 words.head = {type:verb, synonym: words.walk}
 words.go = {type:verb, synonym: words.walk, method: "move"}
 words.jump = {type:verb, method: "move"}
+
+words.kill = {type:verb, method: "kill"}
+
 
 words.examine = {type:verb, method : "examine"}
 words.read = {type:verb, method: "read"}
