@@ -118,13 +118,12 @@ dir = []
  dir[2]      = {to: "hallway_west_14", methods  : [words.walk],hidden : 1, direction: words.west, cond: []}
  dir[3]      = {to: "hallway_centercenter_14", methods  : [words.walk],hidden : 1, direction: words.east, cond: []}
  objects =[]
-<<<<<<< HEAD
+
  descr = "bladiebla. " 
 
-map.hallway_center_14 = {enter: descr , enter_again: descr, description : ["", "I don't think I'm supposed to be here."], directions: dir, objects : objects , image: "", cond : {}, action_reaction : {}}
-=======
-map.hallway_centerwest_14 = {enter: "You are in a hallway" , enter_again: "This hallway is in the northwest corner of the building.", description : "It's a hallway, nothing special", directions: dir, objects : objects , image: "", cond : {}, action_reaction : {}}
->>>>>>> 8ad46fce9d742a9c93fdf2ac9825091c23311bf2
+map.hallway_centerwest_14 = {enter: descr , enter_again: descr, description : ["", "I don't think I'm supposed to be here."], directions: dir, objects : objects , image: "", cond : {}, action_reaction : {}}
+
+
 
 /*******************************************
   * Hospital hallway 14, center
@@ -136,7 +135,7 @@ dir = []
  dir[2]      = {to: "hallway_centerwest_14", methods  : [words.walk],hidden : 1, direction: words.west, cond: []}
  dir[3]      = {to: "hallway_centereast_14", methods  : [words.walk],hidden : 1, direction: words.east, cond: []}
  objects =[]
-map.hallway_center_14 = {enter: "You are in a hallway" , enter_again: "This hallway is in the northwest corner of the building.", description : ["", "I don't think I'm supposed to be here."], directions: dir, objects : objects , image: "", cond : {}, action_reaction : {}}
+map.hallway_centercenter_14 = {enter: "You are in a hallway" , enter_again: "This hallway is in the northwest corner of the building.", description : ["", "I don't think I'm supposed to be here."], directions: dir, objects : objects , image: "", cond : {}, action_reaction : {}}
 
 /*******************************************
   * Hospital hallway 14, centereast
@@ -148,8 +147,5 @@ dir = []
  dir[2]      = {to: "hallway_centercenter_14", methods  : [words.walk],hidden : 1, direction: words.west, cond: []}
  dir[3]      = {to: "hallway_east_14", methods  : [words.walk],hidden : 1, direction: words.east, cond: []}
  objects =[]
-<<<<<<< HEAD
-map.hallway_center_14 = {enter: "You are in a hallway" , enter_again: "This hallway is in the northwest corner of the building.", description : ["", "I don't think I'm supposed to be here."], directions: dir, objects : objects , image: "", cond : {}, action_reaction : {}}
-=======
+
 map.hallway_centereast_14 = {enter: "You are in a hallway" , enter_again: "This hallway is in the northwest corner of the building.", description : "It's a hallway, nothing special", directions: dir, objects : objects , image: "", cond : {}, action_reaction : {}}
->>>>>>> 8ad46fce9d742a9c93fdf2ac9825091c23311bf2

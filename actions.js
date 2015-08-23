@@ -21,6 +21,7 @@ function find_in_inventory ( item)
 						return false
 					}
 					found = true
+					break
 			}
 		}
 		if(item.synonym)
@@ -34,13 +35,15 @@ function find_in_inventory ( item)
 		else
 			return null
 }
-function find_on_map (item)
+function find_on_map_with_i (item)
 {
 			var found = false
 					var syn = false
+						var i=0;
+
 	do {
 		syn = false
-	for(var i=0;i<map[here].objects.length; i++)
+	for(i=0;i<map[here].objects.length; i++)
 		{
 			var obj = map[here].objects[i]
 			if(obj[0] == item)
@@ -51,6 +54,7 @@ function find_on_map (item)
 						return false
 					}
 					found = true
+					break
 			}
 		}
 				if(item.synonym)
@@ -59,6 +63,40 @@ function find_on_map (item)
 			syn = true
 		}
 		} while (!found && syn)
+
+		if(found)
+			return [item,i]
+		else
+			return null}
+function find_on_map (item)
+{
+			var found = false
+					var syn = false
+						var i=0;
+
+	do {
+		syn = false
+	for(i=0;i<map[here].objects.length; i++)
+		{
+			var obj = map[here].objects[i]
+			if(obj[0] == item)
+			{
+				if (! obj[3])
+					{
+						konsole.think("I don't know anything about this")
+						return false
+					}
+					found = true
+					break
+			}
+		}
+				if(item.synonym)
+		{
+			item = item.synonym
+			syn = true
+		}
+		} while (!found && syn)
+
 		if(found)
 			return item
 		else
@@ -68,9 +106,10 @@ actions.examine = function (tok)
 
 	if(tok.item)
 	{
+		var ot = tok.item
 		tok.item =  find_in_inventory(tok.item)
 		if(tok.item == null)
-		 tok.item =  find_on_map(tok.item)
+		 tok.item =  find_on_map(ot)
 	found = !(! tok.item)
 
 	if (!found)
@@ -145,14 +184,18 @@ actions.pickup = function(tok)
 		return false;
 	}
 	var i = 0 ; 
-	tok.item = find_on_map(tok.item)
+	var aa = find_on_map_with_i(tok.item)
+	i = aa[1]
+	tok.item = aa[0]
+
 	found = ! ( ! tok.item)
 	if(!found)
 	{
 		konsole.print(get_text(tok.item) + " is not found")
 		return false
 	}
-	map[here].objects[i] = 0
+	i = tok.item.i
+	map[here].objects.splice(i,0)
 	inventory[inventory.length] = tok.item
 	if(object_reaction[tok.item.text])
 	{
@@ -262,15 +305,18 @@ actions.turn_lights = function (tok) {
 actions.eat = function (tok) {
 	if(tok.object)
 	{
-
-		 tok.object =  find_on_map(tok.object)
+	var aa =  find_on_map_with_i(tok.object)
+	tok.object = aa[0]
 	found = !(! tok.object)
-	map[here].objects.splice(i, 1)
-	if(!found)
+		if(!found)
 	{
 		konsole.print(get_text(tok.object) + " is not found")
 		return false
 	}
+	var i =  aa[1]
+
+	map[here].objects.splice(i, 1)
+
 		if(tok.object.is_a == words.food)
 		{
 			object_reaction.teeth.examine = ["", "My teeth are dirty from the porkchops I ate."]

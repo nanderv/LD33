@@ -38,7 +38,7 @@ time_reaction[2] = [6, "You are dead", "",no_function,false]
 map.window = {enter: "The ground is approaching you in an increasing pace." , enter_again: "This is really strange, why am I here again?", description : "You are dead", directions: [], objects : [] , image: "", cond: {dead: 1}, action_reaction : {},time_reaction: time_reaction}
 
 
-here = "room_west_14"
+here = "room_kitchen_14"
 
 for (var key in map) {
   	if (map.hasOwnProperty(key)) {
