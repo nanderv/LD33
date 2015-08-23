@@ -3,8 +3,13 @@ function interpret(t)
 
 	if (! t.verb)
 	{
+		if(t.direction)
+		{
+			t.verb = words.go
+		}else {
 		konsole.print("no verb, sentence doens't make sense")
 		return false
+	}
 	}
 	action_exec = false
 	if( actions[t.verb.method])

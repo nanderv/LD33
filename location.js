@@ -18,7 +18,7 @@ action_reaction.stand = ["Even though the room is dimly lit, you still see a win
 map.room_west_14 = {enter: "You wake up, alone, in a dark room. <br / > You don't remember this place at all.", 
    thoughts : "Where am I?",
    enter_again: "You are back at the hospital room where you woke up",
-   description : "It's a hospital room",
+   description : ["It's a hospital room",""],
    directions: dir,
    objects: objects,
    cond : {"lying down":1},

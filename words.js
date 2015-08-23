@@ -6,7 +6,7 @@ nil = "nil"
 person = "person"
 obj = "object"
 abstract = "abstract"
-
+here = "here"
 words = {}
 
 words.food = {type: abstract}
@@ -40,9 +40,14 @@ words.east = {type:direction}
 words.north = {type:direction}
 words.south = {type:direction}
 words.west = {type:direction}
+
 words.up = {type:direction}
 words.down = {type:direction}
 words.away = {type: inverse_direction}
+
+words.here = {type: here}
+words.hall = {type: here}
+words.room = {type: here}
 
 words.from = {type: nil}
 
@@ -57,6 +62,7 @@ words.desk = {type:obj}
 words.panel = {type:obj}
 words.porkchops = {type: obj, is_a: words.food}
 words.sink = {type: obj}
+
 words.stove = {type: obj}
 words.teeth = {type: obj}
 words.telephone = {type:obj }
