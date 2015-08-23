@@ -536,9 +536,31 @@ actions.read = function (tok) {
 	}
 }
 actions.move_obj = function (tok) {
-	if (tok.obj) {
-		return true
-	} else{
+	if (tok.object) {
+		var i = 0 ; 
+		var found = false;
+		for( i  = 0; i < map[here].objects.length ; i++) {
+			if( map[here].objects[i][0] == tok.object && map[here].objects[i][3] ) {
+				found = 1
+				break
+			}
+		}
+		if(!found) {
+			konsole.print(get_text(tok.object) + " is not found")
+			return false
+		}
+		if (tok.object.is_a == words.movable) {
+			konsole.print("You move the " + get_text(tok.object) + ".")
+			if (tok.object == words.painting) {
+				map[here].enter_again = "You enter the room with the painting and the safe.",
+				map[here].description = ["The walls of this mostly empty room are painted a light beige. You see a painting standing next to the safe in the far wall.","This room somehow calmes me."]
+			}
+			return true
+		} else {
+			konsole.think("I cannot move " + get_article(tok.object) + get_text(tok.object) + ".")
+			return false
+		}
+	} else {
 		return false
 	}
 }
