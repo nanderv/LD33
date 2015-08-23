@@ -470,12 +470,7 @@ actions.read = function (tok) {
 			return false
 		}
 	} else if (tok.item || tok.object) {
-		var item = get_text(tok.item)
-		var article = "a "
-		if (item[0].indexOf("aeiou") >= 0) {
-			article = "an "
-		}
-		konsole.think("I do not have " + article + item)
+		konsole.think("I do not have " + get_article(tok.item) + get_text(tok.item))
 		return false
 	} else {
 		konsole.think("I cannot read that.")

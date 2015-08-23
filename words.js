@@ -111,6 +111,15 @@ function get_text (w)
 		return w.long_name
 	return w.text
 }
+// @requires: w is of type words.(...)
+function get_article(w) {
+	var item = get_text(w)
+	var article = "a "
+	if (item[0].indexOf("aeiou") >= 0) {
+		article = "an "
+	}
+	return article
+}
 object_reaction = {}
 object_reaction.toothbrush = {examine: ["", 
 		"It is probably mine."],
@@ -180,5 +189,5 @@ object_reaction.newspaper = {examine: ["It's a newspaper dated Friday the 27th o
 		"At least I know the date now."],
 	 pickup: ["You pick up the newspaper.",
 	 	 ""],
-	 read: ["Lorem ipsum...",
-	 	 "bla bla bla..."]}
+	 read: ["Violent Serial Killer Miraculously Cured",
+	 	 "At the Mercy Mental Hospital the notorious serial killer nicknamed 'The Arbitrator', is reported to have been cured after receiving extensive shock therapy. Currently still residing there, The Arbitrator is showing no signs of murderous intent according to Wolfram Switzer, head of Mercy Mental Hospital..."]}
