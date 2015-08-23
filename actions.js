@@ -23,7 +23,15 @@ actions.examine = function (tok)
 					found = true
 			}
 		}
-
+	for(var i=0;i<inventory.length; i++)
+		{
+			var obj = inventory[i]
+			if(obj == tok.item)
+			{
+				
+					found = true
+			}
+		}
 	if (!found)
 	{
 			konsole.think("I can't see that, so I can't examine that.")
@@ -59,7 +67,7 @@ actions.examine = function (tok)
 			var obj = map[here].objects[i]
 			if(obj[0].type == item && obj [1] == tok.object)
 			{
-				konsole.print("You found a "+ obj[0].text)
+				konsole.print("You found a "+ get_text(obj[0]))
 				obj[3] = true
 			}
 		}
@@ -90,7 +98,7 @@ actions.pickup = function(tok)
 	}
 	if(!found)
 	{
-		konsole.print(tok.item.text + " is not found")
+		konsole.print(get_text(tok.item) + " is not found")
 		return false
 	}
 	map[here].objects[i] = 0
