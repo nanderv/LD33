@@ -441,7 +441,12 @@ actions.open = function (tok) {
 			object_reaction.drawer.examine = ["An open drawer.", ""]
 		}
 		if (tok.object == words.safe) 
-		{
+		{	
+			if(map[here].cond["closed"] == 0)
+				{
+					konsole.think("I already opened the safe")
+					return false
+				}
 			konsole.think("I have to enter the code. I don't think I have it.")
 			konsole.over_ride_func = function()
 			{
@@ -461,6 +466,7 @@ actions.open = function (tok) {
 				if(code_pointer == code.length)
 				{
 					konsole.print("The lock unlocks itself")
+					object_reaction.safe.examine=["","I still don't understand how I managed to unlock it."]
 					map[here].cond["closed"] = 0
 					konsole.over_ride_func = null
 				}
