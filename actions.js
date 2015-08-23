@@ -451,6 +451,7 @@ actions.open = function (tok) {
 			konsole.over_ride_func = function()
 			{
 				var input = konsole.input_field.value
+				konsole.input_field.value = ""
 				var safe = tok.object
 				if(input == code[code_pointer])
 				{
