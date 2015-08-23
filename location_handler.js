@@ -42,7 +42,16 @@ function has_item(item)
 			if (inventory[i] == item)
 				return true
 		}
-		konsole.print("You don't have a " + get_text(item) + " so you can't do this")
+		switch (item) {
+			case words.small:
+				konsole.print("The elevator doesn't respond, you probably need a key to operate it.")
+				break
+			case words.master:
+				konsole.print("The elevator doesn't respond, you probably need a different key to go further down.")
+				break
+			default:
+				konsole.print("You don't have a " + get_text(item) + " so you can't do this")
+		}
 		return false
 		}
 }

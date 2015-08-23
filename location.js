@@ -74,14 +74,14 @@ map.room_kitchen_14 = {enter: "You enter a dark room and can't really see anythi
   *******************************************/
 dir = []
 dir[0]      = {to: "hallway_south_14", methods  : [words.walk], direction: words.north, hidden: 1, cond: []}
-dir[1]      = {to: "room_elevator_12", methods  : [words.go], direction: words.down, hidden: 1, cond: []}
+dir[1]      = {to: "room_elevator_12", methods  : [words.go], direction: words.down, hidden: 1, cond: [has_item(words.small)]}
 // word, where, explained, visible
-objects = [[words.panel, "", false, true]]
+objects = [[words.panel, "", false, true], [words.dial, "", false, true]]
 action_reaction = {}
-map.room_elevator_14 = {enter: "You enter the elevator. There is a panel with buttons on the wall.", 
+map.room_elevator_14 = {enter: "You enter the elevator. There is a panel with buttons on the wall. A dial above the door indicates you are on the 14th floor, which appears to be the highest floor.", 
    thoughts : "",
-   enter_again: "You enter the elevator.",
-   description : "It is an elevator. There is a panel with buttons on the wall.",
+   enter_again: "You are in the elevator. The dial indicates you are on the 14th floor.",
+   description : "It is an elevator. There is a panel with buttons on the wall, a dial above the door indicates which floor you are on.",
    directions: dir,
    objects: objects,
    cond : {},
@@ -94,14 +94,15 @@ map.room_elevator_14 = {enter: "You enter the elevator. There is a panel with bu
   *******************************************/
 dir = []
 dir[0]      = {to: "hallway_south_12", methods  : [words.walk], direction: words.north, hidden: 1, cond: []}
-dir[1]      = {to: "room_elevator_14", methods  : [words.go], direction: words.up, hidden: 1, cond: []}
+dir[1]      = {to: "room_elevator_14", methods  : [words.go], direction: words.up, hidden: 1, cond: [has_item(words.small)]}
+dir[2]      = {to: "room_elevator_11", methods  : [words.go], direction: words.down, hidden: 1, cond: [has_item(words.master)]}
 // word, where, explained, visible
-objects = []
+objects = [[words.panel, "", false, true], [words.dial, "", false, true]]
 action_reaction = {}
-map.room_elevator_12 = {enter: "You enter the elevator.", 
+map.room_elevator_12 = {enter: "You are in the elevator. The dial now points to the number 12.", 
    thoughts : "",
-   enter_again: "You enter the elevator.",
-   description : "",
+   enter_again: "You are in the elevator. The dial indicates you are on the 12th floor.",
+   description : "It is an elevator. There is a panel with buttons on the wall, a dial above the door indicates which floor you are on.",
    directions: dir,
    objects: objects,
    cond : {},
