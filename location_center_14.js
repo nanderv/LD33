@@ -50,9 +50,10 @@ map.room_center_southwest_14 = {
 dir = []
 dir[0]      = {to: "hallway_centereast_14", methods  : [words.walk], direction: words.north, hidden: 1, cond: []}
 // word, where, explained, visible
-objects = [[words.painting, "", false, true], [words.safe, "", false, false]]
+objects = [[words.painting, "", false, true], [words.safe, "", false, false], [words.parachute, "", false, false]]
 action_reaction = {}
 action_reaction.move_obj = ["You found a safe.", "", reactions.makevisible(words.safe)]
+action_reaction.open = ["You find a parachute in the safe.", "Why would someone store a parachute here?", reactions.makevisible(words.parachute)]
 map.room_center_southeast_14 = {
 	enter: "You enter a room which is completely empty except for a painting some flowers on the far wall.", 
 	thoughts : "I like this painting.",
