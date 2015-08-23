@@ -248,7 +248,7 @@ actions.eat = function (tok) {
 	}
 		if(tok.object.is_a == words.food)
 		{
-			object_reaction.teeth.examine = ["", "My teeth are perfectly clean"]
+			object_reaction.teeth.examine = ["", "My teeth are dirty from the porkchops I ate."]
 			konsole.think("I feel refreshed")
 			return true
 		} else {

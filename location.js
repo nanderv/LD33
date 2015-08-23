@@ -56,7 +56,7 @@ dir[0]      = {to: "hallway_southeast_14", methods  : [words.walk], direction: w
 // word, where, explained, visible
 objects = [[words.porkchops, words.countertop, false, true], [words.knife, words.countertop, false, false], [words.stove, "", false, true], [words.countertop, "", false, true]]
 action_reaction = {}
-action_reaction.turn_lights = ["Now that the room is lit, you can see that most of it hasn't been cleaned for quite a while. The only clean things in here are a stove and a countertop next to it. There is some food on the countertop",
+action_reaction.turn_lights = ["Now that the room is lit, you can see that most of it hasn't been cleaned for quite a while. The only clean things in here are a stove and a countertop next to it. There is some food on the countertop.",
    "It looks like someone recently cooked here."]
 map.room_kitchen_14 = {enter: "You enter a dark room and can't really see anything", 
    thoughts : "I can smell... some kind of meat?",
@@ -65,4 +65,44 @@ map.room_kitchen_14 = {enter: "You enter a dark room and can't really see anythi
    directions: dir,
    objects: objects,
    cond : {"lights":0},
+   action_reaction:  action_reaction}
+
+
+/*******************************************
+  * Hospital elevator, on the 14th floor.
+  *
+  *******************************************/
+dir = []
+dir[0]      = {to: "hallway_south_14", methods  : [words.walk], direction: words.north, hidden: 1, cond: []}
+dir[1]      = {to: "room_elevator_12", methods  : [words.go], direction: words.down, hidden: 1, cond: []}
+// word, where, explained, visible
+objects = [[words.panel, "", false, true]]
+action_reaction = {}
+map.room_elevator_14 = {enter: "You enter the elevator. There is a panel with buttons on the wall.", 
+   thoughts : "",
+   enter_again: "You enter the elevator.",
+   description : "It is an elevator. There is a panel with buttons on the wall.",
+   directions: dir,
+   objects: objects,
+   cond : {},
+   action_reaction:  action_reaction}
+
+
+/*******************************************
+  * Hospital elevator, on the 12th floor.
+  *
+  *******************************************/
+dir = []
+dir[0]      = {to: "hallway_south_12", methods  : [words.walk], direction: words.north, hidden: 1, cond: []}
+dir[1]      = {to: "room_elevator_14", methods  : [words.go], direction: words.up, hidden: 1, cond: []}
+// word, where, explained, visible
+objects = []
+action_reaction = {}
+map.room_elevator_12 = {enter: "You enter the elevator.", 
+   thoughts : "",
+   enter_again: "You enter the elevator.",
+   description : "",
+   directions: dir,
+   objects: objects,
+   cond : {},
    action_reaction:  action_reaction}
