@@ -68,6 +68,15 @@ $(document).keydown(function(e){
             konsole.print("- End of history")
         }
     }
+    if(e.which == 40) {
+        if(konsole.back > 1)
+        {
+            konsole.back = konsole.back - 1
+            konsole.input_field.value = konsole.history[konsole.history.length- konsole.back]
+        } else {
+            konsole.print("- Begin of history")
+        }
+    }
 })
 $(document).keypress(function (e) {
     if (e.which == 13) {
