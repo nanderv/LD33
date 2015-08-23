@@ -108,7 +108,7 @@ words.key = {type: abstract}
 words.copper = {type : item, eat: "key", long_name : "copper key", is_a : words.key}
 words.small = {type: item, eat: "key", long_name: "small key", is_a: words.key}
 words.master = {type: item, eat: "key", long_name: "master key", is_a: words.key} // no description
-
+words.badge = {type: item, long_name : "Employee badge"}
 // Secretary
 words.secretary = {type: person}
 

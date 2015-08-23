@@ -1,5 +1,5 @@
 map = {}
-here = "room_west_14"
+here = "room_elevator_12"
 
 immovable = ["lying","sleeping"]
 
