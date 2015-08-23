@@ -216,8 +216,8 @@ object_reaction.painting = {examine: ["It's a beautiful painting, realistically 
 		""],
 	 pickup: ["",
 	 	 "Am I a hacker??"]}
-object_reaction.safe = {examine: ["It's a locked safe. Unfortunately, nobody put the code on a post-it note.", 
-		""],
+object_reaction.safe = {examine: ["It's a locked safe.", 
+		"Unfortunately, nobody put the code on a post-it note."],
 	 pickup: ["",
 	 	 "Am I a hacker??"]}
 
