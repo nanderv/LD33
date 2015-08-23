@@ -27,16 +27,12 @@ function find_in_inventory ( item)
 		var syn = false
 	do {
 		syn = false
-	for(var i=0;i<map[here].objects.length; i++)
+	for(var i=0;i<inventory.length; i++)
 		{
-			var obj = map[here].objects[i]
-			if(obj[0] == item)
+			var obj =inventory[i]
+			if(obj == item)
 			{
-				if (! obj[3])
-					{
-						konsole.think("I don't know anything about this")
-						return false
-					}
+			
 					found = true
 					break
 			}
