@@ -106,7 +106,7 @@ dir = []
  objects =[]
 descr = "You are standing on a corner of two hallways, leading north and east. There is a room to the west. " 
 
-map.hallway_southwest_14 = {enter: "You are in a hallway" , enter_again: "This hallway is in the northwest corner of the building.",  description : ["This hallway is the southwest corner of the building",""], directions: dir, objects : objects , image: "", cond : {}, action_reaction : {}}
+map.hallway_southwest_14 = {enter: descr , enter_again: descr,  description : ["This hallway is the southwest corner of the building",""], directions: dir, objects : objects , image: "", cond : {}, action_reaction : {}}
 
 /*******************************************
   * Hospital hallway 14, centerwest
@@ -118,10 +118,12 @@ dir = []
  dir[2]      = {to: "hallway_west_14", methods  : [words.walk],hidden : 1, direction: words.west, cond: []}
  dir[3]      = {to: "hallway_centercenter_14", methods  : [words.walk],hidden : 1, direction: words.east, cond: []}
  objects =[]
-map.hallway_center_14 = {enter: "You are in a hallway" , enter_again: "This hallway is in the northwest corner of the building.", description : ["", "I don't think I'm supposed to be here."], directions: dir, objects : objects , image: "", cond : {}, action_reaction : {}}
+ descr = "bladiebla. " 
+
+map.hallway_center_14 = {enter: descr , enter_again: descr, description : ["", "I don't think I'm supposed to be here."], directions: dir, objects : objects , image: "", cond : {}, action_reaction : {}}
 
 /*******************************************
-  * Hospital hallway 14, centerwest
+  * Hospital hallway 14, center
   *
   *******************************************/
 dir = []
