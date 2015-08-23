@@ -53,6 +53,7 @@ words.cabinet = {type: obj}
 words.chair = {type: obj}
 words.clock = {type: obj}
 words.countertop = {type: obj}
+words.dial = {type: obj}
 words.desk = {type:obj}
 words.panel = {type:obj}
 words.porkchops = {type: obj, is_a: words.food}
@@ -70,10 +71,11 @@ words.pen = {type:item}
 
 words.toothbrush = {type: item, long_name : "dirty toothbrush"}
 words.towel = {type : item}
+
 words.key = {type: abstract}
 words.copper = {type : item, eat: "key", long_name : "copper key", is_a : words.key}
-
-
+words.small = {type: item, eat: "key", long_name: "small key", is_a: words.key}
+words.master = {type: item, eat: "key", long_name: "master key", is_a: words.key} // no description
 
 // Secretary
 words.secretary = {type: person}
@@ -135,7 +137,18 @@ object_reaction.countertop = {examine: ["It is a countertop used for cooking.",
 		""],
 	 pickup: ["",
 	 	 "Am I a hacker??"]}
-object_reaction.panel = {examine: ["A panel with numbered buttons used to operate the elevator", 
+object_reaction.panel = {examine: ["A panel with numbered buttons used to operate the elevator. Every button has a small keyhole next to it.", 
 		"Strange, the number 13 is missing..."],
 	 pickup: ["",
 	 	 "Am I a hacker??"]}
+object_reaction.dial = {examine: ["A dial with the numbers 1 to 14. It has a pointer that indicates which floor you are currently on.", 
+		""],
+	 pickup: ["",
+	 	 "Am I a hacker??"]}
+object_reaction.small = {examine: ["A small key with a label that reads: floors 12 - 14", 
+		""],
+	 pickup: ["You obtained a small key",
+	 	 ""]}
+
+
+
