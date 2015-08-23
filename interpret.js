@@ -40,6 +40,16 @@ function interpret(t)
 		map[here].action_reaction[t.verb.method][0] = ""
 		map[here].action_reaction[t.verb.method][1] = ""
 		}
+
+		if (world_reaction[t.verb.method])
+		{
+		if (world_reaction[t.verb.method][0] != "")
+			konsole.print(world_reaction[t.verb.method][0])
+		if (world_reaction[t.verb.method][1] != "")
+			konsole.think(world_reaction[t.verb.method][1])
+		world_reaction[t.verb.method][0] = ""
+		world_reaction[t.verb.method][1] = ""
+		}
 	}
 	return action_exec
 }

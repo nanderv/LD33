@@ -42,7 +42,7 @@ function has_item(item)
 			if (inventory[i] == item)
 				return true
 		}
-		konsole.print("You don't have a " + item.text + " so you can't do this")
+		konsole.print("You don't have a " + get_text(item) + " so you can't do this")
 		return false
 		}
 }
@@ -77,7 +77,6 @@ function enter(loc)
 		for(var i = 0; i< loc.objects.length ; i++)
 	{
 		var d = loc.objects[i]
-		konsole.print(d[0].text)
 		if(d[3])
 			konsole.print( "You see a "+ d[0].text)
 	}

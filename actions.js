@@ -62,6 +62,7 @@ actions.examine = function (tok)
 		
 	} else {
 		konsole.think("I don't know anything about this")
+	}
 		for(var i=0;i<map[here].objects.length; i++)
 		{
 			var obj = map[here].objects[i]
@@ -71,7 +72,7 @@ actions.examine = function (tok)
 				obj[3] = true
 			}
 		}
-	}
+	
 		return true;
 		
 	}
