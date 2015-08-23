@@ -35,10 +35,10 @@ var time_reaction = []
 time_reaction[0] = [2, "The ground is still rapidly approaching", "",no_function,false]
 time_reaction[1] = [4, "", "I don't think this is going to end well",no_function,false]
 time_reaction[2] = [6, "You are dead", "",no_function,false]
-map.window = {enter: "The ground is approaching you in an increasing pace." , enter_again: "This is really strange, why am I here again?", description : "You are dead", directions: [], objects : [] , image: "", cond: {dead: 1}, action_reaction : {},time_reaction: time_reaction}
+map.window = {enter: "The ground is approaching you in an increasing pace." , enter_again: "This is really strange, why am I here again?", description : ["You are dead",""], directions: [], objects : [] , image: "", cond: {dead: 1}, action_reaction : {},time_reaction: time_reaction}
 
 
-here = "room_kitchen_14"
+here = "hallway_centerwest_14"
 
 for (var key in map) {
   	if (map.hasOwnProperty(key)) {
@@ -61,7 +61,7 @@ action_reaction.turn_lights = ["Now that the room is lit, you can see that most 
 map.room_kitchen_14 = {enter: "You enter a dark room and can't really see anything", 
    thoughts : "I can smell... some kind of meat?",
    enter_again: "You are back in the kitchen",
-   description : "It's a kitchen.",
+   description : ["It's a kitchen.",""],
    directions: dir,
    objects: objects,
    cond : {"lights":0},
@@ -81,7 +81,7 @@ action_reaction = {}
 map.room_elevator_14 = {enter: "You enter the elevator. There is a panel with buttons on the wall. A dial above the door indicates you are on the 14th floor, which appears to be the highest floor.", 
    thoughts : "",
    enter_again: "You are in the elevator. The dial indicates you are on the 14th floor.",
-   description : "It is an elevator. There is a panel with buttons on the wall, a dial above the door indicates which floor you are on.",
+   description : ["It is an elevator. There is a panel with buttons on the wall, a dial above the door indicates which floor you are on.",""],
    directions: dir,
    objects: objects,
    cond : {},
@@ -102,7 +102,7 @@ action_reaction = {}
 map.room_elevator_12 = {enter: "You are in the elevator. The dial now points to the number 12.", 
    thoughts : "",
    enter_again: "You are in the elevator. The dial indicates you are on the 12th floor.",
-   description : "It is an elevator. There is a panel with buttons on the wall, a dial above the door indicates which floor you are on.",
+   description : ["It is an elevator. There is a panel with buttons on the wall, a dial above the door indicates which floor you are on.",""],
    directions: dir,
    objects: objects,
    cond : {},

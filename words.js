@@ -73,11 +73,14 @@ words.desk = {type:obj}
 words.drawer = {type:obj, is_a: words.container}
 words.lights = {type: obj}
 words.light = {type: obj, synonym: words.lights}
+words.painting = {type: obj}
 words.panel = {type:obj}
 words.porkchops = {type: obj, is_a: words.food}
+words.rubbish = {type: obj}
+words.safe = {type: obj}
 words.sink = {type: obj}
-
 words.stove = {type: obj}
+words.table = {type: obj}
 words.teeth = {type: obj}
 words.telephone = {type:obj }
 words.window = {type: obj}
@@ -86,6 +89,7 @@ words.coin = {type: item}
 words.documents = {type: item}
 words.knife = {type:item}
 words.newspaper = {type:item, is_a: words.readable}
+words.parachute = {type: item, is_a: container}
 words.pen = {type:item}
 
 words.toothbrush = {type: item, long_name : "dirty toothbrush"}
@@ -115,7 +119,7 @@ function get_text (w)
 function get_article(w) {
 	var item = get_text(w)
 	var article = "a "
-	if (item[0].indexOf("aeiou") >= 0) {
+	if ("aeiou".indexOf(item[0]) >= 0) {
 		article = "an "
 	}
 	return article
@@ -176,7 +180,7 @@ object_reaction.dial = {examine: ["A dial with the numbers 1 to 14. It has a poi
 object_reaction.small = {examine: ["A small key with a label that reads: floors 12 - 14", 
 		""],
 	 pickup: ["You obtained a small key",
-	 	 "Am I a hacker??"]}
+	 	 ""]}
 object_reaction.desk = {examine: ["It is a handcarved oaken desk that looks slightly worn. There is one unlocked drawer.", 
 		""],
 	 pickup: ["",
@@ -191,3 +195,27 @@ object_reaction.newspaper = {examine: ["It's a newspaper dated Friday the 27th o
 	 	 ""],
 	 read: ["Violent Serial Killer Miraculously Cured",
 	 	 "At the Mercy Mental Hospital the notorious serial killer nicknamed 'The Arbitrator', is reported to have been cured after receiving extensive shock therapy. Currently still residing there, The Arbitrator is showing no signs of murderous intent according to Wolfram Switzer, head of Mercy Mental Hospital..."]}
+object_reaction.chair = {examine: ["It's a chair. You can sit on it.", 
+		""],
+	 pickup: ["",
+	 	 "Am I a hacker??"]}
+object_reaction.table = {examine: ["It's a wooden table.", 
+		""],
+	 pickup: ["",
+	 	 "Am I a hacker??"]}
+object_reaction.rubbish = {examine: ["Useless pieces of paper and other trash.", 
+		""],
+	 pickup: ["",
+	 	 "Am I a hacker??"]}
+
+
+
+
+
+
+
+
+
+
+
+

@@ -114,7 +114,7 @@ map.hallway_southwest_14 = {enter: descr , enter_again: descr,  description : ["
   *******************************************/
 dir = []
  dir[0]      = {to: "room_center_northwest_14", methods  : [words.walk],hidden : 1, direction: words.north, cond: []}
- dir[1]      = {to: "room_center_southwest_14", methods  : [words.walk],hidden : 1, direction: words.north, cond: []}
+ dir[1]      = {to: "room_center_southwest_14", methods  : [words.walk],hidden : 1, direction: words.south, cond: []}
  dir[2]      = {to: "hallway_west_14", methods  : [words.walk],hidden : 1, direction: words.west, cond: []}
  dir[3]      = {to: "hallway_centercenter_14", methods  : [words.walk],hidden : 1, direction: words.east, cond: []}
  objects =[]

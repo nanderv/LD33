@@ -326,15 +326,24 @@ actions.brush = function (tok) {
 	}
 }
 actions.turn_lights = function (tok) {
-	if (!map[here].cond["lights"])
-	{
-		map[here].cond["lights"] = true
-		konsole.print("You manage to find a lightswitch. You turned on the lights.")
-		return true
+	if (tok.object)	{
+		if (tok.object == words.light || tok.object == words.lights) {
+			if (!map[here].cond["lights"]) {
+				map[here].cond["lights"] = true
+				konsole.print("You manage to find a lightswitch. You turned on the lights.")
+				return true
+			} else {
+				konsole.think("Why would I want to turn the lights back off again?")
+				return false
+			}
+		} else {
+			konsole.think("I cannot turn on " + get_article(tok.object) + get_text(tok.object))
+			return false
+		}
+	} else {
+		konsole.print("What do you want to turn on?")
+		return false
 	}
-	else
-		konsole.think("Why would I want to turn the lights back off again?")
-	return false
 }
 actions.eat = function (tok) {
 	if(tok.object)
@@ -380,9 +389,9 @@ actions.sit = function (tok) {
 		}
 		if (!map[here].cond["sitting"]) {
 			map[here].cond["sitting"]= true
-			konsole.print("You sit down on the " + get_text(tok.object))
+			konsole.print("You sit down on the " + get_text(tok.object) + ".")
 			if (tok.object == words.chair) {
-				konsole.think("This is very comfortable.")
+				konsole.think("This is rather comfortable.")
 			} 
 			return true
 		} else {
