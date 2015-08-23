@@ -4,6 +4,21 @@ actions.assist = function(tok)
 	return false;
 
 }
+actions.kill = function(tok)
+{
+	if(! tok.npc)
+	{
+		konsole.print("If you want to kill, you'll need to specify who.")
+		return false
+	}
+	tok.npc.npc.in_combat = true
+	tok.npc.npc.sleeps = false
+	dodge = false
+	konsole.over_ride_func = start_fight(tok.npc.npc)
+	konsole.think("Starting combat, type hit or dodge")
+	return true
+}
+
 function find_in_inventory ( item) 
 {
 		var found = false

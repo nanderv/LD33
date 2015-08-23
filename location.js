@@ -2,7 +2,6 @@ map = {}
 
 immovable = ["lying","sleeping"]
 
-
 /*******************************************
   * Hospital room, first room in game.
   *
@@ -24,8 +23,6 @@ map.room_west_14 = {enter: "You wake up, alone, in a dark room. <br / > You don'
    cond : {"lying down":1},
    action_reaction:  action_reaction}
 
-
-
 /*******************************************
   * Jump out of window, death.
   *
@@ -37,7 +34,6 @@ time_reaction[1] = [4, "", "I don't think this is going to end well",no_function
 time_reaction[2] = [6, "You are dead", "",no_function,false]
 map.window = {enter: "The ground is approaching you in an increasing pace." , enter_again: "This is really strange, why am I here again?", description : "You are dead", directions: [], objects : [] , image: "", cond: {dead: 1}, action_reaction : {},time_reaction: time_reaction}
 
-
 here = "room_kitchen_14"
 
 for (var key in map) {
@@ -45,7 +41,6 @@ for (var key in map) {
   		map[key].text = key
   	}
 }
-
 
 /*******************************************
   * Hospital kitchen, on the 14th floor, southeast room.
@@ -67,7 +62,6 @@ map.room_kitchen_14 = {enter: "You enter a dark room and can't really see anythi
    cond : {"lights":0},
    action_reaction:  action_reaction}
 
-
 /*******************************************
   * Hospital elevator, on the 14th floor.
   *
@@ -87,7 +81,6 @@ map.room_elevator_14 = {enter: "You enter the elevator. There is a panel with bu
    cond : {},
    action_reaction:  action_reaction}
 
-
 /*******************************************
   * Hospital elevator, on the 12th floor.
   *
@@ -103,6 +96,25 @@ map.room_elevator_12 = {enter: "You are in the elevator. The dial now points to 
    thoughts : "",
    enter_again: "You are in the elevator. The dial indicates you are on the 12th floor.",
    description : "It is an elevator. There is a panel with buttons on the wall, a dial above the door indicates which floor you are on.",
+   directions: dir,
+   objects: objects,
+   cond : {},
+   action_reaction:  action_reaction}
+
+/*******************************************
+  * Hospital northeast room
+  *
+  *******************************************/
+dir = []
+dir[0]      = {to: "hallway_northeast_14", methods  : [words.walk], direction: words.south, hidden: 1, cond: []}
+
+// word, where, explained, visible
+objects = [[words.panel, "", false, true], [words.dial, "", false, true]]
+action_reaction = {}
+map.room_northeast_14 = {enter: "This room appears to be a security room. There is a desk with 6 monitors on it. A guard is supposed to look at them, but he's sleeping. In his right hand he has a key.", 
+   thoughts : "I should get the key.",
+   enter_again: "Welcome to the guardroom.",
+   description : ["", ""],
    directions: dir,
    objects: objects,
    cond : {},

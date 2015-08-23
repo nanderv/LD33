@@ -1,4 +1,5 @@
- central_time = 360
+ start_time = 360
+ central_time = start_time
  dt = 1
  function get_time(str)
  {
@@ -43,6 +44,13 @@
  {
 
  }
+ function handle_npc()
+ {
+ 	for(var i = 0; i< npcs.length ; i++ )
+ 	{
+ 		npcs[i].handle()
+ 	}
+ }
  function update_time()
  {
  	central_time += dt
@@ -51,5 +59,6 @@
  	map[here].time += dt
  	handle_map_events()
  	handle_world_events()
+ 	handle_npc()
  }
   setInterval( update_time, dt*1000 );

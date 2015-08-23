@@ -3,6 +3,7 @@ konsole.out = document.getElementById("out");
 konsole.input_field = document.getElementById("in");
 konsole.history = []
 konsole.back = 0
+konsole.over_ride_func = null
 konsole.output = false
 function capitalizeFirstLetter(string) {
     return string.charAt(0).toUpperCase() + string.slice(1);
@@ -80,6 +81,8 @@ $(document).keydown(function(e){
 })
 $(document).keypress(function (e) {
     if (e.which == 13) {
+        if(!konsole.over_ride_func)
+        {
         konsole.history[konsole.history.length] = konsole.input_field.value
         konsole.back = 0
         konsole.line_in("- "+konsole.input_field.value)
@@ -98,7 +101,8 @@ $(document).keypress(function (e) {
             else
                 konsole.print("Action failed")
 
-          
+          } else
+            konsole.over_ride_func()
     }
 
        
