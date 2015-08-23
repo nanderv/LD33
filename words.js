@@ -220,7 +220,10 @@ object_reaction.safe = {examine: ["It's a locked safe.",
 		"Unfortunately, nobody put the code on a post-it note."],
 	 pickup: ["",
 	 	 "Am I a hacker??"]}
-
+object_reaction.parachute = {examine: ["Used to safely descend from a high altitude.", 
+		""],
+	 pickup: ["You picked up the parachute.",
+	 	 ""]}
 
 
 
