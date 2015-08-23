@@ -15,7 +15,7 @@ words.walk = {type:verb, eat : "to", method: "move"}
 words.stumble = {type:verb, synonym: words.walk}
 words.run = {type:verb, synonym: words.walk}
 words.head = {type:verb, synonym: words.walk}
-words.go = {type:verb, synonym: words.walk}
+words.go = {type:verb, synonym: words.walk, method: "move"}
 words.jump = {type:verb, method: "move"}
 
 words.examine = {type:verb, method : "examine"}
@@ -48,11 +48,13 @@ words.from = {type: nil}
 
 words.bed = {type: obj}
 words.blackboard = {type: obj}
+words.buttons = {type:obj, synonym: words.panel}
 words.cabinet = {type: obj}
 words.chair = {type: obj}
 words.clock = {type: obj}
 words.countertop = {type: obj}
 words.desk = {type:obj}
+words.panel = {type:obj}
 words.porkchops = {type: obj, is_a: words.food}
 words.sink = {type: obj}
 words.stove = {type: obj}
@@ -131,5 +133,9 @@ object_reaction.stove = {examine: ["It is a gas stove used for cooking.",
 	 	 "Am I a hacker??"]}
 object_reaction.countertop = {examine: ["It is a countertop used for cooking.", 
 		""],
+	 pickup: ["",
+	 	 "Am I a hacker??"]}
+object_reaction.panel = {examine: ["A panel with numbered buttons used to operate the elevator", 
+		"Strange, the number 13 is missing..."],
 	 pickup: ["",
 	 	 "Am I a hacker??"]}
