@@ -1,0 +1,11 @@
+Items
+- Newspaper
+- Pen
+
+Objects
+- Telephone
+- Chair
+- Desk
+- Documents
+- Cabinet
+- Blackboard

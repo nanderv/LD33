@@ -11,12 +11,12 @@ dir = []
 dir[0]      = {to: "hallway_west_14", methods  : [words.walk], direction: words.east, hidden: 1, cond: [condition_false("lying down")]}
 dir[1]      = {to: "window", methods  : [words.jump], direction: words.west, hidden: 1, cond: [condition_false("lying down")]}
 // word, where, explained, visible
-objects = [[words.toothbrush, words.sink, false, false], [words.sink,"",  false, true], [words.bed, "", false, true]]
+objects = [[words.toothbrush, words.sink, false, false], [words.sink,"",  false, true], [words.bed, "", false, true], [words.window, "", false, true]]
 action_reaction = {}
 action_reaction.stand = ["Even though the room is dimly lit, you still see a window on the west, a door on the east, your bed and a sink.", "Damm, I have a headache."]
-map.room_west_14 = {enter: "You wake up, alone, in a dark room. <br / > You don't remember this place at all."
- , thoughts : "Where am I? ",
-   enter_again:"You are back at the hospital room where you woke up",
+map.room_west_14 = {enter: "You wake up, alone, in a dark room. <br / > You don't remember this place at all.", 
+   thoughts : "Where am I?",
+   enter_again: "You are back at the hospital room where you woke up",
    description : "It's a hospital room",
    directions: dir,
    objects: objects,
@@ -31,7 +31,7 @@ map.room_west_14 = {enter: "You wake up, alone, in a dark room. <br / > You don'
   *******************************************/
 var time_reaction = []
 // time, text, reaction, function, used
-time_reaction[0] = [2, "The ground is still approaching", "",no_function,false]
+time_reaction[0] = [2, "The ground is still rapidly approaching", "",no_function,false]
 time_reaction[1] = [4, "", "I don't think this is going to end well",no_function,false]
 time_reaction[2] = [6, "You are dead", "",no_function,false]
 map.window = {enter: "The ground is approaching you in an increasing pace." , enter_again: "This is really strange, why am I here again?", description : "You are dead", directions: [], objects : [] , image: "", cond: {dead: 1}, action_reaction : {},time_reaction: time_reaction}
@@ -46,3 +46,22 @@ for (var key in map) {
 }
 
 
+/*******************************************
+  * Hospital kitchen, on the 14th floor, southeast room.
+  *
+  *******************************************/
+dir = []
+dir[0]      = {to: "hallway_southeast_14", methods  : [words.walk], direction: words.west, hidden: 1, cond: []}
+// word, where, explained, visible
+objects = [[words.stove, "", false, true], [words.countertop, "", false, true], [words.food, words.countertop, ]]
+action_reaction = {}
+action_reaction.turn = ["Now that the room is lit, you can see that most of it hasn't been cleaned for quite a while. The only clean things in here are a stove and a countertop next to it. There is some food on the countertop",
+   "It looks like someone recently cooked here."]
+map.room_southeast_14 = {enter: "You enter a dark room and can't really see anything", 
+   thoughts : "I can smell... some kind of meat?",
+   enter_again: "You are back in the kitchen",
+   description : "It's a kitchen.",
+   directions: dir,
+   objects: objects,
+   cond : {"lights":0},
+   action_reaction:  action_reaction}
