@@ -6,7 +6,11 @@ nil = "nil"
 person = "person"
 obj = "object"
 abstract = "abstract"
+
 words = {}
+
+words.food = {type: abstract}
+
 words.walk = {type:verb, eat : "to", method: "move"}
 words.stumble = {type:verb, synonym: words.walk}
 words.run = {type:verb, synonym: words.walk}
@@ -27,7 +31,7 @@ words.pick = {type: verb, eat: "up", synonym : words.grab}
 
 words.brush = {type: verb, method : "brush"}
 
-words.turn = {type: verb, eat: "on", method: "lights"}
+words.turn = {type: verb, eat: "on", method: "turn_lights"}
 
 words.eat = {type: verb, method: "eat"}
 
@@ -48,17 +52,16 @@ words.chair = {type: obj}
 words.clock = {type: obj}
 words.countertop = {type: obj}
 words.desk = {type:obj}
-words.porkchops = {type:obj}
+words.porkchops = {type:obj, is_a: words.food}
 words.sink = {type: obj}
 words.stove = {type: obj}
 words.teeth = {type: obj}
 words.telephone = {type:obj }
 words.window = {type: obj}
 
-
 words.coin = {type: item}
 words.documents = {type: item}
-words.knive = {type:item}
+words.knife = {type:item}
 words.newspaper = {type:item}
 words.pen = {type:item}
 
@@ -113,19 +116,19 @@ object_reaction.window = {examine: ["You look out the window and see a city you 
 		"The people look like ants from up here."],
 	 pickup: ["",
 	 	 "Am I a hacker??"]}
-object_reaction."" = {examine: ["", 
-		""],
+object_reaction.porkchops = {examine: ["These are cooked porkchops.", 
+		"It looks tasty."],
 	 pickup: ["",
-	 	 ""]}
-object_reaction."" = {examine: ["", 
+	 	 "Am I a hacker??"]}
+object_reaction.knife = {examine: ["It is a fairly large kitchen knife.", 
 		""],
+	 pickup: ["You picked up a knife.",
+	 	 "This knife feels familiar."]}
+object_reaction.stove = {examine: ["It is a gas stove used for cooking.", 
+		"It is still warm..."],
 	 pickup: ["",
-	 	 ""]}
-object_reaction."" = {examine: ["", 
-		""],
+	 	 "Am I a hacker??"]}
+object_reaction.countertop = {examine: ["There is a plate of porkchops lying on the countertop.", 
+		"Did I... cook this?"],
 	 pickup: ["",
-	 	 ""]}
-object_reaction."" = {examine: ["", 
-		""],
-	 pickup: ["",
-	 	 ""]}
+	 	 "Am I a hacker??"]}

@@ -53,11 +53,11 @@ for (var key in map) {
 dir = []
 dir[0]      = {to: "hallway_southeast_14", methods  : [words.walk], direction: words.west, hidden: 1, cond: []}
 // word, where, explained, visible
-objects = [[words.stove, "", false, true], [words.countertop, "", false, true], [words.food, words.countertop, ]]
+objects = [[words.porkchops, words.countertop, false, true], [words.knife, words.countertop, false, false], [words.stove, "", false, true], [words.countertop, "", false, true]]
 action_reaction = {}
-action_reaction.turn = ["Now that the room is lit, you can see that most of it hasn't been cleaned for quite a while. The only clean things in here are a stove and a countertop next to it. There is some food on the countertop",
+action_reaction.turn_lights = ["Now that the room is lit, you can see that most of it hasn't been cleaned for quite a while. The only clean things in here are a stove and a countertop next to it. There is some food on the countertop",
    "It looks like someone recently cooked here."]
-map.room_southeast_14 = {enter: "You enter a dark room and can't really see anything", 
+map.room_kitchen_14 = {enter: "You enter a dark room and can't really see anything", 
    thoughts : "I can smell... some kind of meat?",
    enter_again: "You are back in the kitchen",
    description : "It's a kitchen.",

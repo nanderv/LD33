@@ -190,14 +190,47 @@ actions.brush = function (tok) {
 	}
 }
 
-actions.turn = function (tok) {
+actions.turn_lights = function (tok) {
 	if (!map[here].cond["lights"])
 	{
 		map[here].cond["lights"] = true
-		konsole.print("You turned on the lights.")
+		konsole.print("You manage to find a lightswitch. You turned on the lights.")
 		return true
 	}
 	else
 		konsole.think("Why would I want to turn the lights back off again?")
+	return false
+}
+
+actions.eat = function (tok) {
+	if(tok.obj)
+	{
+	var i = 0 ; 
+	var found = false;
+	for( i  = 0; i < map[here].objects.length ; i++)
+	{
+		if( map[here].objects[i][0] == tok.obj && map[here].objects[i][3] )
+		{
+			found = 1
+			break
+		}
+	}
+	map[here].objects.splice(i, 1)
+	if(!found)
+	{
+		konsole.print(get_text(tok.obj) + " is not found")
+		return false
+	}
+		if(tok.obj.is_a == words.food)
+		{
+			// do stuff
+			konsole.think("I feel refreshed")
+			return true
+		} else {
+			konsole.think("I can't eat the " + get_text(tok.obj))
+			return false
+		}
+	}	
+	konsole.think("What should I eat?" )
 	return false
 }
