@@ -501,3 +501,10 @@ actions.read = function (tok) {
 		return false
 	}
 }
+actions.move_obj = function (tok) {
+	if (tok.obj) {
+		return true
+	} else{
+		return false
+	}
+}

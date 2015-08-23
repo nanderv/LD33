@@ -13,6 +13,7 @@ words.food = {type: abstract}
 words.container = {type: abstract}
 words.sittable = {type: abstract}
 words.readable = {type: abstract}
+words.movable = {type: abstract}
 
 words.walk = {type:verb, eat : "to", method: "move"}
 words.move = {type: verb, method: move_obj, synonym: words.walk}
@@ -77,7 +78,7 @@ words.desk = {type:obj}
 words.drawer = {type:obj, is_a: words.container}
 words.lights = {type: obj}
 words.light = {type: obj, synonym: words.lights}
-words.painting = {type: obj}
+words.painting = {type: obj, is_a: movable}
 words.panel = {type:obj}
 words.porkchops = {type: obj, is_a: words.food}
 words.rubbish = {type: obj}
@@ -211,8 +212,14 @@ object_reaction.rubbish = {examine: ["Useless pieces of paper and other trash.",
 		""],
 	 pickup: ["",
 	 	 "Am I a hacker??"]}
-
-
+object_reaction.painting = {examine: ["It's a beautiful painting, realistically depicting lilacs in a vase. It is quite bleak however.", 
+		""],
+	 pickup: ["",
+	 	 "Am I a hacker??"]}
+object_reaction.safe = {examine: ["It's a locked safe. Unfortunately, nobody put the code on a post-it note.", 
+		""],
+	 pickup: ["",
+	 	 "Am I a hacker??"]}
 
 
 
