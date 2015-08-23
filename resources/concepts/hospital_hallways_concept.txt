@@ -1,0 +1,7 @@
+Items
+-
+
+Objects
+- Locked doors
+- Empty rooms
+- Dimmed lights

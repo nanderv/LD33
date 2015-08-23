@@ -27,6 +27,10 @@ words.pick = {type: verb, eat: "up", synonym : words.grab}
 
 words.brush = {type: verb, method : "brush"}
 
+words.turn = {type: verb, eat: "on", method: "lights"}
+
+words.eat = {type: verb, method: "eat"}
+
 words.east = {type:direction}
 words.north = {type:direction}
 words.south = {type:direction}
@@ -42,23 +46,26 @@ words.blackboard = {type: obj}
 words.cabinet = {type: obj}
 words.chair = {type: obj}
 words.clock = {type: obj}
+words.countertop = {type: obj}
 words.desk = {type:obj}
-words.bruh = {type: abstract}
-
-words.sink = {type: obj, is_a: words.bruh}
+words.porkchops = {type:obj}
+words.sink = {type: obj}
+words.stove = {type: obj}
 words.teeth = {type: obj}
 words.telephone = {type:obj }
+words.window = {type: obj}
 
 
 words.coin = {type: item}
 words.documents = {type: item}
+words.knive = {type:item}
 words.newspaper = {type:item}
 words.pen = {type:item}
 
-words.toothbrush = {type: item, is_a: words.bruh, long_name : "dirty toothbrush"}
+words.toothbrush = {type: item, long_name : "dirty toothbrush"}
 words.towel = {type : item}
 words.key = {type: abstract}
-words.copper = {type : item, eat: "key",long_name : "copper key", is_a : words.key}
+words.copper = {type : item, eat: "key", long_name : "copper key", is_a : words.key}
 
 
 
@@ -79,17 +86,17 @@ function get_text (w)
 }
 object_reaction = {}
 object_reaction.toothbrush = {examine: ["", 
-		"It is mine."],
+		"It is probably mine."],
 	 pickup: ["",
 	 	 "Did I brush my teeth yesterday?<br / > Come to think of it, what day is it?"]}
 object_reaction.teeth = {examine: ["", 
 		"I should clean them more often."],
 	 pickup: ["",
-	 	 "Áre you a hacker??"]}	 	 
+	 	 "Am I a hacker??"]}	 	 
 object_reaction.clock = {examine: ["", 
 		"It tells  the time."],
 	 pickup: ["",
-	 	 "Áre you a hacker??"]}	 
+	 	 "Am I a hacker??"]}	 
 object_reaction.towel = {examine: ["", 
 		"It's a towel."],
 	 pickup: ["",
@@ -98,3 +105,27 @@ object_reaction.copper = {examine: ["The label states it can be used to open the
 		""],
 	 pickup: ["",
 	 	 "I found a copper key."]}	 
+object_reaction.bed = {examine: ["", 
+		"It is a bed. <br /> It doesn't look very comfortable."],
+	 pickup: ["",
+	 	 "Am I a hacker??"]}
+object_reaction.window = {examine: ["You look out the window and see a city you don't recognize.", 
+		"The people look like ants from up here."],
+	 pickup: ["",
+	 	 "Am I a hacker??"]}
+object_reaction."" = {examine: ["", 
+		""],
+	 pickup: ["",
+	 	 ""]}
+object_reaction."" = {examine: ["", 
+		""],
+	 pickup: ["",
+	 	 ""]}
+object_reaction."" = {examine: ["", 
+		""],
+	 pickup: ["",
+	 	 ""]}
+object_reaction."" = {examine: ["", 
+		""],
+	 pickup: ["",
+	 	 ""]}

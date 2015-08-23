@@ -1,0 +1,14 @@
+Items
+- Toothbrush
+- Wallet
+- Clothes
+- Shoes
+
+Objects
+- Bed
+- Sink
+- Window
+- Door
+- Lamp
+- Curtains
+- Chair

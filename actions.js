@@ -190,3 +190,15 @@ actions.brush = function (tok) {
 		konsole.print("You need a toothbrush to brush your teeth.")
 	}
 }
+
+actions.turn = function (tok) {
+	if (!map[here].cond["lights"])
+	{
+		map[here].cond["lights"] = true
+		konsole.print("You turned on the lights.")
+		return true
+	}
+	else
+		konsole.think("Why would I want to turn the lights back off again?")
+	return false
+}
