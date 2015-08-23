@@ -1,4 +1,5 @@
 hit_points = 5
+max_points = 6
 dodging = false
 function get_npc(word)
 {
@@ -39,7 +40,7 @@ npc.talk = "Hello"
 npc.name = "Henk"
 
 npc.type = "Guard"
-npc.hit_points = 5
+npc.hit_points = 20
 npc.reply = "My name is Henk"
 npc.ticks = 0
 npc.timeout = 2
@@ -82,7 +83,16 @@ function start_fight (npc) {
 		} 
 		if(input == "hit")
 		{
+			if(find_item_in_inventory(words.knife))
+			{
+				npc.hit_points -= 4
+				konsole.print("Guard hit with knife")
+
+			} else {
 			npc.hit_points --
+			konsole.print("Guard hit")
+
+			}
 			if(npc.hit_points == 0)
 			{
 
@@ -90,7 +100,6 @@ function start_fight (npc) {
 				konsole.over_ride_func = null
 				npcs.splice(npc.id,1)
 			}
-			konsole.print("Guard hit")
 			return true
 		}
 		konsole.print("print failed")
