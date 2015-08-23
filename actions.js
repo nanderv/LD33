@@ -218,7 +218,7 @@ actions.examine = function (tok)
 	if(map[here].description[0])
 		konsole.print(map[here].description[0])
 	if(map[here].description[1])
-		konsole.print(map[here].description[1])
+		konsole.think(map[here].description[1])
 		return true
 	
 

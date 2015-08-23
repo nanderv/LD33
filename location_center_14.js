@@ -44,7 +44,7 @@ map.room_center_southwest_14 = {
 	action_reaction:  action_reaction}
 
 /*******************************************
-* Hospital center southwest room, on the 14th floor.
+* Hospital center southeast room, on the 14th floor.
 *
 *******************************************/
 dir = []
@@ -65,24 +65,37 @@ map.room_center_southeast_14 = {
 	action_reaction:  action_reaction}
 
 /*******************************************
-* Hospital center southwest room, on the 14th floor.
+* Hospital center northwest room, on the 14th floor.
 *
 *******************************************/
 dir = []
 dir[0]      = {to: "hallway_centerwest_14", methods  : [words.walk], direction: words.south, hidden: 1, cond: []}
 // word, where, explained, visible
-objects = [[words.master, "", true, true]]
+objects = []
 action_reaction = {}
-action_reaction.move_obj = ["You found a safe.", "", reactions.makevisible(words.safe)]
-action_reaction.open = ["You find a parachute in the safe.", "Why would someone store a parachute here?", reactions.makevisible(words.parachute)]
 map.room_center_northwest_14 = {
 	enter: "Cheater.", 
-	thoughts : "I shouldn't be here.",
+	thoughts : "I can't be here.",
 	enter_again: "Cheater.",
-	description : ["Cheater.","I shouldn't be here."],
+	description : ["Cheater.","I can't be here."],
 	directions: dir,
 	objects: objects,
-	cond : {"closed":1},
+	cond : {},
+	action_reaction:  action_reaction}
+
+dir = []
+dir[0]      = {to: "hallway_centereast_14", methods  : [words.walk], direction: words.south, hidden: 1, cond: []}
+// word, where, explained, visible
+objects = [[words.table, "", false, true], [words.medical, "", false, true], [words.file, words.table, false, true]]
+action_reaction = {}
+map.room_center_northeast_14 = {
+	enter: "You enter a bright, tiled room, which has been perfectly cleaned. There is a table with some medical equipment in the corner.", 
+	thoughts : "My headache seems worse here.",
+	enter_again: "You enter the room with the medical equipment.",
+	description : ["It is a tiled room, presumably for easy cleaning. The room has been meticulously cleaned. There is a table with some medical equipment in the corner.","My headache seems worse here."],
+	directions: dir,
+	objects: objects,
+	cond : {},
 	action_reaction:  action_reaction}
 
 

@@ -120,7 +120,7 @@ dir = []
 
  descr = "bladiebla. " 
 
-map.hallway_centerwest_14 = {enter: descr , enter_again: descr, description : ["", "I don't think I'm supposed to be here."], directions: dir, objects : objects , image: "", cond : {}, action_reaction : {}}
+map.hallway_centerwest_14 = {enter: descr , enter_again: descr, description : [descr, "I don't think I'm supposed to be here."], directions: dir, objects : objects , image: "", cond : {}, action_reaction : {}}
 
 
 

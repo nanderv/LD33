@@ -90,8 +90,12 @@ words.teeth = {type: obj}
 words.telephone = {type:obj }
 words.window = {type: obj}
 
+words.medical = {type: obj, eat: "equipment"}
+words.equipment = {type: obj, synonym: words.medical}
+
 words.coin = {type: item}
 words.documents = {type: item}
+words.file = {type: item, is_a: words.readable}
 words.knife = {type:item}
 words.newspaper = {type:item, is_a: words.readable}
 words.parachute = {type: item, is_a: words.container}
@@ -224,8 +228,16 @@ object_reaction.parachute = {examine: ["Used to safely descend from a high altit
 		""],
 	 pickup: ["You picked up the parachute.",
 	 	 ""]}
-
-
+object_reaction.medical = {examine: ["Strange machine with two electrodes attached to it. It does not appear to be working right now.", 
+		"My head feels like it is about to burst."],
+	 pickup: ["",
+	 	 "Am I a hacker??"]}
+object_reaction.file = {examine: ["This appears to be part of a patient file.", 
+		"Is this about me?"],
+	 pickup: ["You picked up a file.",
+	 	 ""],
+	 read: ["Patient Name: The Arbitrator",
+	 "Treatment consists of electro shock therapy. <br />Expected desired results after several 6 hour sessions. <br />Session 1: Subject showed no noticable improvements, lenghtening sessions to 8 hours. <br />Session 2: Subject showed minor improvements, continue sessions. <br />Session 3: Subject still showed only minor improvements, increasing session lenght to 10 hours. <br /> Session 4: Subject showing major improvements, recommended to continue sessions for another week. <br />Session 5: Subject ..."]}
 
 
 
