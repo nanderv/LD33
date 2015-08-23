@@ -3,6 +3,7 @@ konsole.out = document.getElementById("out");
 konsole.input_field = document.getElementById("in");
 konsole.history = []
 konsole.back = 0
+konsole.output = false
 function capitalizeFirstLetter(string) {
     return string.charAt(0).toUpperCase() + string.slice(1);
 }
@@ -17,12 +18,14 @@ konsole.think = function(text)
 	text = capitalizeFirstLetter(text)
 	konsole.out.innerHTML = konsole.out.innerHTML + "<br><i>" + text + "</i>"
 	konsole.out.scrollTop = konsole.out.scrollHeight;	
+    konsole.output = true
 }
 konsole.print = function(text)
 {	
 	text = capitalizeFirstLetter(text)
 	konsole.out.innerHTML = konsole.out.innerHTML + "<br>" + text
 	konsole.out.scrollTop = konsole.out.scrollHeight;
+    konsole.output = true
 	}
 
 function debug (tok, interp)
@@ -71,6 +74,7 @@ $(document).keypress(function (e) {
         konsole.history[konsole.history.length] = konsole.input_field.value
         konsole.back = 0
         konsole.line_in("- "+konsole.input_field.value)
+        konsole.output = false
         var tok = tokenize(konsole.input_field.value)
         if (tok != false)
         {
@@ -79,6 +83,11 @@ $(document).keypress(function (e) {
 
         	konsole.input_field.value = ""
         }
+        if(! konsole.output )
+            if(interp)
+                konsole.print("Action succesful")
+            else
+                konsole.print("Action failed")
 
           
     }
