@@ -83,6 +83,7 @@ words.at = {type: nil}
 
 words.bed = {type: obj, is_a: words.sittable}
 words.blackboard = {type: obj}
+words.bookcase = {type: obj}
 words.buttons = {type:obj, synonym: words.panel}
 words.cabinet = {type: obj}
 words.chair = {type: obj, is_a: words.sittable}
