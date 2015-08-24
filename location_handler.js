@@ -49,6 +49,11 @@ function has_item(item)
 			case words.master:
 				konsole.print("The elevator doesn't respond, you probably need a different key to go further down.")
 				break
+			case words.empty:
+				konsole.print("You enter an empty room.")
+				konsole.think("There's nothing in here.")
+				konsole.print("You leave the empty room.")
+				break
 			default:
 				konsole.print("You don't have a " + get_text(item) + " so you can't do this")
 		}

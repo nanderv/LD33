@@ -53,7 +53,6 @@ dir[0]      = {to: "hallway_centereast_14", methods  : [words.walk], direction: 
 objects = [[words.painting, "", false, true], [words.safe, "", false, false], [words.parachute, "", false, false]]
 action_reaction = {}
 action_reaction.move_obj = ["You found a safe.", "", reactions.makevisible(words.safe)]
-action_reaction.open = ["You find a parachute in the safe.", "Why would someone store a parachute here?", reactions.makevisible(words.parachute)]
 map.room_center_southeast_14 = {
 	enter: "You enter a room which is completely empty except for a painting some flowers on the far wall.", 
 	thoughts : "I like this painting.",
@@ -92,7 +91,8 @@ map.room_center_northeast_14 = {
 	enter: "You enter a bright, tiled room, which has been perfectly cleaned. There is a table with some medical equipment in the corner.", 
 	thoughts : "My headache seems worse here.",
 	enter_again: "You enter the room with the medical equipment.",
-	description : ["It is a tiled room, presumably for easy cleaning. The room has been meticulously cleaned. There is a table with some medical equipment in the corner.","My headache seems worse here."],
+	description : ["It is a tiled room, presumably for easy cleaning. The room has been meticulously cleaned. There is a table with some medical equipment in the corner.",
+		"My headache seems worse here."],
 	directions: dir,
 	objects: objects,
 	cond : {},

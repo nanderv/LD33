@@ -27,6 +27,7 @@ words.kill = {type:verb, method: "kill"}
 
 
 words.examine = {type:verb, method : "examine"}
+words.look = {type: verb, eat: "around", synonym: words.examine}
 words.read = {type:verb, method: "read"}
 
 words.help = {type: verb, method : "help"}
@@ -65,6 +66,7 @@ words.room = {type: here}
 words.from = {type: nil}
 words.in = {type: nil}
 words.on = {type: nil}
+words.at = {type: nil}
 
 words.bed = {type: obj, is_a: words.sittable}
 words.blackboard = {type: obj}
@@ -107,7 +109,8 @@ words.towel = {type : item}
 words.key = {type: abstract}
 words.copper = {type : item, eat: "key", long_name : "copper key", is_a : words.key}
 words.small = {type: item, eat: "key", long_name: "small key", is_a: words.key}
-words.master = {type: item, eat: "key", long_name: "master key", is_a: words.key} // no description
+words.master = {type: item, eat: "key", long_name: "master key", is_a: words.key} // no description, used for specific condition failed message
+words.empty = {type: item} // no description, used for specific condition failed message
 words.badge = {type: item, long_name : "Employee badge"}
 // Secretary
 words.secretary = {type: person}
