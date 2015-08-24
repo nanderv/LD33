@@ -69,9 +69,15 @@ map.room_east_13 = {
 dir = []
 	dir[0] = {to: "hallway_center_13", methods  : [words.walk],hidden : 1, direction: words.south, cond: []}
 
-objects =[]
+action_reaction = {}
+action_reaction.open = ["You find a sedative inside.","",reactions.makevisible(words.sedative)]
 
-descr = ""
+objects =[
+	[words.cabinet, "", false, true],
+	[words.sedative, "", false, false,],
+	[words.stretcher, "", false, true]]
+
+descr = "This room contains a few odd stretchers and a cabinet."
 
 map.room_northwest_13 = {
 	enter: descr, 
@@ -82,8 +88,8 @@ map.room_northwest_13 = {
 		""], 
 	directions: dir, 
 	objects : objects , 
-	cond : {}, 
-	action_reaction : {}}
+	cond : {"closed":1}, 
+	action_reaction : action_reaction}
 
 /*******************************************
   * Hospital floor 13, west room
@@ -94,9 +100,9 @@ dir = []
 
 objects =[
 	[words.airduct, "", false, true],
-	[words.boxes, "", false, true]]
+	[words.crates, "", false, true]]
 
-descr = "It's some kind of cooled storage room, there is large, suspicious stain on the floor. Cold air is provided by an airduct. There is a door to east."
+descr = "It's some kind of cooled storage room with several crates. There is large, suspicious stain on the floor. Cold air is provided by an airduct. There is a door to east."
 
 map.room_west_13 = {
 	enter: descr, 

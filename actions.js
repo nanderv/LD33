@@ -511,7 +511,7 @@ actions.open = function (tok) {
 			return false
 		}
 
-		konsole.print("You open the " + get_text(tok.object))
+		konsole.print("You open the " + get_text(tok.object) + ".")
 		return true
 	} else {
 		konsole.think("I cannot open this.")

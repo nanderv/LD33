@@ -96,6 +96,7 @@ words.cabinet = {type: obj, is_a: words.container}
 words.filing = {type: obj, synonym: words.cabinet, eat: "cabinet"}
 words.chair = {type: obj, is_a: words.sittable}
 words.clock = {type: obj}
+words.crates = {type: obj}
 words.countertop = {type: obj}
 words.dial = {type: obj}
 words.desk = {type:obj}
@@ -109,6 +110,8 @@ words.porkchops = {type: obj, is_a: words.food}
 words.rubbish = {type: obj}
 words.safe = {type: obj, is_a: words.container}
 words.sink = {type: obj}
+words.stretcher = {type: obj}
+words.stretchers = {type: obj, synonym: words.stretcher}
 words.stove = {type: obj}
 words.table = {type: obj}
 words.teeth = {type: obj}
@@ -332,8 +335,17 @@ object_reaction.apple = {examine: ["It's a red apple. It is probably edible.",
 		"Maybe it needs some sunlight?"],
 	 pickup: ["",
 	 	 "Am I a hacker??"]}
-
-
-
+object_reaction.crates = {examine: ["Metal crates, sealed shut. Marked with a biohazard symbol.", 
+		""],
+	 pickup: ["",
+	 	 "Am I a hacker??"]}
+object_reaction.cabinet = {examine: ["A simple wooden cabinet. Can be opened.", 
+		""],
+	 pickup: ["",
+	 	 "Am I a hacker??"]}
+object_reaction.stretcher = {examine: ["A sturdy metal stretcher with thick straps to completely restrain someone.", 
+		""],
+	 pickup: ["",
+	 	 "Am I a hacker??"]}
 
 
