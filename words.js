@@ -368,3 +368,7 @@ object_reaction.stretcher = {examine: ["A sturdy metal stretcher with thick stra
 	 pickup: ["",
 	 	 "Am I a hacker??"]}
 
+object_reaction.waiver = {examine: ["A waiver that acknowledges that a subject willingly participates in a research. .", 
+		"It's not very specific"],
+	 pickup: ["",
+	 	 "You pick up the waiver."]}

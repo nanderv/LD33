@@ -53,7 +53,7 @@ map.room_experiment_client ={enter: enterr , enter_again: enter_again,descriptio
   *******************************************/
 dir = []
 dir[0]      = {to: "hallway_east_12", methods  : [words.walk],hidden : 1, direction: words.north, cond: []}
-objects =[[words.sedative,words.desk,false,false],[words.desk,"",false,true],[words.lasagna,"",false,true]]
+objects =[[words.sedative,words.drawer,false,false],[words.drawer, words.desk,false,false],[words.desk,"",false,true],[words.lasagna,"",false,true]]
 var enterr  = "You enter a mess room. There's some food and a desk. The researcher is also here." 
 var enter_again  = "You enter a mess room.." 
 var descr  = "" 
