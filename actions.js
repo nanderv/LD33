@@ -613,7 +613,7 @@ actions.enter_obj = function (tok) {
 			konsole.print("You enter the " + get_text(tok.object) + ".")
 			konsole.print("You crawl through the air duct and end up in another room.")
 			if (here == "room_northeast_13") {
-				here = "room_southwest_13"
+				here = "room_west_13"
 			} else {
 				here = "room_northeast_13"
 			}
