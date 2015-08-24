@@ -99,7 +99,7 @@ map.hallway_south_14 ={enter: descr , enter_again: descr,description : ["This ha
   *
   *******************************************/
 dir = []
- dir[0]      = {to: "room_southwest_14", methods  : [words.walk],hidden : 1, direction: words.west, cond: []}
+ dir[0]      = {to: "room_southwest_14", methods  : [words.walk],hidden : 1, direction: words.west, cond: [has_item(words.empty)]}
  dir[1]      = {to: "hallway_west_14", methods  : [words.walk],hidden : 1, direction: words.north, cond: []}
  dir[2]      = {to: "hallway_south_14", methods  : [words.walk],hidden : 1, direction: words.east, cond: []}
  objects =[]
