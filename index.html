@@ -49,7 +49,6 @@ script_list = ["words","world_events", "actions","base", "location_handler","npc
       var my_awesome_script = document.createElement('script');
       my_awesome_script.setAttribute('src',src+'.js');
        my_awesome_script.async = false;
-
       document.head.appendChild(my_awesome_script);
     }
     function unload_js(src){
@@ -88,7 +87,7 @@ function reset(b)
   return true
 }
 add_scripts(0)
-
+extra_digit =  Math.floor((Math.random() * 98) + 1);
 $(document).keydown(function(e){
    if ( e.which == 9) {
           e.preventDefault();
@@ -149,7 +148,7 @@ $(document).keypress(function (e) {
             konsole.over_ride_func()
             konsole.output = true
     }
-    
+
 if(! konsole.output )
             if(interp)
                 konsole.print("Action succesful")

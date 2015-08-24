@@ -449,9 +449,26 @@ actions.open = function (tok) {
 			konsole.think("I have to enter the code. I don't think I have it.")
 			konsole.over_ride_func = function()
 			{
+
 				var input = konsole.input_field.value
 				konsole.input_field.value = ""
 				var safe = tok.object
+				if(code_pointer == code.length)
+				{
+					if(input ==extra_digit)
+				{
+					konsole.print("The mechanics of the lock seem to work")
+					code_pointer ++
+
+				}
+				else
+					{
+						konsole.print("The mechanics of the lock reset into base position.")
+						code_pointer =0
+						konsole.over_ride_func = null
+					}
+				} 
+				if(code_pointer < code.length){
 				if(input == code[code_pointer])
 				{
 					konsole.print("The mechanics of the lock seem to work")
@@ -463,7 +480,9 @@ actions.open = function (tok) {
 						code_pointer =0
 						konsole.over_ride_func = null
 					}
-				if(code_pointer == code.length)
+				}
+				
+				if ( code_pointer > code.length)
 				{
 					konsole.print("The lock unlocks itself")
 					konsole.print("You find a parachute in the safe.")

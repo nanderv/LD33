@@ -10,6 +10,8 @@ function wait_for_reset()
 		{
 			konsole.out.innerHTML = ""
 			konsole.input_field.value = ""
+			extra_digit =  Math.floor((Math.random() * 98) + 1);
+
 			reset(0)
 		} else {
 			konsole.print("Type reset.")
