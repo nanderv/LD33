@@ -115,6 +115,7 @@ dir = []
  dir[0]      = {to: "room_center_southwest_14", methods  : [words.walk],hidden : 1, direction: words.south, cond: []}
  dir[1]      = {to: "hallway_west_14", methods  : [words.walk],hidden : 1, direction: words.west, cond: []}
  dir[2]      = {to: "hallway_centercenter_14", methods  : [words.walk],hidden : 1, direction: words.east, cond: []}
+ dir[3]      = {to: "hallway_center_northwest_14", methods  : [words.walk],hidden : 1, direction: words.north, cond: [has_item(words.empty)]}
  objects =[]
 
  descr = "You are standing in a hallway running west to east. You see rooms to the north and south. To the east is and intersection. To the west is a locked door." 

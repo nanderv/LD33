@@ -24,7 +24,20 @@ words.go = {type:verb, synonym: words.walk, method: "move"}
 words.jump = {type:verb, method: "move"}
 
 words.kill = {type:verb, method: "kill"}
-
+words.hit = {type: verb, synonym: words.kill}
+words.stab = {type: verb, synonym: words.kill}
+words.slash = {type: verb, synonym: words.kill}
+words.provoke = {type: verb, synonym: words.kill}
+words.push = {type: verb, synonym: words.kill}
+words.shove = {type: verb, synonym: words.kill}
+words.punch = {type: verb, synonym: words.kill}
+words.kick = {type: verb, synonym: words.kill}
+words.headbutt = {type: verb, synonym: words.kill}
+words.slap = {type: verb, synonym: words.kill}
+words.bite = {type: verb, synonym: words.kill}
+words.strangle = {type: verb, synonym: words.kill}
+words.murder = {type: verb, synonym: words.kill}
+words.assassinate = {type: verb, synonym: words.kill}
 
 words.examine = {type:verb, method : "examine"}
 words.look = {type: verb, eat: "around", synonym: words.examine}
@@ -37,7 +50,7 @@ words.stand = {type: verb, method: "stand", eat: "up"}
 words.lie = {type: verb, method: "lie", eat: "down"}
 words.sit = {type: verb, eat: "down", method: "sit"}
 
-words.grab = {type:verb, method: "pickup"}
+words.grab = {type: verb, method: "pickup"}
 words.pick = {type: verb, eat: "up", synonym : words.grab}
 words.take = {type: verb, synonym: words.grab}
 
