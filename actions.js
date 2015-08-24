@@ -381,8 +381,12 @@ actions.eat = function (tok) {
 
 		if(tok.object.is_a == words.food)
 		{
-			object_reaction.teeth.examine = ["", "My teeth are dirty from the porkchops I ate."]
+			object_reaction.teeth.examine = ["", "My teeth are dirty from the food I ate."]
+			konsole.print("You eat the " + get_text(tok.object) + ".")
 			konsole.think("I feel refreshed.")
+			if (tok.object == words.apple) {
+				map[here].descr = "This is a lounge, is contains several chairs and table. There is a door to the north."
+			}
 			return true
 		} else {
 			konsole.think("I can't eat the " + get_text(tok.object) +".")
