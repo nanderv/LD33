@@ -247,6 +247,8 @@ npc.experiment = function ()
 				if(exp.failed[1])
 					konsole.think(exp.failed[1])	
 				konsole.over_ride_func = null
+				konsole.print("You leave the room.")
+				change_map("hallway_east_12")()
 		}
 		return false
 	}
@@ -265,7 +267,9 @@ npc.handle = function () {
 		}
 		else{
 			if(!this.asked_to_leave )
-				konsole.print("Researcher: You're not a test subject, please leave.")
+				konsole.print("Researcher: You're not a test subject, leave now.")
+				konsole.print("You leave the room.")
+				change_map("hallway_east_12")()
 			this.asked_to_leave = true
 		}
 	} else{
@@ -280,7 +284,13 @@ npc.handle = function () {
 		}else
 		{
 			this.asked_to_leave = false
+			if(this.current_room == here   )
+		{
+				konsole.print("Researcher: You've failed your research.")
+				konsole.print("You leave the room.")
+				change_map("hallway_east_12")()
 		}
+	}
 	}  
 }
 npc.die = function () {

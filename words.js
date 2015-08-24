@@ -115,6 +115,7 @@ words.coin = {type: item}
 words.documents = {type: item}
 words.file = {type: item, is_a: words.readable}
 words.knife = {type:item}
+words.sedative = {type:item}
 words.newspaper = {type:item, is_a: words.readable}
 words.parachute = {type: item}
 words.pen = {type:item}
@@ -274,6 +275,10 @@ object_reaction.log = {examine: ["This is the experiment log of an electro-shock
 	 "Even as subject 1 started to scream in true agony, subject 2 continued with their assignment.<br>" + 
 	 "Experiment ended after subject 1 died." ]}
 
+object_reaction.sedative = {examine: ["", 
+		"I could use this to knock out a guard, without killing him."],
+	 pickup: ["You pick up a sedative injection.",
+	 	 ""]}
 
 
 

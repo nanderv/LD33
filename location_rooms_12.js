@@ -67,7 +67,7 @@ map.room_east_12 ={enter: enterr , enter_again: enter_again,description : [descr
   *******************************************/
 dir = []
 dir[0]      = {to: "hallway_west_12", methods  : [words.walk],hidden : 1, direction: words.south, cond: []}
-objects =[]
+objects =[[words.waiver, "", false, true],[words.sedative,words.desk,false,false],[words.desk,"",false,true]]
 var enterr  = "You enter a waiting room. It has waiver forms on the desk. There's a badge here. There's nobody here at the moment." 
 var enter_again  = "You enter a waiting room." 
 var descr  = "There are some seats here, and there's a desk." 

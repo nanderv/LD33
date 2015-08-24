@@ -50,6 +50,7 @@ map.hallway_north_12 ={enter: descr , enter_again: descr,description : [descr,""
 dir = []
  dir[0]      = {to: "hallway_south_12", methods  : [words.walk],hidden : 1, direction: words.west, cond: []}
  dir[1]      = {to: "room_east_12", methods  : [words.walk],hidden : 1, direction: words.south, cond: []}
+ // The one blow has to remain number 2. Hardcoded scripting reasons.
   dir[2]      = {to: "room_experiment_client", methods  : [words.walk],hidden : 1, direction: words.north, cond: []}
 
  objects =[]
