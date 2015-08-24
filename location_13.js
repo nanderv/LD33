@@ -121,12 +121,12 @@ map.room_west_13 = {
   *
   *******************************************/
 dir = []
-	dir[0] = {to: "hallway_north_13", methods  : [words.walk],hidden : 1, direction: words.north, cond: [condition_false("capture")]}
+	dir[0] = {to: "hallway_north_13", methods  : [words.walk],hidden : 1, direction: words.north, cond: [condition_false("capture"), condition_false("sitting")]}
 
 objects =[
 	[words.console, "", false, true],
 	[words.chair, "", false, true], 
-	[words.post, words.console, false, false],
+	[words.note, words.console, false, false],
 	[words.button, words.console, false, true]]
 
 descr = "In the middle of the room, a large console has been placed against the wall. There is a chair in front of it. The exit is to the north."
@@ -140,5 +140,5 @@ map.room_south_13 = {
 		""], 
 	directions: dir, 
 	objects : objects , 
-	cond : {"capture": 1}, 
+	cond : {"captured": 1, "sitting": 0}, 
 	action_reaction : {}}
