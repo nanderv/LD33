@@ -227,19 +227,22 @@ actions.pickup = function(tok)
 		konsole.print("No item given")
 		return false;
 	}
+
 	var i = 0 ; 
 	var aa = find_on_map_with_i(tok.item)
-	i = aa[1]
-	tok.item = aa[0]
-
-	found = ! ( ! tok.item)
+	found = ! ( ! aa)
 	if(!found)
 	{
 		konsole.print(get_text(tok.item) + " is not found")
 		return false
 	}
-	i = tok.item.i
-	map[here].objects.splice(i,0)
+	
+	i = aa[1]
+	tok.item = aa[0]
+	konsole.print(tok.item.text+ ": " + aa[1])
+
+
+	map[here].objects = map[here].objects.splice(i,0)
 	inventory[inventory.length] = tok.item
 	if(object_reaction[tok.item.text])
 	{

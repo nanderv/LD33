@@ -34,6 +34,8 @@
  					konsole.print(re[1])
  				if(re[2] != "")
  					konsole.think(re[2])
+ 				if(re[5])
+ 					re[5]()
  				re[3]()
  				re[4] = true
  			}

@@ -1,6 +1,45 @@
 hit_points = 5
 max_points = 6
 dodging = false
+function guard_handle ()
+{
+
+	if(this.won )
+		return true
+
+	if( central_time - start_time  > npc.ticks * npc.timeout)
+	{
+		this.ticks += 1
+			if(hit_points <= 0)
+			{
+				konsole.print("The guard manages to hit you unconscious.")
+				this.won = true
+				if(murderer)
+				{
+				change_map("death_killed_guilty")()
+				} else
+				{
+				change_map("death_killed_innocent")()
+				}
+			} else {
+		if(this.in_combat &&!this.sleeps)
+		{
+			if(!dodge)
+			{
+				hit_points --
+		konsole.print("You've been hit.")
+		} else {
+						dodge = false
+
+			konsole.print("Attack dodged")	
+		}
+
+		}
+	}
+}
+	return true
+
+}
 function get_npc(word)
 {
 	var result = null
@@ -38,7 +77,7 @@ npcs = []
 npc = {}
 npc.talk = "Hello"
 npc.name = "Hank"
-
+npc.won = false
 npc.type = "Guard"
 npc.hit_points = 20
 npc.reply = "My name is Henk"
@@ -52,23 +91,8 @@ npc.id = 0
 npc.react = function () {
 	return true
 }
-npc.handle = function () {
-	if( central_time - start_time  > npc.ticks * npc.timeout)
-	{
-		npc.ticks += 1
 
-		if(npc.in_combat &&!npc.sleeps)
-		{
-			if(!dodge)
-				hit_points --
-			dodge = false
-			konsole.print("You've been hit.")
-			if(hit_points == 0)
-				konsole.print("you are dead")
-		}
-	}
-	return true
-}
+npc.handle = guard_handle
 npc.die = function () {
 	return true
 }
@@ -77,6 +101,7 @@ npcs[0] = npc
 npc = {}
 npc.talk = "Hello"
 npc.name = "Roxanne"
+npc.won = false
 
 npc.type = "Guard"
 npc.hit_points = 40
@@ -91,32 +116,11 @@ npc.id = 0
 npc.react = function () {
 	return true
 }
-npc.handle = function () {
-	if( central_time - start_time  > npc.ticks * npc.timeout)
-	{
-		npc.ticks += 1
-
-		if(npc.in_combat &&!npc.sleeps)
-		{
-			if(!dodge)
-			{
-				hit_points --
-		konsole.print("You've been hit.")
-		} else {
-						dodge = false
-
-			konsole.print("Attack dodged")	
-		}
-			if(hit_points == 0)
-				konsole.print("you are dead")
-		}
-	}
-	return true
-}
+npc.handle = guard_handle
 npc.die = function () {
 	return true
 }
-npcs[0] = npc
+npcs[1] = npc
 
 
 
@@ -150,6 +154,7 @@ function start_fight (npc) {
 			{
 
 				konsole.print(npc.name  + " is dead.")
+				murderer = true
 				konsole.over_ride_func = null
 				npcs.splice(npc.id,1)
 			}
