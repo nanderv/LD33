@@ -19,7 +19,7 @@ objects =[[words.bookcase, "", false, true],
 	[words.plant, "", false, true]]
 
 action_reaction = {}
-action_reaction.move_obj = ["As you move the boxes, you reveal an air duct.","I might fit in there.",reactions.makevisible(words.airduct)]
+action_reaction.move_obj = ["As you move the boxes, you reveal an airduct.","I might fit in there.",reactions.makevisible(words.airduct)]
 
 descr = "This room looks like an office. It contains a chair with a desk, a bookcase with some boxes on top, and a plant. There is a door to the west."
 
@@ -96,11 +96,11 @@ objects =[
 	[words.airduct, "", false, true],
 	[words.boxes, "", false, true]]
 
-descr = "It's some kind of cooled storage room, there is large, suspicious stain on the floor."
+descr = "It's some kind of cooled storage room, there is large, suspicious stain on the floor. Cold air is provided by an airduct. There is a door to east."
 
 map.room_west_13 = {
 	enter: descr, 
-	thoughts: "", 
+	thoughts: "It's cold in here.", 
 	enter_again: descr, 
 	description : [
 		descr, 

@@ -85,8 +85,7 @@ words.in = {type: nil}
 words.on = {type: nil}
 words.at = {type: nil}
 
-words.airduct = {type: obj, long_name: "air duct", is_a: words.enterable}
-words.air = {type: obj, eat: "duct", long_name:"air duct", synonym: words.airduct}
+words.airduct = {type: obj, long_name: "airduct", is_a: words.enterable}
 words.apple = {type: obj, is_a: words.food}
 words.bed = {type: obj, is_a: words.sittable}
 words.blackboard = {type: obj}
@@ -287,7 +286,7 @@ object_reaction.boxes = {examine: ["A pile of boxes filled with broken office su
 		"I feel a strange air current here."],
 	 pickup: ["",
 	 	 "Am I a hacker??"]}
-object_reaction.airduct = {examine: ["An air duct used for ventilation.", 
+object_reaction.airduct = {examine: ["An airduct used for ventilation.", 
 		""],
 	 pickup: ["",
 	 	 "Am I a hacker??"]}
