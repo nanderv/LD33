@@ -1,5 +1,6 @@
 function reset_map ()
 {
+	konsole.print("Person: let's reset and try again..")
 	reset(murderer)
 }
 function wait_for_reset()
@@ -8,6 +9,7 @@ function wait_for_reset()
 	{
 		if(konsole.input_field.value.toLowerCase() == "reset")
 		{
+
 			konsole.out.innerHTML = ""
 			konsole.input_field.value = ""
 			extra_digit =  Math.floor((Math.random() * 98) + 1);

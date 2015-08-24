@@ -1,5 +1,5 @@
 map = {}
-here = "room_west_14"
+here = "room_experiment_client"
 
 immovable = ["lying","sleeping"]
 function change_map(room)

@@ -178,6 +178,7 @@ actions.examine = function (tok)
 	if(tok.object)
 	{
 
+
 		 tok.object =  find_on_map(tok.object)
 	found = !(! tok.object)
 	if (!found)
@@ -186,7 +187,10 @@ actions.examine = function (tok)
 
 			return false
 	}
-
+		if(tok.object.text == "clock")
+		{
+			konsole.print("The current time is "+ get_time(1))
+		}
 
 	if(object_reaction[tok.object.text])
 	{
@@ -239,7 +243,6 @@ actions.pickup = function(tok)
 	
 	i = aa[1]
 	tok.item = aa[0]
-	konsole.print(tok.item.text+ ": " + aa[1])
 
 
 	map[here].objects = map[here].objects.splice(i,0)
@@ -542,8 +545,8 @@ actions.close = function (tok) {
 	return false
 }
 actions.read = function (tok) {
-	if (find_in_inventory(tok.item)) {
-		if (tok.item.is_a == words.readable) {
+	if (tok.item  = find_in_inventory(tok.item)) {
+		if (tok.item.is_a == words.readable || object_reaction[tok.item.text].read) {
 			if (object_reaction[tok.item.text].read[0] != "") {
 				konsole.print(object_reaction[tok.item.text].read[0])
 			}
