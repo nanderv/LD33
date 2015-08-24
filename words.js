@@ -16,6 +16,7 @@ words.readable = {type: abstract}
 words.movable = {type: abstract}
 words.enterable = {type: abstract}
 words.evidence = {type: abstract} 
+words.pressable = {type: abstract}
 
 words.walk = {type:verb, eat : "to", method: "move"}
 words.move = {type: verb, method: "move_obj", synonym: words.walk}
@@ -68,6 +69,9 @@ words.eat = {type: verb, method: "eat"}
 
 words.enter = {type: verb, method: "enter_obj"}
 
+words.press = {type: verb, method: "press"}
+words.push = {type: verb, synonym: words.press}
+
 words.east = {type:direction}
 words.north = {type:direction}
 words.south = {type:direction}
@@ -85,6 +89,7 @@ words.from = {type: nil}
 words.in = {type: nil}
 words.on = {type: nil}
 words.at = {type: nil}
+words.red = {type: nil}
 
 words.airduct = {type: obj, long_name: "airduct", is_a: words.enterable}
 words.apple = {type: obj, is_a: words.food}
@@ -92,8 +97,10 @@ words.bed = {type: obj, is_a: words.sittable}
 words.blackboard = {type: obj}
 words.bookcase = {type: obj}
 words.boxes = {type: obj, is_a: words.movable}
-words.buttons = {type:obj, synonym: words.panel}
+words.button = {type: obj, is_a: words.pressable}
+words.buttons = {type:obj, synonym: words.panel, long_name:"big red button"}
 words.cabinet = {type: obj, is_a: words.container}
+words.console = {type: obj}
 words.filing = {type: obj, synonym: words.cabinet, eat: "cabinet"}
 words.chair = {type: obj, is_a: words.sittable}
 words.clock = {type: obj}
@@ -136,6 +143,7 @@ words.paper = {type:item, is_a: words.readable}
 words.parachute = {type: item}
 words.pen = {type:item}
 words.pencil = {type: item}
+words.note = {type: item, is_a: words.readable}
 words.stapler = {type: item}
 
 words.toothbrush = {type: item, long_name : "dirty toothbrush"}
@@ -331,10 +339,10 @@ object_reaction.log = {examine: ["This is the experiment log of an electro-shock
 	 "Experiment ended after subject 1 died." ]}
 
 
-object_reaction.sedative = {examine: ["", 
+object_reaction.sedative = {examine: ["A hypodermic needle filled with midazolam.", 
 		"I could use this to knock out a guard, without killing him."],
 	 pickup: ["You pick up a sedative injection.",
-	 	 ""],help: "Say sedate + person to sedate the person. It's also useable in combat. Sedation is only used once."}
+	 	 ""],help: "Say sedate + person to sedate the person. It's also useable in combat. A sedative can only be used once."}
 object_reaction.badge = {examine: ["", 
 		"I could use this pose as a scientist."],
 	 pickup: ["I could use this pose as a scientist",
@@ -367,6 +375,24 @@ object_reaction.stretcher = {examine: ["A sturdy metal stretcher with thick stra
 		""],
 	 pickup: ["",
 	 	 "Am I a hacker??"]}
+object_reaction.console = {examine: ["It is a central control panel for some sort of mechanical system. There is an ominous red button on it.", 
+		""],
+	 pickup: ["",
+	 	 "Am I a hacker??"]}
+object_reaction.note = {examine: ["A note with some sort of code written on it.", 
+		""],
+	 pickup: ["You pick up the note.",
+	 	 ""],
+	 read: ["In case of emergency:",
+	 	 "4, 51, 42, 13, 37, " + extra_digit]}
+object_reaction.button = {examine: ["It's an ominous large red button.", 
+		"I don't this I should press this button."],
+	 pickup: ["",
+	 	 "Am I a hacker??"]}
+
+
+
+
 
 object_reaction.waiver = {examine: ["A waiver that acknowledges that a subject willingly participates in a research. .", 
 		"It's not very specific"],

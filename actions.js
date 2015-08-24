@@ -637,3 +637,29 @@ actions.enter_obj = function (tok) {
 		return false
 	}
 }
+actions.press = function (tok) {
+	if (tok.object) {
+		var i = 0 ; 
+		var found = false;
+		for( i  = 0; i < map[here].objects.length ; i++) {
+			if( map[here].objects[i][0] == tok.object && map[here].objects[i][3] ) {
+				found = 1
+				break
+			}
+		}
+		if(!found) {
+			konsole.print(get_text(tok.object) + " is not found.")
+			return false
+		}
+		if (tok.object.is_a == words.pressable) {
+			konsole.print("You press the " + get_text(tok.object) + ".")
+			konsole.print("\/\/TODO: Do button of doom action here!")
+			return true
+		} else {
+			konsole.think("I cannot enter " + get_article(tok.object) + get_text(tok.object) + ".")
+			return false
+		}
+	} else {
+		return false
+	}
+}
