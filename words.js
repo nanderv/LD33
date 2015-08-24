@@ -15,6 +15,7 @@ words.sittable = {type: abstract}
 words.readable = {type: abstract}
 words.movable = {type: abstract}
 words.enterable = {type: abstract}
+words.evidence = {type: abstract} 
 
 words.walk = {type:verb, eat : "to", method: "move"}
 words.move = {type: verb, method: "move_obj", synonym: words.walk}
@@ -91,7 +92,10 @@ words.blackboard = {type: obj}
 words.bookcase = {type: obj}
 words.boxes = {type: obj, is_a: words.movable}
 words.buttons = {type:obj, synonym: words.panel}
-words.cabinet = {type: obj}
+
+words.cabinet = {type: obj, is_a: words.container}
+
+words.filing = {type: obj, synonym: words.cabinet, eat: "cabinet"}
 words.chair = {type: obj, is_a: words.sittable}
 words.clock = {type: obj}
 words.countertop = {type: obj}
@@ -138,6 +142,8 @@ words.copper = {type : item, eat: "key", long_name : "copper key", is_a : words.
 words.small = {type: item, eat: "key", long_name: "small key", is_a: words.key}
 words.master = {type: item, eat: "key", long_name: "master key", is_a: words.key} // no description, used for specific condition failed message
 words.empty = {type: item} // no description, used for specific condition failed message
+words.log =  {type: item, is_a: words.evidence}
+words.waiver = {type: item, long_name : "Experiment waiver"}
 words.badge = {type: item, long_name : "Employee badge"}
 // Secretary
 words.secretary = {type: person}
@@ -308,6 +314,19 @@ object_reaction.plant = {examine: ["It's a rather large philodendron. It looks l
 		"Maybe it needs some sunlight?"],
 	 pickup: ["",
 	 	 "Am I a hacker??"]}
+
+object_reaction.log = {examine: ["This is the experiment log of an electro-shock experiment. It appears to be quite brutal.", 
+		"I really don't like this."],
+	 pickup: ["You picked up a file.",
+	 	 ""],
+	 read: ["Test subject 1 name:  *smudged out, unreadable* <br>Test subject 2 name: * smudge * ",
+	 "(pre-printed:) <br> Ojbective of experiment: to find out how likely people are to follow orders <br>" + 
+	 "Method: Researcher asks questions to subject 1. If subject 1 gives a wrong answer, subject 2 has to press a button. The button gives an electrical shock to subject 1. The electrical shock increases every time the button is pressed. <br>" + 
+	 "(written: )<br> Subject 1 wasn't that smart, he asked most questions wrongly. Subject 2 had no problems with applying the shocks to subject 1.<br>" + 
+	 "Even as subject 1 started to scream in true agony, subject 2 continued with their assignment.<br>" + 
+	 "Experiment ended after subject 1 died." ]}
+
+
 
 
 

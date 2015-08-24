@@ -70,7 +70,9 @@ function get_npc(word)
 	return result
 }
 
-
+/*
+* Floor 14 guard
+*/
 
 npcs = []
 
@@ -91,7 +93,9 @@ npc.id = 0
 npc.react = function () {
 	return true
 }
-
+/*
+* floor 12 guard
+*/
 npc.handle = guard_handle
 npc.die = function () {
 	return true
@@ -165,3 +169,119 @@ function start_fight (npc) {
 
 	}
 }
+
+
+
+/* 
+* Researcher
+*/ 
+exp = {}
+exp.in_state = true
+exp.state  = 0
+exp.states = []
+exp.states[0] = ["Researcher: your task is to press the button every time the other person gives a wrong answer. The other person gets an electric shock when you press the button. Every time you press the button, the voltage increases. If you wish to refuse at any time, say refuse. Are you ready to start?","", ["yes", "start"],["no","refuse"]]
+exp.states[1] = ["Researcher: What is the capital of Denmark? <br />Subject: Helsinki. <br / > Researcher: Wrong. Press the button. ", "", ["press", "push"],["no","refuse"]]
+exp.states[2] = ["<i>The subject twitches and screems softly. </i> <br/>Researcher: Next question: what is 6 * 9? <br />Subject: 42. <br / > Researcher: Wrong again. Press the button. ", "", ["press", "push"],["no","refuse"]]
+exp.states[3] = ["<i>The subject twitches and the screams intensify. </i> <br/>Researcher: Next question: how many sides does a triangle have? <br />Subject: 4. <br / > Researcher: Wrong again. Press the button. ", "", ["press", "push"],["no","refuse"]]
+exp.states[4] = ["<i>Smokes comes from the electrodes. The subject looks like he's in agony. </i> <br/>Researcher: Next question: In what year was the steam train invented?? <br />Subject: 1824. <br / > Researcher: Wrong again, it was 1804. Press the button. ", "", ["press", "push"],["no","refuse"]]
+
+exp.succesful = ["<i>The subject dies.</i><br>Researcher: excelent, the experiment was succesful.","I don't feel right about this."]
+exp.failed = ["Researcher: experiment failed.. Leave the room now.",""]
+npc.handle = guard_handle
+npc.die = function () {
+	return true
+}
+npcs[0] = npc
+
+npc = {}
+npc.talk = "Hello"
+npc.name = "Ludwig"
+npc.won = false
+npc.asked_to_leave = false
+npc.type = "Researcher"
+npc.hit_points = 40
+npc.reply = "My name is Ludwig"
+npc.ticks = 0
+npc.timeout = 2
+npc.current_room = "room_experiment_client"
+npc.sleeps = true
+npc.in_combat = false
+npc.rooms = ["room_experiment_client"]
+npc.id = 0
+npc.react = function () {
+	return true
+}
+npc.experiment = function () 
+{
+	var input = konsole.input_field.value
+	konsole.input_field.value = ""
+	konsole.line_in("- " +input)
+
+	for(var i = 0 ; i < exp.states[exp.state][2].length; i++)
+	{
+		if(exp.states[exp.state][2][i] == input)
+		{
+			exp.in_state=true
+			exp.state ++
+			if(exp.state >= exp.states.length)
+			{
+				if(exp.succesful[0])
+					konsole.print(exp.succesful[0])	
+				if(exp.succesful[1])
+					konsole.think(exp.succesful[1])	
+				murderer = 1
+				konsole.over_ride_func = null
+			}
+			return true
+		}
+	}
+	for(var i=0; i< exp.states[exp.state][3].length; i++)
+	{
+		if(exp.states[exp.state][3][i] == input)
+		{
+				if(exp.failed[0])
+					konsole.print(exp.failed[0])	
+				if(exp.failed[1])
+					konsole.think(exp.failed[1])	
+				konsole.over_ride_func = null
+		}
+		return false
+	}
+	konsole.print("You cannot do that.")
+	return false
+}
+
+npc.handle = function () {
+	if (this.current_room == here && ! this.won  )
+	{
+		if(! ( ! find_in_inventory(words.waiver)))
+		{
+			konsole.over_ride_func = this.experiment
+			this.start = central_time
+			this.won = true
+		}
+		else{
+			if(!this.asked_to_leave )
+				konsole.print("Researcher: You're not a test subject, please leave.")
+			this.asked_to_leave = true
+		}
+	} else{
+		if (konsole.over_ride_func == this.experiment)
+		{
+			if(exp.in_state)
+				if (exp.states[exp.state][0])
+					konsole.print(exp.states[exp.state][0])
+				if (exp.states[exp.state][1])
+					konsole.think(exp.states[exp.state][1])
+			exp.in_state = false
+		}else
+		{
+			this.asked_to_leave = false
+		}
+	}  
+}
+npc.die = function () {
+	return true
+}
+npcs[2] = npc
+

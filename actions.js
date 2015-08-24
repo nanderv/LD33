@@ -178,6 +178,7 @@ actions.examine = function (tok)
 	if(tok.object)
 	{
 
+
 		 tok.object =  find_on_map(tok.object)
 	found = !(! tok.object)
 	if (!found)
@@ -186,7 +187,10 @@ actions.examine = function (tok)
 
 			return false
 	}
-
+		if(tok.object.text == "clock")
+		{
+			konsole.print("The current time is "+ get_time(1))
+		}
 
 	if(object_reaction[tok.object.text])
 	{
@@ -239,7 +243,6 @@ actions.pickup = function(tok)
 	
 	i = aa[1]
 	tok.item = aa[0]
-	konsole.print(tok.item.text+ ": " + aa[1])
 
 
 	map[here].objects.splice(i,1)
@@ -449,9 +452,26 @@ actions.open = function (tok) {
 			konsole.think("I have to enter the code. I don't think I have it.")
 			konsole.over_ride_func = function()
 			{
+
 				var input = konsole.input_field.value
 				konsole.input_field.value = ""
 				var safe = tok.object
+				if(code_pointer == code.length)
+				{
+					if(input ==extra_digit)
+				{
+					konsole.print("The mechanics of the lock seem to work")
+					code_pointer ++
+
+				}
+				else
+					{
+						konsole.print("The mechanics of the lock reset into base position.")
+						code_pointer =0
+						konsole.over_ride_func = null
+					}
+				} 
+				if(code_pointer < code.length){
 				if(input == code[code_pointer])
 				{
 					konsole.print("The mechanics of the lock seem to work.")
@@ -463,7 +483,9 @@ actions.open = function (tok) {
 						code_pointer =0
 						konsole.over_ride_func = null
 					}
-				if(code_pointer == code.length)
+				}
+				
+				if ( code_pointer > code.length)
 				{
 					konsole.print("The lock unlocks itself.")
 					konsole.print("You find a parachute in the safe.")
@@ -523,8 +545,8 @@ actions.close = function (tok) {
 	return false
 }
 actions.read = function (tok) {
-	if (find_in_inventory(tok.item)) {
-		if (tok.item.is_a == words.readable) {
+	if (tok.item  = find_in_inventory(tok.item)) {
+		if (tok.item.is_a == words.readable || object_reaction[tok.item.text].read) {
 			if (object_reaction[tok.item.text].read[0] != "") {
 				konsole.print(object_reaction[tok.item.text].read[0])
 			}
