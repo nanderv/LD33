@@ -89,9 +89,9 @@ for (var key in map) {
 var time_reaction = []
 // time, text, reaction, function, used
 time_reaction[0] = [1, "A timer is counting down from 10.", "",freeze,false]
-time_reaction[1] = [2, "9", "I don't think this is going to end well",no_function,false]
+time_reaction[1] = [2, "9 - <i> I don't think this is going to end well</i> ", "",no_function,false]
 time_reaction[2] = [3, "8", "",no_function,false]
-time_reaction[3] = [4, "7", "I feel relieved, knowing that I managed to end the madness.",no_function,false]
+time_reaction[3] = [4, "7 - <i> I feel relieved, knowing that I managed to end the madness. </i>", "",no_function,false]
 time_reaction[4] = [5, "6", "",no_function,false]
 time_reaction[5] = [6, "5", "",no_function,false]
 time_reaction[6] = [7, "4", "",no_function,false]
@@ -101,7 +101,7 @@ time_reaction[9] = [10, "1", "",no_function,false]
 time_reaction[10] = [11, "The building exploded. You are dead.", "",no_function,false]
 time_reaction[10] = [12, "<br>", "",no_function,false]
 
-time_reaction[11] = [14, "", "You killed a lot of innocent people. Congratultions, <b> you are a monster </b>.",wait_for_reset,false]
+time_reaction[11] = [14, "", "You killed a lot of innocent people, along with some criminals. Does this make you a hero? I don't think so. Congratultions, <b> you are a monster </b>.",wait_for_reset,false]
 map.death_boom = {enter: "The ground is approaching you in an increasing pace." , enter_again: "This is really strange, why am I here again?", description : ["You are dead",""], directions: [], objects : [] , image: "", cond: {dead: 1}, action_reaction : {},time_reaction: time_reaction}
 
 

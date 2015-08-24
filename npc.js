@@ -585,12 +585,12 @@ npc.handle = function()
 	}
 	if(this.show_approach && this.rooms[(this.room_nr + 1) % this.rooms.length] == here)
 	{
-		konsole.print("Guard approaching")
+		konsole.warn("Guard approaching")
 		this.show_approach = false
 	}
 	if(this.current_room == here)
 	{
-		konsole.print("The guard found you. He attacks!")
+		konsole.warn("The guard found you. He attacks!")
 	this.in_combat = true
 	this.sleeps = false
 	this.won = false
