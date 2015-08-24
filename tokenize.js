@@ -5,7 +5,7 @@ function tokenize(sentence)
 	var result = {}
 	for (var i = 0; i < my_words.length; i++)
 	{
-
+		my_words[i] = my_words[i].toLowerCase()
 		var my_word = my_words[i]
 		if(my_word.length < 1)
 			continue
