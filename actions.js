@@ -657,7 +657,7 @@ actions.press = function (tok) {
 		}
 		if (tok.object.is_a == words.pressable) {
 			konsole.print("You press the " + get_text(tok.object) + ".")
-			konsole.print("\/\/TODO: Do button of doom action here!")
+			change_map("death_boom")()
 			return true
 		} else {
 			konsole.think("I cannot enter " + get_article(tok.object) + get_text(tok.object) + ".")

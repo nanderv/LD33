@@ -121,7 +121,7 @@ map.room_west_13 = {
   *
   *******************************************/
 dir = []
-	dir[0] = {to: "hallway_north_13", methods  : [words.walk],hidden : 1, direction: words.north, cond: [condition_false("capture"), condition_false("sitting")]}
+	dir[0] = {to: "hallway_death_13", methods  : [words.walk],hidden : 1, direction: words.north, cond: [condition_false("sitting")]}
 
 objects =[
 	[words.console, "", false, true],
@@ -140,5 +140,5 @@ map.room_south_13 = {
 		""], 
 	directions: dir, 
 	objects : objects , 
-	cond : {"captured": 1, "sitting": 0}, 
+	cond : {"sitting": 0}, 
 	action_reaction : {}}

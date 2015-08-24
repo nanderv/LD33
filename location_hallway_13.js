@@ -100,7 +100,30 @@ map.hallway_south_13 = {
 	cond : {}, 
 	action_reaction : {}}
 
+/*******************************************
+  * Hospital floor 13, hallway south
+  *
+  *******************************************/
+dir = []
+	dir[0] = {to: "hallway_center_13", methods  : [words.walk],hidden : 1, direction: words.north, cond: []}
+	dir[1] = {to: "room_west_13", methods  : [words.walk],hidden : 1, direction: words.west, cond: []}
+	dir[2] = {to: "room_south_13", methods  : [words.walk],hidden : 1, direction: words.south, cond: []}
 
+objects = []
+
+descr = "This hallway is in the southeast corner of this floor. To the west is a room. To the south is an importantant-looking room. To the north is a hallway going around a corner to the east."
+
+map.hallway_death_13 = {
+	enter: descr, 
+	thoughts: "", 
+	enter_again: descr, 
+	description : [
+		descr, 
+		""], 
+	directions: dir, 
+	objects : objects , 
+	cond : {}, 
+	action_reaction : {}}
 
 
 
