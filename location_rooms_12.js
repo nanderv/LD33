@@ -82,7 +82,7 @@ var enterr  = "You enter a waiting room. It has waiver forms on the desk. There'
 var enter_again  = "You enter a waiting room." 
 var descr  = "There are some seats here, and there's a desk." 
 var descr_t = "I shouldn't stay here long; I shouldn't be here."
-map.room_west_12 ={enter: enterr , enter_again: enter_again,description : [descr,descr_t], directions: dir, objects : objects , image: "", cond : {}, action_reaction : {}}
+map.room_west_12 ={enter: enterr , enter_again: enter_again,description : [descr,descr_t], directions: dir, objects : objects , image: "", cond : {closed:1}, action_reaction : {}}
 
 
 
