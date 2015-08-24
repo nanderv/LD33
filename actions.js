@@ -228,7 +228,7 @@ actions.pickup = function(tok)
 	
 	if(!tok.item)
 	{
-		konsole.print("No item given")
+		konsole.print("No item given.")
 		return false;
 	}
 
@@ -237,7 +237,7 @@ actions.pickup = function(tok)
 	found = ! ( ! aa)
 	if(!found)
 	{
-		konsole.print(get_text(tok.item) + " is not found")
+		konsole.print(get_text(tok.item) + " is not found.")
 		return false
 	}
 	
@@ -245,7 +245,7 @@ actions.pickup = function(tok)
 	tok.item = aa[0]
 
 
-	map[here].objects = map[here].objects.splice(i,0)
+	map[here].objects.splice(i,1)
 	inventory[inventory.length] = tok.item
 	if(object_reaction[tok.item.text])
 	{
@@ -296,7 +296,7 @@ actions.help = function(tok)
 {
 	if(tok.person == undefined)
 		{
-		konsole.print("you're on your own, sorry")
+		konsole.print("you're on your own, sorry.")
 		return true
 	}
 	// there is a person given, trying to help person
@@ -306,11 +306,11 @@ actions.lie = function (tok) {
 	if (!map[here].cond["lying down"])
 	{
 		map[here].cond["lying down"]= true
-		konsole.print("you're now lying down")
+		konsole.print("you're now lying down.")
 		return true
 	}
 	else
-		konsole.print("you're not standing")
+		konsole.print("you're not standing.")
 	return false
 }
 actions.stand = function (tok) {
@@ -337,8 +337,8 @@ actions.brush = function (tok) {
 		has_brush = has_brush || inventory[i] == words.toothbrush
 	}
 	if (has_brush) {
-		object_reaction.teeth.examine = ["", "My teeth are perfectly clean"]
-		konsole.print("You cleaned your teeth")
+		object_reaction.teeth.examine = ["", "My teeth are perfectly clean."]
+		konsole.print("You cleaned your teeth.")
 		return true
 	} else {
 		konsole.print("You need a toothbrush to brush your teeth.")
@@ -356,7 +356,7 @@ actions.turn_lights = function (tok) {
 				return false
 			}
 		} else {
-			konsole.think("I cannot turn on " + get_article(tok.object) + get_text(tok.object))
+			konsole.think("I cannot turn on " + get_article(tok.object) + get_text(tok.object) + ".")
 			return false
 		}
 	} else {
@@ -372,7 +372,7 @@ actions.eat = function (tok) {
 	found = !(! tok.object)
 		if(!found)
 	{
-		konsole.print(get_text(tok.object) + " is not found")
+		konsole.print(get_text(tok.object) + " is not found.")
 		return false
 	}
 	var i =  aa[1]
@@ -382,10 +382,10 @@ actions.eat = function (tok) {
 		if(tok.object.is_a == words.food)
 		{
 			object_reaction.teeth.examine = ["", "My teeth are dirty from the porkchops I ate."]
-			konsole.think("I feel refreshed")
+			konsole.think("I feel refreshed.")
 			return true
 		} else {
-			konsole.think("I can't eat the " + get_text(tok.object))
+			konsole.think("I can't eat the " + get_text(tok.object) +".")
 			return false
 		}
 	}	
@@ -403,7 +403,7 @@ actions.sit = function (tok) {
 			}
 		}
 		if(!found) {
-			konsole.print("The " + get_text(tok.object) + " is not found")
+			konsole.print("The " + get_text(tok.object) + " is not found.")
 			return false
 		}
 		if (!map[here].cond["sitting"]) {
@@ -436,7 +436,7 @@ actions.open = function (tok) {
 		}
 
 		if(!found) {
-			konsole.print(get_text(tok.object) + " is not found")
+			konsole.print(get_text(tok.object) + " is not found.")
 			return false
 		}
 		if (tok.object == words.drawer) {
@@ -446,7 +446,7 @@ actions.open = function (tok) {
 		{	
 			if(map[here].cond["closed"] == 0)
 				{
-					konsole.think("I already opened the safe")
+					konsole.think("I already opened the safe.")
 					return false
 				}
 			konsole.think("I have to enter the code. I don't think I have it.")
@@ -474,7 +474,7 @@ actions.open = function (tok) {
 				if(code_pointer < code.length){
 				if(input == code[code_pointer])
 				{
-					konsole.print("The mechanics of the lock seem to work")
+					konsole.print("The mechanics of the lock seem to work.")
 					code_pointer ++
 				}
 				else
@@ -487,7 +487,7 @@ actions.open = function (tok) {
 				
 				if ( code_pointer > code.length)
 				{
-					konsole.print("The lock unlocks itself")
+					konsole.print("The lock unlocks itself.")
 					konsole.print("You find a parachute in the safe.")
 					konsole.think("Why would someone store a parachute here?")
 					reactions.makevisible(words.parachute)()
@@ -525,7 +525,7 @@ actions.close = function (tok) {
 			}
 		}
 		if(!found) {
-			konsole.print(get_text(tok.object) + " is not found")
+			konsole.print(get_text(tok.object) + " is not found.")
 			return false
 		}
 		if (!map[here].cond["closed"]) {
@@ -537,7 +537,7 @@ actions.close = function (tok) {
 		if (tok.object == words.drawer) {
 			object_reaction.drawer.examine = ["A closed drawer.", "I can't see into a closed drawer."]
 		}
-		konsole.print("You close the " + get_text(tok.object))
+		konsole.print("You close the " + get_text(tok.object) + ".")
 		return true
 	} else {
 		konsole.think("I cannot close this.")
@@ -559,7 +559,7 @@ actions.read = function (tok) {
 			return false
 		}
 	} else if (tok.item || tok.object) {
-		konsole.think("I do not have " + get_article(tok.item) + get_text(tok.item))
+		konsole.think("I do not have " + get_article(tok.item) + get_text(tok.item) + ".")
 		return false
 	} else {
 		konsole.think("I cannot read that.")
@@ -577,7 +577,7 @@ actions.move_obj = function (tok) {
 			}
 		}
 		if(!found) {
-			konsole.print(get_text(tok.object) + " is not found")
+			konsole.print(get_text(tok.object) + " is not found.")
 			return false
 		}
 		if (tok.object.is_a == words.movable) {
@@ -589,6 +589,38 @@ actions.move_obj = function (tok) {
 			return true
 		} else {
 			konsole.think("I cannot move " + get_article(tok.object) + get_text(tok.object) + ".")
+			return false
+		}
+	} else {
+		return false
+	}
+}
+actions.enter_obj = function (tok) {
+	if (tok.object) {
+		var i = 0 ; 
+		var found = false;
+		for( i  = 0; i < map[here].objects.length ; i++) {
+			if( map[here].objects[i][0] == tok.object && map[here].objects[i][3] ) {
+				found = 1
+				break
+			}
+		}
+		if(!found) {
+			konsole.print(get_text(tok.object) + " is not found.")
+			return false
+		}
+		if (tok.object.is_a == words.enterable) {
+			konsole.print("You enter the " + get_text(tok.object) + ".")
+			konsole.print("You crawl through the air duct and end up in another room.")
+			if (here == "room_northeast_13") {
+				here = "room_southwest_13"
+			} else {
+				here = "room_northeast_13"
+			}
+			enter(map[here])
+			return true
+		} else {
+			konsole.think("I cannot enter " + get_article(tok.object) + get_text(tok.object) + ".")
 			return false
 		}
 	} else {

@@ -14,7 +14,9 @@ words.container = {type: abstract}
 words.sittable = {type: abstract}
 words.readable = {type: abstract}
 words.movable = {type: abstract}
+words.enterable = {type: abstract}
 words.evidence = {type: abstract} 
+
 words.walk = {type:verb, eat : "to", method: "move"}
 words.move = {type: verb, method: "move_obj", synonym: words.walk}
 words.stumble = {type:verb, synonym: words.walk}
@@ -63,6 +65,8 @@ words.turn = {type: verb, eat: "on", method: "turn_lights"}
 
 words.eat = {type: verb, method: "eat"}
 
+words.enter = {type: verb, method: "enter_obj"}
+
 words.east = {type:direction}
 words.north = {type:direction}
 words.south = {type:direction}
@@ -81,8 +85,12 @@ words.in = {type: nil}
 words.on = {type: nil}
 words.at = {type: nil}
 
+words.airduct = {type: obj, long_name: "air duct", is_a: words.enterable}
+words.air = {type: obj, eat: "duct", long_name:"air duct", synonym: words.airduct}
 words.bed = {type: obj, is_a: words.sittable}
 words.blackboard = {type: obj}
+words.bookcase = {type: obj}
+words.boxes = {type: obj, is_a: words.movable}
 words.buttons = {type:obj, synonym: words.panel}
 
 words.cabinet = {type: obj, is_a: words.container}
@@ -98,6 +106,7 @@ words.lights = {type: obj}
 words.light = {type: obj, synonym: words.lights}
 words.painting = {type: obj, is_a: words.movable}
 words.panel = {type:obj}
+words.plant = {type: obj}
 words.porkchops = {type: obj, is_a: words.food}
 words.rubbish = {type: obj}
 words.safe = {type: obj, is_a: words.container}
@@ -106,19 +115,24 @@ words.stove = {type: obj}
 words.table = {type: obj}
 words.teeth = {type: obj}
 words.telephone = {type:obj }
+words.trashcan = {type: obj}
 words.window = {type: obj}
 
 words.medical = {type: obj, eat: "equipment"}
 words.equipment = {type: obj, synonym: words.medical}
 
+words.book = {type: item, is_a: words.readable}
 words.coin = {type: item}
 words.documents = {type: item}
 words.file = {type: item, is_a: words.readable}
 words.knife = {type:item}
 words.sedative = {type:item}
 words.newspaper = {type:item, is_a: words.readable}
+words.paper = {type:item, is_a: words.readable}
 words.parachute = {type: item}
 words.pen = {type:item}
+words.pencil = {type: item}
+words.stapler = {type: item}
 
 words.toothbrush = {type: item, long_name : "dirty toothbrush"}
 words.dirty = {type: item, synonym: words.toothbrush}
@@ -261,8 +275,46 @@ object_reaction.file = {examine: ["This appears to be part of a patient file.",
 	 	 ""],
 	 read: ["Patient Name: The Arbitrator",
 	 "Treatment consists of electro shock therapy. <br />Expected desired results after several 6 hour sessions. <br />Session 1: Subject showed no noticable improvements, lenghtening sessions to 8 hours. <br />Session 2: Subject showed minor improvements, continue sessions. <br />Session 3: Subject still showed only minor improvements, increasing session lenght to 10 hours. <br /> Session 4: Subject showing major improvements, recommended to continue sessions for another week. <br />Session 5: Subject ..."]}
-
-
+object_reaction.bookcase = {examine: ["It's filled with books related to neuroscience.", 
+		"Even some of these titles are difficult to understand..."],
+	 pickup: ["",
+	 	 "Am I a hacker??"]}
+object_reaction.book = {examine: ["It's written by Aleksandr Romanovich Luria.", 
+		"Even though it's only a year old, it looks like it has been read quite often. Someone must really like this book."],
+	 pickup: ["You now have a book.",
+	 	 ""],
+	 read: ["The Mind of a Mnemonist: A Little Book about a Vast Memory",
+	 	 "A distinguished Soviet psychologist’s study of a young man who was discovered to have a literally limitless memory and eventually became a professional mnemonist. Experiments and interviews over the years showed that his memory was based on synesthesia (turning sounds into vivid visual imagery), that he could forget anything only by an act of will, that he solved problems in a peculiar crablike fashion that worked, and that he was handicapped intellectually because he could not make discriminations, and because every abstraction and idea immediately dissolved into an image for him."]}
+object_reaction.boxes = {examine: ["A pile of boxes filled with broken office supplies.", 
+		"I feel a strange air current here."],
+	 pickup: ["",
+	 	 "Am I a hacker??"]}
+object_reaction.airduct = {examine: ["An air duct used for ventilation.", 
+		""],
+	 pickup: ["",
+	 	 "Am I a hacker??"]}
+object_reaction.paper = {examine: ["It's a piece of paper.", 
+		"There is something written on it."],
+	 pickup: ["You picked up a piece of paper.",
+	 	 ""],
+	 read: ["The page contains a bunch of strange diagrams.",
+	 	 "I can't make any sense of it..."]}
+object_reaction.trashcan = {examine: ["A small trashcan with some rubbish in it.", 
+		""],
+	 pickup: ["",
+	 	 "Am I a hacker??"]}
+object_reaction.pencil = {examine: ["It sharp pencil used for drawing or writing.", 
+		""],
+	 pickup: ["You picked up a pencil.",
+	 	 ""]}
+object_reaction.stapler = {examine: ["Used to bind paper together by means of staples. Unfortunately, it does not include staples.", 
+		""],
+	 pickup: ["You picked up a stapler.",
+	 	 ""]}
+object_reaction.plant = {examine: ["It's a rather large philodendron. It looks like it's dying.", 
+		"Maybe it needs some sunlight?"],
+	 pickup: ["",
+	 	 "Am I a hacker??"]}
 
 object_reaction.log = {examine: ["This is the experiment log of an electro-shock experiment. It appears to be quite brutal.", 
 		"I really don't like this."],
