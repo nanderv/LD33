@@ -46,6 +46,12 @@
  {
 
  }
+ function update_inventory()
+ {
+ 	konsole.inventory.innerHTML = ""
+ 	for(var i = 0; i< inventory.length;i++)
+ 		konsole.inventory.innerHTML += inventory[i].text+"<br>"
+ }
  function handle_npc()
  {
  	for(var i = 0; i< npcs.length ; i++ )
@@ -64,4 +70,5 @@
  	handle_map_events()
  	handle_world_events()
  	handle_npc()
+ 	update_inventory()
  }
