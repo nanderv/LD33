@@ -36,7 +36,7 @@ map.hallway_south_12 ={enter: descr , enter_again: descr,description : [descr,""
   *******************************************/
 dir = []
  dir[1]      = {to: "hallway_south_12", methods  : [words.walk],hidden : 1, direction: words.south, cond: []}
- dir[2]      = {to: "room_to_13_12", methods  : [words.walk],hidden : 1, direction: words.west, cond: []}
+ dir[2]      = {to: "to_13", methods  : [words.walk],hidden : 1, direction: words.west, cond: []}
  dir[0]      = {to: "room_experiment_business", methods  : [words.walk],hidden : 1, direction: words.east, cond: []}
  objects =[]
  descr = "The hallway ends here. Return by going south, or enter a room to your west and east." 
@@ -47,9 +47,16 @@ map.hallway_north_12 ={enter: descr , enter_again: descr,description : [descr,""
   * Hospital hallway 12, east
   *
   *******************************************/
+  function east_cond()
+  {
+  	if(exp.started)
+  		return true
+  	konsole.print("You can't enter this room.")
+  	return false
+  }
 dir = []
  dir[0]      = {to: "hallway_south_12", methods  : [words.walk],hidden : 1, direction: words.west, cond: []}
- dir[1]      = {to: "room_east_12", methods  : [words.walk],hidden : 1, direction: words.south, cond: []}
+ dir[1]      = {to: "room_east_12", methods  : [words.walk],hidden : 1, direction: words.south, cond: [east_cond]}
  // The one blow has to remain number 2. Hardcoded scripting reasons.
   dir[2]      = {to: "room_experiment_client", methods  : [words.walk],hidden : 1, direction: words.north, cond: []}
 

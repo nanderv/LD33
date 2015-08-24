@@ -1,45 +1,7 @@
 hit_points = 5
 max_points = 6
 dodging = false
-function guard_handle ()
-{
 
-	if(this.won )
-		return true
-
-	if( central_time - start_time  > npc.ticks * npc.timeout)
-	{
-		this.ticks += 1
-			if(hit_points <= 0)
-			{
-				konsole.print("The guard manages to hit you unconscious.")
-				this.won = true
-				if(murderer)
-				{
-				change_map("death_killed_guilty")()
-				} else
-				{
-				change_map("death_killed_innocent")()
-				}
-			} else {
-		if(this.in_combat &&!this.sleeps)
-		{
-			if(!dodge)
-			{
-				hit_points --
-		konsole.print("You've been hit.")
-		} else {
-						dodge = false
-
-			konsole.print("Attack dodged")	
-		}
-
-		}
-	}
-}
-	return true
-
-}
 function get_npc(word)
 {
 	var result = null
@@ -82,7 +44,7 @@ npc.name = "Hank"
 npc.won = false
 npc.type = "Guard"
 npc.hit_points = 20
-npc.reply = "My name is Henk"
+npc.reply = "My name is Hank"
 npc.ticks = 0
 npc.timeout = 3
 npc.current_room = "room_northeast_14"
@@ -96,8 +58,46 @@ npc.react = function () {
 /*
 * floor 12 guard
 */
-npc.handle = guard_handle
+npc.handle = function()
+{
+	if(this.won )
+		return true
+
+	if( central_time - start_time  > this.ticks * this.timeout)
+	{
+		this.ticks += 1
+			if(hit_points <= 0)
+			{
+				konsole.print("The "+ this.type+ " manages to hit you unconscious.")
+				this.won = true
+				if(murderer)
+				{
+				change_map("death_killed_guilty")()
+				} else
+				{
+				change_map("death_killed_innocent")()
+				}
+			} else {
+		if(this.in_combat &&!this.sleeps)
+		{
+			if(!dodge)
+			{
+				hit_points --
+		konsole.print("You've been hit by " + this.name)
+		} else {
+						dodge = false
+
+			konsole.print("Attack dodged")	
+		}
+
+		}
+	}
+}
+	return true
+}
 npc.die = function () {
+	if(this.hit_points <= 0)
+		return false
 	return true
 }
 npcs[0] = npc
@@ -120,8 +120,47 @@ npc.id = 0
 npc.react = function () {
 	return true
 }
-npc.handle = guard_handle
+npc.handle = function()
+{
+	if(this.won )
+		return true
+
+	if( central_time - start_time  > this.ticks * this.timeout)
+	{
+		this.ticks += 1
+			if(hit_points <= 0)
+			{
+				konsole.print("The "+ this.type+ " manages to hit you unconscious.")
+				this.won = true
+				if(murderer)
+				{
+				change_map("death_killed_guilty")()
+				} else
+				{
+				change_map("death_killed_innocent")()
+				}
+			} else {
+		if(this.in_combat &&!this.sleeps)
+		{
+			if(!dodge)
+			{
+				hit_points --
+		konsole.print("You've been hit by " + this.name)
+		} else {
+						dodge = false
+
+			konsole.print("Attack dodged")	
+		}
+
+		}
+	}
+}
+	return true
+
+}
 npc.die = function () {
+	if(this.hit_points <= 0)
+		return false
 	return true
 }
 npcs[1] = npc
@@ -136,6 +175,26 @@ function start_fight (npc) {
 	{
 		var input = konsole.input_field.value
 		konsole.input_field.value = ""
+		if(input == "sedate" && ! ( ! find_in_inventory(words.sedative)))
+		{
+			for(var i = 0 ; i< inventory.length; i++)
+			{
+				if(inventory[i] == words.sedative)
+				{
+					npc.hit_points =-1
+					konsole.print("Sedated "+ npc.type)
+					konsole.print("Sedative lost")
+					npc.die()
+					konsole.over_ride_func = null
+					inventory.splice(i,1)
+
+					npcs.splice(npc.id,1)
+					return true
+				}
+			}
+			konsole.print("You don't have sedative")
+			return false
+		}
 		if(input == "dodge") 
 		{
 			dodge = true
@@ -147,30 +206,75 @@ function start_fight (npc) {
 			if(! (!find_in_inventory(words.knife)))
 			{
 				npc.hit_points -= 4
-				konsole.print("Guard hit with knife")
+				konsole.print(npc.type + " hit with knife")
 
 			} else {
 			npc.hit_points --
-			konsole.print("Guard hit")
+			konsole.print(npc.type + "  hit")
 
 			}
-			if(npc.hit_points == 0)
+			if(npc.hit_points <= 0)
 			{
 
-				konsole.print(npc.name  + " is dead.")
-				murderer = true
+				konsole.print(npc.type + " is dead.")
+				murderer = 1
+				npc.die()
 				konsole.over_ride_func = null
 				npcs.splice(npc.id,1)
 			}
 			return true
 		}
-		konsole.print("print failed")
+		konsole.print("Action failed")
 		return false
 
 	}
 }
 
 
+
+
+npc.handle = function()
+{
+	if(this.won )
+		return true
+
+	if( central_time - start_time  > this.ticks * this.timeout)
+	{
+		this.ticks += 1
+			if(hit_points <= 0)
+			{
+				konsole.print("The "+ this.type+ " manages to hit you unconscious.")
+				this.won = true
+				if(murderer)
+				{
+				change_map("death_killed_guilty")()
+				} else
+				{
+				change_map("death_killed_innocent")()
+				}
+			} else {
+		if(this.in_combat &&!this.sleeps)
+		{
+			if(!dodge)
+			{
+				hit_points --
+		konsole.print("You've been hit by " + this.name)
+		} else {
+						dodge = false
+
+			konsole.print("Attack dodged")	
+		}
+
+		}
+	}
+}
+	return true
+
+}
+npc.die = function () {
+	return true
+}
+npcs[0] = npc
 
 /* 
 * Researcher
@@ -179,6 +283,7 @@ exp = {}
 exp.in_state = true
 exp.state  = 0
 exp.states = []
+exp.started = false
 exp.states[0] = ["Researcher: your task is to press the button every time the other person gives a wrong answer. The other person gets an electric shock when you press the button. Every time you press the button, the voltage increases. If you wish to refuse at any time, say refuse. Are you ready to start?","", ["yes", "start"],["no","refuse"]]
 exp.states[1] = ["Researcher: What is the capital of Denmark? <br />Subject: Helsinki. <br / > Researcher: Wrong. Press the button. ", "", ["press", "push"],["no","refuse"]]
 exp.states[2] = ["<i>The subject twitches and screems softly. </i> <br/>Researcher: Next question: what is 6 * 9? <br />Subject: 42. <br / > Researcher: Wrong again. Press the button. ", "", ["press", "push"],["no","refuse"]]
@@ -187,11 +292,7 @@ exp.states[4] = ["<i>Smoke comes from the electrodes. The subject looks like he'
 
 exp.succesful = ["<i>The subject dies.</i><br>Researcher: excelent, the experiment was succesful.","I don't feel right about this."]
 exp.failed = ["Researcher: experiment failed.. Leave the room now.",""]
-npc.handle = guard_handle
-npc.die = function () {
-	return true
-}
-npcs[0] = npc
+exp.npc = null
 
 npc = {}
 npc.talk = "Hello"
@@ -199,7 +300,7 @@ npc.name = "Ludwig"
 npc.won = false
 npc.asked_to_leave = false
 npc.type = "Researcher"
-npc.hit_points = 40
+npc.hit_points = 10
 npc.reply = "My name is Ludwig"
 npc.ticks = 0
 npc.timeout = 2
@@ -216,6 +317,7 @@ npc.experiment = function ()
 	var input = konsole.input_field.value
 	konsole.input_field.value = ""
 	konsole.line_in("- " +input)
+	exp.started = true
 
 	for(var i = 0 ; i < exp.states[exp.state][2].length; i++)
 	{
@@ -233,6 +335,9 @@ npc.experiment = function ()
 				konsole.over_ride_func = null
       map.room_experiment_client.enter =  "You enter a room, seperated in two sides by a wall with a window in it. An experiment was executed here. On the other side is a test subject in a chair. The test subject is dead.<br/><i>I killed him.</i>" 
       map.room_experiment_business.enter =  "You enter a room, seperated in two sides by a wall with a window in it. On your side  is a dead test subject in a chair. <b>You</b> killed the test subject." 
+				konsole.print("The researcher leaves the room..")
+				exp.npc.current_room = "room_east_12"
+				exp.npc.rooms=[this.current_room]
 
 			}
 			return true
@@ -247,8 +352,11 @@ npc.experiment = function ()
 				if(exp.failed[1])
 					konsole.think(exp.failed[1])	
 				konsole.over_ride_func = null
-				konsole.print("You leave the room.")
-				change_map("hallway_east_12")()
+				konsole.print("The researcher leaves the room..")
+				exp.npc.current_room = "room_east_12"
+				exp.npc.rooms=[exp.npc.current_room]
+				map.room_experiment_client.enter_again = "Experiment location: nothing to do here"
+				map.room_experiment_client.description = ["An experiment was to take place here. It seems to have failed. Nothing left to do here", ""]
 		}
 		return false
 	}
@@ -257,10 +365,13 @@ npc.experiment = function ()
 }
 
 npc.handle = function () {
+	if(this.hit_points <= 0)
+		return false
 	if (this.current_room == here && ! this.won  )
 	{
 		if(! ( ! find_in_inventory(words.waiver)))
 		{
+			exp.npc = this
 			konsole.over_ride_func = this.experiment
 			this.start = central_time
 			this.won = true
@@ -268,8 +379,7 @@ npc.handle = function () {
 		else{
 			if(!this.asked_to_leave )
 				konsole.print("Researcher: You're not a test subject, leave now.")
-				konsole.print("You leave the room.")
-				change_map("hallway_east_12")()
+
 			this.asked_to_leave = true
 		}
 	} else{
@@ -283,17 +393,18 @@ npc.handle = function () {
 			exp.in_state = false
 		}else
 		{
-			this.asked_to_leave = false
 			if(this.current_room == here   )
 		{
-				konsole.print("Researcher: You've failed your research.")
-				konsole.print("You leave the room.")
-				change_map("hallway_east_12")()
+
 		}
+					this.asked_to_leave = false
+
 	}
 	}  
 }
 npc.die = function () {
+	konsole.print("You see that the scientist has a badge. You could pick it up.")
+	map[here].objects[map[here].objects.length]= [words.badge,"",true,true]
 	return true
 }
 npcs[2] = npc

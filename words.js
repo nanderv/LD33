@@ -39,6 +39,7 @@ words.bite = {type: verb, synonym: words.kill}
 words.strangle = {type: verb, synonym: words.kill}
 words.murder = {type: verb, synonym: words.kill}
 words.assassinate = {type: verb, synonym: words.kill}
+words.attack = {type: verb, synonym: words.kill}
 
 words.examine = {type:verb, method : "examine"}
 words.look = {type: verb, eat: "around", synonym: words.examine}
@@ -108,6 +109,8 @@ words.painting = {type: obj, is_a: words.movable}
 words.panel = {type:obj}
 words.plant = {type: obj}
 words.porkchops = {type: obj, is_a: words.food}
+words.lasagna = {type: obj, is_a: words.food}
+
 words.rubbish = {type: obj}
 words.safe = {type: obj, is_a: words.container}
 words.sink = {type: obj}
@@ -318,7 +321,7 @@ object_reaction.plant = {examine: ["It's a rather large philodendron. It looks l
 
 object_reaction.log = {examine: ["This is the experiment log of an electro-shock experiment. It appears to be quite brutal.", 
 		"I really don't like this."],
-	 pickup: ["You picked up a file.",
+	 pickup: ["You picked up a log. It seems to be about some research.",
 	 	 ""],
 	 read: ["Test subject 1 name:  *smudged out, unreadable* <br>Test subject 2 name: * smudge * ",
 	 "(pre-printed:) <br> Ojbective of experiment: to find out how likely people are to follow orders <br>" + 
@@ -330,6 +333,16 @@ object_reaction.log = {examine: ["This is the experiment log of an electro-shock
 object_reaction.sedative = {examine: ["", 
 		"I could use this to knock out a guard, without killing him."],
 	 pickup: ["You pick up a sedative injection.",
+	 	 ""],help: "Say sedate + person to sedate the person. It's also useable in combat. Sedation is only used once."}
+
+object_reaction.badge = {examine: ["", 
+		"I could use this pose as a scientist."],
+	 pickup: ["I could use this pose as a scientist",
+	 	 ""]}
+
+ object_reaction.lasagna = {examine: ["", 
+		"I love lasagna."],
+	 pickup: ["#",
 	 	 ""]}
 
 

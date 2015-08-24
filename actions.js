@@ -13,11 +13,17 @@ actions.kill = function(tok)
 		konsole.print("If you want to kill, you'll need to specify who.")
 		return false
 	}
+
 	tok.npc.npc.in_combat = true
 	tok.npc.npc.sleeps = false
+	tok.npc.npc.won = false
 	dodge = false
 	konsole.over_ride_func = start_fight(tok.npc.npc)
+
+
 	konsole.think("Starting combat, type hit or dodge")
+	if(! ( ! find_in_inventory(words.sedative)))
+		konsole.think("You could also use sedative")
 	return true
 }
 
@@ -296,7 +302,7 @@ actions.help = function(tok)
 {
 	if(tok.person == undefined)
 		{
-		konsole.print("you're on your own, sorry.")
+		konsole.print("To get help, you must first help yourself.<br>			<br>			<i>Movement</i><br>			You can move in six directions: north, east, south, west, up, down. The options depend on the location, read the text carefully.<br>			Sometimes you need to explicitly say how you want to move.<br>			<br>			<i>Actions</i><br>			Here is an (incomplete) list of actions:<br>			- examine <br>			- open <br>			- attack<br>			- eat <br>			- pick up <br>			- stand <br>			- lie <br>			- sit <br>			<br>			<i>Different input</i><br>			Some sections of the game use different input. In these situations, input is explained on the spot.")		
 		return true
 	}
 	// there is a person given, trying to help person

@@ -19,7 +19,7 @@ map.to_13 ={enter: enterr , enter_again: enter_again,description : [descr,descr_
   *******************************************/
 
  dir = []
-dir[0]      = {to: "hallway_south_12", methods  : [words.walk],hidden : 1, direction: words.west, cond: []}
+dir[0]      = {to: "hallway_north_12", methods  : [words.walk],hidden : 1, direction: words.west, cond: []}
 // word, where, explained, visible
 objects = [[words.cabinet, "", false, true], [words.log, words.cabinet, false,false]]
 
@@ -52,9 +52,9 @@ map.room_experiment_client ={enter: enterr , enter_again: enter_again,descriptio
   *
   *******************************************/
 dir = []
-dir[0]      = {to: "hallway_east_12", methods  : [words.walk],hidden : 1, direction: words.south, cond: []}
-objects =[]
-var enterr  = "You enter a mess room. There's some food, and a locked personel cabinet." 
+dir[0]      = {to: "hallway_east_12", methods  : [words.walk],hidden : 1, direction: words.north, cond: []}
+objects =[[words.sedative,words.desk,false,false],[words.desk,"",false,true],[words.lasagna,"",false,true]]
+var enterr  = "You enter a mess room. There's some food and a desk. The researcher is also here." 
 var enter_again  = "You enter a mess room.." 
 var descr  = "" 
 var descr_t = ""
@@ -66,9 +66,9 @@ map.room_east_12 ={enter: enterr , enter_again: enter_again,description : [descr
   *
   *******************************************/
 dir = []
-dir[0]      = {to: "hallway_west_12", methods  : [words.walk],hidden : 1, direction: words.south, cond: []}
-objects =[[words.waiver, "", false, true],[words.sedative,words.desk,false,false],[words.desk,"",false,true]]
-var enterr  = "You enter a waiting room. It has waiver forms on the desk. There's a badge here. There's nobody here at the moment." 
+dir[0]      = {to: "hallway_west_12", methods  : [words.walk],hidden : 1, direction: words.north, cond: []}
+objects =[[words.waiver, "", false, true]]
+var enterr  = "You enter a waiting room. It has waiver forms on the desk. There's a filled in waiver here. There's nobody here at the moment." 
 var enter_again  = "You enter a waiting room." 
 var descr  = "There are some seats here, and there's a desk." 
 var descr_t = "I shouldn't stay here long; I shouldn't be here."
