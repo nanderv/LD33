@@ -9,6 +9,18 @@ function change_map(room)
     here = room
   }
 }
+function check_chute()
+{
+  if(find_in_inventory(words.parachute))
+  {
+    if(murderer)
+    {
+      change_map("death_escape_guilty")()
+    } else {
+      change_map("death_escape_innocent")()
+    }
+  }
+}
 /*******************************************
   * Hospital room, first room in game.
   *
@@ -36,7 +48,7 @@ map.room_west_14 = {enter: "You wake up, alone, in a dark room. <br / > You don'
   *******************************************/
 var time_reaction = []
 // time, text, reaction, function, used
-time_reaction[0] = [2, "The ground is still rapidly approaching", "",no_function,false]
+time_reaction[0] = [2, "The ground is still rapidly approaching", "",check_chute,false]
 time_reaction[1] = [4, "", "I don't think this is going to end well",no_function,false]
 time_reaction[2] = [6, "You are dead", "",no_function,false,change_map("death_jump")]
 map.window = {enter: "The ground is approaching you in an increasing pace." , enter_again: "This is really strange, why am I here again?", description : ["You are dead",""], directions: [], objects : [] , image: "", cond: {dead: 1}, action_reaction : {},time_reaction: time_reaction}

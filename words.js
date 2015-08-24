@@ -98,7 +98,7 @@ words.documents = {type: item}
 words.file = {type: item, is_a: words.readable}
 words.knife = {type:item}
 words.newspaper = {type:item, is_a: words.readable}
-words.parachute = {type: item, is_a: words.container}
+words.parachute = {type: item}
 words.pen = {type:item}
 
 words.toothbrush = {type: item, long_name : "dirty toothbrush"}
