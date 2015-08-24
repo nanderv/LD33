@@ -637,3 +637,6 @@ actions.enter_obj = function (tok) {
 		return false
 	}
 }
+actions.press = function (tok) {
+	return false
+}

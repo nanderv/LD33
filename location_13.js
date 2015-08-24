@@ -77,7 +77,7 @@ objects =[
 	[words.sedative, "", false, false,],
 	[words.stretcher, "", false, true]]
 
-descr = "This room contains a few odd stretchers and a cabinet."
+descr = "This room contains a few odd stretchers and a cabinet. There is a door to the south."
 
 map.room_northwest_13 = {
 	enter: descr, 
@@ -123,13 +123,17 @@ map.room_west_13 = {
 dir = []
 	dir[0] = {to: "hallway_north_13", methods  : [words.walk],hidden : 1, direction: words.north, cond: [condition_false("capture")]}
 
-objects =[]
+objects =[
+	[words.console, "", false, true],
+	[words.chair, "", false, true], 
+	[words.post, words.console, false, false],
+	[words.button, words.console, false, true]]
 
-descr = ""
+descr = "In the middle of the room, a large console has been placed against the wall. There is a chair in front of it. The exit is to the north."
 
 map.room_south_13 = {
-	enter: descr, 
-	thoughts: "", 
+	enter: "As you enter the room you face the back of a guard standing in front of a large console. The guard doesn't seem to have noticed you... yet.", 
+	thoughts: "I should handle this carefully.", 
 	enter_again: descr, 
 	description : [
 		descr, 

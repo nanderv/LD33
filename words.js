@@ -16,6 +16,7 @@ words.readable = {type: abstract}
 words.movable = {type: abstract}
 words.enterable = {type: abstract}
 words.evidence = {type: abstract} 
+words.pressable = {type: abstract}
 
 words.walk = {type:verb, eat : "to", method: "move"}
 words.move = {type: verb, method: "move_obj", synonym: words.walk}
@@ -68,6 +69,9 @@ words.eat = {type: verb, method: "eat"}
 
 words.enter = {type: verb, method: "enter_obj"}
 
+words.press = {type: verb, method: "press"}
+words.push = {type: verb, synonym: words.press}
+
 words.east = {type:direction}
 words.north = {type:direction}
 words.south = {type:direction}
@@ -92,6 +96,7 @@ words.bed = {type: obj, is_a: words.sittable}
 words.blackboard = {type: obj}
 words.bookcase = {type: obj}
 words.boxes = {type: obj, is_a: words.movable}
+words.button = {type: obj, is_a: words.pressable}
 words.buttons = {type:obj, synonym: words.panel}
 words.cabinet = {type: obj, is_a: words.container}
 words.filing = {type: obj, synonym: words.cabinet, eat: "cabinet"}
