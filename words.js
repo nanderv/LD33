@@ -47,6 +47,7 @@ words.help = {type: verb, method : "help"}
 words.assist = {type:verb, synonym: words.help, method: "assist"}
 
 words.stand = {type: verb, method: "stand", eat: "up"}
+words.get = {type: verb, synonym: words.stand}
 words.lie = {type: verb, method: "lie", eat: "down"}
 words.sit = {type: verb, eat: "down", method: "sit"}
 
@@ -117,6 +118,7 @@ words.parachute = {type: item}
 words.pen = {type:item}
 
 words.toothbrush = {type: item, long_name : "dirty toothbrush"}
+words.dirty = {type: item, synonym: words.toothbrush}
 words.towel = {type : item}
 
 words.key = {type: abstract}
