@@ -28,7 +28,6 @@ words.hit = {type: verb, synonym: words.kill}
 words.stab = {type: verb, synonym: words.kill}
 words.slash = {type: verb, synonym: words.kill}
 words.provoke = {type: verb, synonym: words.kill}
-words.push = {type: verb, synonym: words.kill}
 words.shove = {type: verb, synonym: words.kill}
 words.punch = {type: verb, synonym: words.kill}
 words.kick = {type: verb, synonym: words.kill}
@@ -47,7 +46,7 @@ words.help = {type: verb, method : "help"}
 words.assist = {type:verb, synonym: words.help, method: "assist"}
 
 words.stand = {type: verb, method: "stand", eat: "up"}
-words.get = {type: verb, synonym: words.stand}
+words.get = {type: verb, eat: "up", method: "pickup", synonym: words.stand}
 words.lie = {type: verb, method: "lie", eat: "down"}
 words.sit = {type: verb, eat: "down", method: "sit"}
 
@@ -221,7 +220,7 @@ object_reaction.drawer = {examine: ["A closed drawer.",
 		"I can't see into a closed drawer."],
 	 pickup: ["",
 	 	 "Am I a hacker??"]}
-object_reaction.newspaper = {examine: ["It's a newspaper dated Friday the 27th of June 1969.", 
+object_reaction.newspaper = {examine: ["It's a newspaper dated Friday the 20th of June 1969.", 
 		"At least I know the date now."],
 	 pickup: ["You pick up the newspaper.",
 	 	 ""],

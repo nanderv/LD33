@@ -118,7 +118,7 @@ dir = []
  dir[3]      = {to: "hallway_center_northwest_14", methods  : [words.walk],hidden : 1, direction: words.north, cond: [has_item(words.empty)]}
  objects =[]
 
- descr = "You are standing in a hallway running west to east. You see rooms to the north and south. To the east is and intersection. To the west is a locked door." 
+ descr = "You are standing in a hallway running west to east. You see rooms to the north and south. To the east is an intersection. To the west is a locked door." 
 
 map.hallway_centerwest_14 = {enter: descr , enter_again: descr, description : [descr, "I don't think I'm supposed to be here."], directions: dir, objects : objects , image: "", cond : {}, action_reaction : {}}
 
@@ -149,5 +149,5 @@ dir = []
  dir[3]      = {to: "hallway_east_14", methods  : [words.walk],hidden : 1, direction: words.east, cond: []}
  objects =[]
 
- descr = "You are standing in a hallway running west to east. You see rooms to the north and south. To the west is and intersection. To the east is a locked door."
+ descr = "You are standing in a hallway running west to east. You see rooms to the north and south. To the west is an intersection. To the east is a locked door."
 map.hallway_centereast_14 = {enter: descr , enter_again: descr, description : [descr, "I don't think I'm supposed to be here."], directions: dir, objects : objects , image: "", cond : {}, action_reaction : {}}
