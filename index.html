@@ -43,8 +43,8 @@ Boe
 
 <script>
 stop_time = true
-var
-
+dt = 1
+setInterval( function () {if(! stop_time) update_time() } , dt*1000 )
 script_list = ["words","world_events", "actions","base", "location_handler","npc","reactions", "location","location_rooms_12","location_hallway_12", "location_hallway_14", "location_center_14","end", "interpret", "tokenize", "real_time","console","location_hallway_13","location_13"]
 
  function load_js(src) {
@@ -66,7 +66,8 @@ script_list = ["words","world_events", "actions","base", "location_handler","npc
         setTimeout(function(){add_sc(b,i+1)},0)
       else
       {
-        setTimeout(function(){ enter(map[here]) }, 10);
+        setTimeout(function(){ enter(map[here]);   
+ }, 10);
       }
 
     }

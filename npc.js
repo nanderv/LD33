@@ -2,6 +2,68 @@ hit_points = 5
 max_points = 6
 dodging = false
 
+function start_fight (npc) {
+	return function  ()
+	{
+		var input = konsole.input_field.value
+		konsole.input_field.value = ""
+		if(input == "sedate" && ! ( ! find_in_inventory(words.sedative)))
+		{
+			for(var i = 0 ; i< inventory.length; i++)
+			{
+				if(inventory[i] == words.sedative)
+				{
+					npc.hit_points =-1
+					konsole.print("Sedated "+ npc.type)
+					konsole.print("Sedative lost")
+					npc.die()
+					konsole.over_ride_func = null
+					inventory.splice(i,1)
+
+					npcs.splice(npc.id,1)
+					return true
+				}
+			}
+			konsole.print("You don't have sedative")
+			return false
+		}
+		if(input == "dodge") 
+		{
+			dodge = true
+			konsole.print("Dodging next attack")
+			return true
+		} 
+		if(input == "hit")
+		{
+			if(! (!find_in_inventory(words.knife)))
+			{
+				npc.hit_points -= 4
+				konsole.print(npc.type + " hit with knife")
+
+			} else {
+			npc.hit_points --
+			konsole.print(npc.type + "  hit")
+
+			}
+			if(npc.hit_points <= 0)
+			{
+
+				konsole.print(npc.type + " is dead.")
+				murderer = 1
+				npc.die()
+				konsole.over_ride_func = null
+				npcs.splice(npc.id,1)
+			}
+			return true
+		}
+		konsole.print("Action failed")
+		return false
+
+	}
+}
+
+
+
 function get_npc(word)
 {
 	var result = null
@@ -55,9 +117,7 @@ npc.id = 0
 npc.react = function () {
 	return true
 }
-/*
-* floor 12 guard
-*/
+
 npc.handle = function()
 {
 	if(this.won )
@@ -122,7 +182,7 @@ npc.react = function () {
 }
 npc.handle = function()
 {
-	if(this.won )
+	if(this.won  || ! this.in_combat)
 		return true
 
 	if( central_time - start_time  > this.ticks * this.timeout)
@@ -145,7 +205,7 @@ npc.handle = function()
 			if(!dodge)
 			{
 				hit_points --
-		konsole.print("You've been hit by " + this.name)
+		konsole.print("You've been hit by " + this.type)
 		} else {
 						dodge = false
 
@@ -163,79 +223,21 @@ npc.die = function () {
 		return false
 	return true
 }
-npcs[1] = npc
+npcs[0] = npc
 
 
+/*
+* floor 12 guard
+*/
 
 
-
-
-function start_fight (npc) {
-	return function  ()
-	{
-		var input = konsole.input_field.value
-		konsole.input_field.value = ""
-		if(input == "sedate" && ! ( ! find_in_inventory(words.sedative)))
-		{
-			for(var i = 0 ; i< inventory.length; i++)
-			{
-				if(inventory[i] == words.sedative)
-				{
-					npc.hit_points =-1
-					konsole.print("Sedated "+ npc.type)
-					konsole.print("Sedative lost")
-					npc.die()
-					konsole.over_ride_func = null
-					inventory.splice(i,1)
-
-					npcs.splice(npc.id,1)
-					return true
-				}
-			}
-			konsole.print("You don't have sedative")
-			return false
-		}
-		if(input == "dodge") 
-		{
-			dodge = true
-			konsole.print("Dodging next attack")
-			return true
-		} 
-		if(input == "hit")
-		{
-			if(! (!find_in_inventory(words.knife)))
-			{
-				npc.hit_points -= 4
-				konsole.print(npc.type + " hit with knife")
-
-			} else {
-			npc.hit_points --
-			konsole.print(npc.type + "  hit")
-
-			}
-			if(npc.hit_points <= 0)
-			{
-
-				konsole.print(npc.type + " is dead.")
-				murderer = 1
-				npc.die()
-				konsole.over_ride_func = null
-				npcs.splice(npc.id,1)
-			}
-			return true
-		}
-		konsole.print("Action failed")
-		return false
-
-	}
-}
 
 
 
 
 npc.handle = function()
 {
-	if(this.won )
+	if(this.won  || ! this.in_combat)
 		return true
 
 	if( central_time - start_time  > this.ticks * this.timeout)
@@ -258,7 +260,7 @@ npc.handle = function()
 			if(!dodge)
 			{
 				hit_points --
-		konsole.print("You've been hit by " + this.name)
+		konsole.print("You've been hit by " + this.type)
 		} else {
 						dodge = false
 
@@ -274,7 +276,7 @@ npc.handle = function()
 npc.die = function () {
 	return true
 }
-npcs[0] = npc
+npcs[1] = npc
 
 /* 
 * Researcher
@@ -303,9 +305,10 @@ npc.type = "Researcher"
 npc.hit_points = 10
 npc.reply = "My name is Ludwig"
 npc.ticks = 0
-npc.timeout = 2
+npc.timeout = 3
+npc.expiriment_ran = false
 npc.current_room = "room_experiment_client"
-npc.sleeps = true
+npc.sleeps = false
 npc.in_combat = false
 npc.rooms = ["room_experiment_client"]
 npc.id = 0
@@ -365,16 +368,62 @@ npc.experiment = function ()
 }
 
 npc.handle = function () {
+	if(this.in_combat)
+	{
+		// ---------------
+
+
+	if(this.won )
+		return true
+
+	if( central_time - start_time  > this.ticks * this.timeout)
+	{
+		this.ticks += 1
+			if(hit_points <= 0)
+			{
+				konsole.print("The "+ this.type+ " manages to hit you unconscious.")
+				this.won = true
+				if(murderer)
+				{
+				change_map("death_killed_guilty")()
+				} else
+				{
+				change_map("death_killed_innocent")()
+				}
+			} else {
+		if(this.in_combat &&!this.sleeps)
+		{
+			if(!dodge)
+			{
+				hit_points --
+		konsole.print("You've been hit by " + this.type)
+		} else {
+						dodge = false
+
+			konsole.print("Attack dodged")	
+		}
+
+		}
+	}
+}
+	return true
+
+
+
+
+
+		// ----------------
+	}
 	if(this.hit_points <= 0)
 		return false
-	if (this.current_room == here && ! this.won  )
+	if (this.current_room == here && ! this.expiriment_ran  )
 	{
 		if(! ( ! find_in_inventory(words.waiver)))
 		{
 			exp.npc = this
 			konsole.over_ride_func = this.experiment
 			this.start = central_time
-			this.won = true
+			this.expiriment_ran = true
 		}
 		else{
 			if(!this.asked_to_leave )
@@ -409,3 +458,228 @@ npc.die = function () {
 }
 npcs[2] = npc
 
+/*
+* stalker
+*/
+
+
+npc = {}
+npc.talk = "Hello"
+npc.name = "Pipo"
+npc.won = false
+npc.type = "Guard"
+npc.hit_points = 30
+npc.reply = "My name is Pipo"
+npc.ticks = 0
+npc.timeout = 3
+npc.current_room = "hallway_north_13"
+npc.room_nr = 0
+npc.rooms = ["hallway_north_13", "hallway_center_13", "hallway_south_13", "hallway_center_13"]
+npc.sleeps = false
+npc.in_combat = false
+npc.id = 0
+npc.here = "NOWHERE"
+npc.show_next_to_here = true
+npc.show_approach = true
+npc.react = function () {
+	return true
+}
+
+npc.handle = function()
+{
+	if(this.won )
+		return true
+	if(this.in_combat){
+	if( central_time - start_time  > this.ticks * this.timeout)
+	{
+		this.ticks += 1
+			if(hit_points <= 0)
+			{
+				konsole.print("The"+ this.type+ " manages to hit you unconscious.")
+				this.won = true
+				if(murderer)
+				{
+				change_map("death_killed_guilty")()
+				} else
+				{
+				change_map("death_killed_innocent")()
+				}
+			} else {
+		if(this.in_combat &&!this.sleeps)
+		{
+			if(!dodge)
+			{
+				hit_points --
+		konsole.print("You've been hit by " + this.name)
+		} else {
+						dodge = false
+
+			konsole.print("Attack dodged")	
+		}
+
+		}
+	}
+	}
+	return true
+	} 
+	// roaming
+	if( central_time - start_time  > this.ticks * 8)
+	{
+		this.ticks += 1
+		this.here = null
+		this.show_approach = true
+
+		switch(this.room_nr)
+		{
+		case 0: if(here == "hallway_entrance_13") konsole.warn("Guard gone")
+				if(here == "room_northeast_13"  ) konsole.warn("Guard gone")
+				break;
+		case 1: if(here == "room_northwest_13") konsole.warn("Guard gone")
+				if(here == "hallway_north_13") konsole.warn("Guard gone")		
+				if(here == "room_east_13") konsole.warn("Guard gone")
+				break;
+		case 2: if(here == "room_west_13") konsole.warn("guard gone")		
+				if(here == "room_south_13") konsole.warn("guard gone") 
+				break;
+		case 3: if(here == "room_northwest_13") konsole.warn("guard gone")
+				if(here == "room_east_13") konsole.warn("guard gone")
+				if(here == "hallway_south_13") konsole.warn("guard gone")
+					break;
+		defaut: return false;
+		}
+
+
+
+		this.room_nr = (this.room_nr + 1) % this.rooms.length
+		this.current_room = this.rooms[this.room_nr]
+
+		
+
+	}
+	if(this.here != here)
+	{
+
+		switch(this.room_nr)
+		{
+		case 0: if(here == "hallway_entrance_13") konsole.warn("Guard to the East")
+				if(here == "hallway_center_13"  ) konsole.warn("Guard to the East")
+				if(here == "room_northeast_13"  ) konsole.warn("Guard to the West")
+				break;
+		case 1: if(here == "room_northwest_13") konsole.warn("Guard to the South")
+				if(here == "hallway_north_13") konsole.warn("Guard to the South")		
+				if(here == "room_east_13") konsole.warn("Guard to the North")
+				if(here == "hallway_south_13") konsole.warn("Guard to the North")
+				break;
+		case 2: if(here == "hallway_center_13") konsole.warn("Guard to the West")
+				if(here == "room_west_13") konsole.warn("guard to the East")		
+				if(here == "room_south_13") konsole.warn("guard to the North") 
+				break;
+		case 3: if(here == "room_northwest_13") konsole.warn("guard to the South")
+				if(here == "hallway_north_13") konsole.warn("guard to the South")		
+				if(here == "room_east_13") konsole.warn("guard to the North")
+				if(here == "hallway_south_13") konsole.warn("guard to the North")
+					break;
+		defaut: return false;
+		}
+		this.here = here
+	}
+	if(this.show_approach && this.rooms[(this.room_nr + 1) % this.rooms.length] == here)
+	{
+		konsole.print("Guard approaching")
+		this.show_approach = false
+	}
+	if(this.current_room == here)
+	{
+		konsole.print("The guard found you. He attacks!")
+	this.in_combat = true
+	this.sleeps = false
+	this.won = false
+	dodge = false
+	konsole.over_ride_func = start_fight(this)
+
+
+	konsole.think("Starting combat, type hit or dodge")
+	if(! ( ! find_in_inventory(words.sedative)))
+		konsole.think("You could also use sedative")
+	return true
+	}
+}
+npc.die = function () {
+	if(this.hit_points <= 0)
+		return false
+	return true
+}
+
+
+
+
+
+
+npcs[3] = npc
+
+/* 
+* final guard
+*/
+
+npc = {}
+npc.talk = "Hello"
+npc.name = "Hank"
+npc.won = false
+npc.type = "Guard"
+npc.hit_points = 30
+npc.reply = "My name is Hank"
+npc.ticks = 0
+npc.timeout = 3
+npc.current_room = "room_south_13"
+npc.sleeps = true
+npc.in_combat = false
+npc.id = 0
+npc.react = function () {
+	return true
+}
+
+npc.handle = function()
+{
+	if(this.won  || ! this.in_combat)
+		return true
+
+	if( central_time - start_time  > this.ticks * this.timeout)
+	{
+		this.ticks += 1
+			if(hit_points <= 0)
+			{
+				konsole.print("The "+ this.type+ " manages to hit you unconscious.")
+				this.won = true
+				if(murderer)
+				{
+				change_map("death_killed_guilty")()
+				} else
+				{
+				change_map("death_killed_innocent")()
+				}
+			} else {
+		if(this.in_combat &&!this.sleeps)
+		{
+			if(!dodge)
+			{
+				hit_points --
+		konsole.print("You've been hit by " + this.name)
+		} else {
+						dodge = false
+
+			konsole.print("Attack dodged")	
+		}
+
+		}
+	}
+}
+	return true
+}
+npc.die = function () {
+	if(this.hit_points <= 0)
+		return false
+	return true
+}
+
+
+npcs[4] = npc

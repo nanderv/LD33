@@ -394,3 +394,7 @@ object_reaction.button = {examine: ["It's an ominous large red button.",
 
 
 
+object_reaction.waiver = {examine: ["A waiver that acknowledges that a subject willingly participates in a research. .", 
+		"It's not very specific"],
+	 pickup: ["",
+	 	 "You pick up the waiver."]}

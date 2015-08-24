@@ -21,6 +21,15 @@ konsole.think = function(text)
 	konsole.out.scrollTop = konsole.out.scrollHeight;	
     konsole.output = true
 }
+
+konsole.warn = function(text)
+{
+	text = capitalizeFirstLetter(text)
+	konsole.out.innerHTML = konsole.out.innerHTML + "<br><b><i>" + text + "</i></b>"
+	konsole.out.scrollTop = konsole.out.scrollHeight;	
+    konsole.output = true
+}
+
 konsole.print = function(text)
 {	
 	text = capitalizeFirstLetter(text)
