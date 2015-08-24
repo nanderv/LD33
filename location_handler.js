@@ -92,6 +92,7 @@ function enter(loc)
 		if(d[2])
 			konsole.print( "You see a "+ d[0].text)
 	}
+	stop_time = false
 }
 function no_function ()
 {
