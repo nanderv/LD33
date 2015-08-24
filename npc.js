@@ -183,7 +183,7 @@ exp.states[0] = ["Researcher: your task is to press the button every time the ot
 exp.states[1] = ["Researcher: What is the capital of Denmark? <br />Subject: Helsinki. <br / > Researcher: Wrong. Press the button. ", "", ["press", "push"],["no","refuse"]]
 exp.states[2] = ["<i>The subject twitches and screems softly. </i> <br/>Researcher: Next question: what is 6 * 9? <br />Subject: 42. <br / > Researcher: Wrong again. Press the button. ", "", ["press", "push"],["no","refuse"]]
 exp.states[3] = ["<i>The subject twitches and the screams intensify. </i> <br/>Researcher: Next question: how many sides does a triangle have? <br />Subject: 4. <br / > Researcher: Wrong again. Press the button. ", "", ["press", "push"],["no","refuse"]]
-exp.states[4] = ["<i>Smokes comes from the electrodes. The subject looks like he's in agony. </i> <br/>Researcher: Next question: In what year was the steam train invented?? <br />Subject: 1824. <br / > Researcher: Wrong again, it was 1804. Press the button. ", "", ["press", "push"],["no","refuse"]]
+exp.states[4] = ["<i>Smoke comes from the electrodes. The subject looks like he's in agony. </i> <br/>Researcher: Next question: In what year was the steam train invented?? <br />Subject: 1824. <br / > Researcher: Wrong again, it was 1804. Press the button. ", "", ["press", "push"],["no","refuse"]]
 
 exp.succesful = ["<i>The subject dies.</i><br>Researcher: excelent, the experiment was succesful.","I don't feel right about this."]
 exp.failed = ["Researcher: experiment failed.. Leave the room now.",""]
@@ -231,6 +231,9 @@ npc.experiment = function ()
 					konsole.think(exp.succesful[1])	
 				murderer = 1
 				konsole.over_ride_func = null
+      map.room_experiment_client.enter =  "You enter a room, seperated in two sides by a wall with a window in it. An experiment was executed here. On the other side is a test subject in a chair. The test subject is dead.<br/><i>I killed him.</i>" 
+      map.room_experiment_business.enter =  "You enter a room, seperated in two sides by a wall with a window in it. On your side  is a dead test subject in a chair. <b>You</b> killed the test subject." 
+
 			}
 			return true
 		}
