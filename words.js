@@ -331,10 +331,10 @@ object_reaction.log = {examine: ["This is the experiment log of an electro-shock
 	 "Experiment ended after subject 1 died." ]}
 
 
-object_reaction.sedative = {examine: ["", 
+object_reaction.sedative = {examine: ["A hypodermic needle filled with midazolam.", 
 		"I could use this to knock out a guard, without killing him."],
 	 pickup: ["You pick up a sedative injection.",
-	 	 ""],help: "Say sedate + person to sedate the person. It's also useable in combat. Sedation is only used once."}
+	 	 ""],help: "Say sedate + person to sedate the person. It's also useable in combat. A sedative can only be used once."}
 object_reaction.badge = {examine: ["", 
 		"I could use this pose as a scientist."],
 	 pickup: ["I could use this pose as a scientist",
