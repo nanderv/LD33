@@ -54,10 +54,11 @@ map.room_experiment_client ={enter: enterr , enter_again: enter_again,descriptio
   *******************************************/
 dir = []
 dir[0]      = {to: "hallway_east_12", methods  : [words.walk],hidden : 1, direction: words.north, cond: []}
-objects =[[words.sedative,words.drawer,false,false],[words.drawer, words.desk,false,false],[words.desk,"",false,true],[words.lasagna,"",false,true]]
+objects =[[words.sedative,words.drawer,false,false],[words.drawer, "",false,true],[words.desk,"",false,true],[words.lasagna,"",false,true]]
+
 var enterr  = "You enter a mess room. There's some food and a desk. The researcher is also here." 
 var enter_again  = "You enter a mess room.." 
-var descr  = "" 
+var descr  = "This is a mess room. There's some food and a desk. The researcher is also here." 
 var descr_t = ""
 map.room_east_12 ={enter: enterr , enter_again: enter_again,description : [descr,descr_t], directions: dir, objects : objects , image: "", cond : {}, action_reaction : {}}
 
@@ -68,7 +69,7 @@ map.room_east_12 ={enter: enterr , enter_again: enter_again,description : [descr
   *******************************************/
 dir = []
 dir[0]      = {to: "hallway_west_12", methods  : [words.walk],hidden : 1, direction: words.north, cond: []}
-objects =[[words.waiver, "", false, true]]
+objects =[[words.waiver, "", false, true],[words.desk, "", false, true]]
 var enterr  = "You enter a waiting room. It has waiver forms on the desk. There's a filled in waiver here. There's nobody here at the moment." 
 var enter_again  = "You enter a waiting room." 
 var descr  = "There are some seats here, and there's a desk." 
