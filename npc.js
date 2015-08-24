@@ -242,7 +242,7 @@ exp.in_state = true
 exp.state  = 0
 exp.states = []
 exp.started = false
-exp.states[0] = ["Researcher: your task is to press the button every time the other person gives a wrong answer. The other person gets an electric shock when you press the button. Every time you press the button, the voltage increases. If you wish to refuse at any time, say refuse. Are you ready to start?","", ["yes", "start"],["no","refuse"]]
+exp.states[0] = ["Researcher: your task is to press the button every time the other person gives a wrong answer. The other person gets an electric shock when you press the button. Every time you press the button, the voltage increases. If you wish to refuse at any time, say refuse. Are you ready to start?","", ["yes", "start"],[]]
 exp.states[1] = ["Researcher: What is the capital of Denmark? <br />Subject: Helsinki. <br / > Researcher: Wrong. Press the button. ", "", ["press", "push"],["no","refuse"]]
 exp.states[2] = ["<i>The subject twitches and screems softly. </i> <br/>Researcher: Next question: what is 6 * 9? <br />Subject: 42. <br / > Researcher: Wrong again. Press the button. ", "", ["press", "push"],["no","refuse"]]
 exp.states[3] = ["<i>The subject twitches and the screams intensify. </i> <br/>Researcher: Next question: how many sides does a triangle have? <br />Subject: 4. <br / > Researcher: Wrong again. Press the button. ", "", ["press", "push"],["no","refuse"]]
@@ -316,8 +316,9 @@ npc.experiment = function ()
 				exp.npc.rooms=[exp.npc.current_room]
 				map.room_experiment_client.enter_again = "Experiment location: nothing to do here"
 				map.room_experiment_client.description = ["An experiment was to take place here. It seems to have failed. Nothing left to do here", ""]
+				return false
+
 		}
-		return false
 	}
 	konsole.print("You cannot do that.")
 	return false
@@ -685,7 +686,7 @@ npc.handle = function()
 		{
 			if(!dodge)
 			{
-				hit_points --
+				hit_points -= 2
 		konsole.print("You've been hit by " + this.name)
 		} else {
 						dodge = false

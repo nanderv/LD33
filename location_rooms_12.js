@@ -33,13 +33,20 @@ map.room_experiment_business ={enter: enterr , enter_again: enter_again,descript
 
 
 
-
+function check_lab()
+{
+  if(get_npc("Researcher"))
+    get_npc("Researcher").asked_to_leave =false
+}
 /*******************************************
   * Hospital hallway 12, experiment_client
   *******************************************/
 dir = []
 dir[0]      = {to: "hallway_east_12", methods  : [words.walk],hidden : 1, direction: words.south, cond: []}
 objects =[]
+var time_reaction = []
+// time, text, reaction, function, used
+time_reaction[0] = [2, "", "",check_lab,false]
 var enterr  = "You enter a room, seperated in two sides by a wall with a window in it. On your side is a researcher, on the other side is a test subject in a chair. The test subject appears to have electrodes on arms." 
 var enter_again  = "You enter a laboratory." 
 var descr  = "It seems a bad experiment is done here." 
@@ -69,7 +76,8 @@ map.room_east_12 ={enter: enterr , enter_again: enter_again,description : [descr
   *******************************************/
 dir = []
 dir[0]      = {to: "hallway_west_12", methods  : [words.walk],hidden : 1, direction: words.north, cond: []}
-objects =[[words.waiver, "", false, true],[words.desk, "", false, true]]
+objects =[[words.waiver, "", false, true],[words.desk, "", false, true],[words.drawer, "", false, true]]
+
 var enterr  = "You enter a waiting room. It has waiver forms on the desk. There's a filled in waiver here. There's nobody here at the moment." 
 var enter_again  = "You enter a waiting room." 
 var descr  = "There are some seats here, and there's a desk." 

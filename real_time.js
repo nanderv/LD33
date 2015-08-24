@@ -50,7 +50,8 @@
  {
  	konsole.inventory.innerHTML = ""
  	for(var i = 0; i< inventory.length;i++)
- 		konsole.inventory.innerHTML += inventory[i].text+"<br>"
+ 		 konsole.inventory.innerHTML += "<img src='resources/images/" + inventory[i].text + 
+ 			".png' width=32 height=32>"+inventory[i].text+"<br>"
  }
  function handle_npc()
  {

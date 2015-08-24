@@ -78,6 +78,6 @@ dir = []
  dir[1]      = {to: "hallway_south_12", methods  : [words.walk],hidden : 1, direction: words.east, cond: []}
  dir[0]      = {to: "room_west_12", methods  : [words.walk],hidden : 1, direction: words.south, cond: []}
  objects =[]
- descr = "The hallway ends here. Return by going east, or enter rooms to your south and north."
+ descr = "The hallway ends here. Return by going east, or enter a room to your south."
 
 map.hallway_west_12 ={enter: descr , enter_again: descr,description : [descr,""], directions: dir, objects : objects , image: "", cond : {}, action_reaction : {}}
