@@ -387,8 +387,12 @@ actions.eat = function (tok) {
 
 		if(tok.object.is_a == words.food)
 		{
-			object_reaction.teeth.examine = ["", "My teeth are dirty from the porkchops I ate."]
+			object_reaction.teeth.examine = ["", "My teeth are dirty from the food I ate."]
+			konsole.print("You eat the " + get_text(tok.object) + ".")
 			konsole.think("I feel refreshed.")
+			if (tok.object == words.apple) {
+				map[here].descr = "This is a lounge, is contains several chairs and table. There is a door to the north."
+			}
 			return true
 		} else {
 			konsole.think("I can't eat the " + get_text(tok.object) +".")
@@ -513,7 +517,7 @@ actions.open = function (tok) {
 			return false
 		}
 
-		konsole.print("You open the " + get_text(tok.object))
+		konsole.print("You open the " + get_text(tok.object) + ".")
 		return true
 	} else {
 		konsole.think("I cannot open this.")
@@ -619,7 +623,7 @@ actions.enter_obj = function (tok) {
 			konsole.print("You enter the " + get_text(tok.object) + ".")
 			konsole.print("You crawl through the air duct and end up in another room.")
 			if (here == "room_northeast_13") {
-				here = "room_southwest_13"
+				here = "room_west_13"
 			} else {
 				here = "room_northeast_13"
 			}

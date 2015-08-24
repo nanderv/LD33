@@ -10,7 +10,7 @@ dir = []
 
 objects = []
 
-descr = "This hallway is in the northwest corner of this floor. To the west are the stairs down. To the south is a hallway. To the east is room."
+descr = "This hallway is in the northwest corner of this floor. To the west are the stairs down. To the south is a hallway with a corner to the west. To the east is room."
 
 map.hallway_north_13 = {
 	enter: "As you enter the 13th floor, you walk east until to reach a corner to the south. You hear footsteps coming from the corridor. There is a door to your east.", 
@@ -39,7 +39,7 @@ objects = []
 descr = "This hallway is in the center of this floor. To the east and west are hallways going around corners to the north and south, respectively. To the north and south are rooms."
 
 map.hallway_center_13 = {
-	enter: "As you walk south, you go around a corner to the west. " + descr, 
+	enter: descr, 
 	thoughts: "", 
 	enter_again: descr, 
 	description : [
@@ -56,8 +56,8 @@ map.hallway_center_13 = {
   *******************************************/
 dir = []
 	dir[0] = {to: "hallway_center_13", methods  : [words.walk],hidden : 1, direction: words.north, cond: []}
-	dir[1] = {to: "room_west_13", methods  : [words.walk],hidden : 1, direction: words.south, cond: []}
-	dir[2] = {to: "room_south_13", methods  : [words.walk],hidden : 1, direction: words.west, cond: []}
+	dir[1] = {to: "room_west_13", methods  : [words.walk],hidden : 1, direction: words.west, cond: []}
+	dir[2] = {to: "room_south_13", methods  : [words.walk],hidden : 1, direction: words.south, cond: []}
 
 objects = []
 
@@ -65,7 +65,7 @@ descr = "This hallway is in the southeast corner of this floor. To the west is a
 
 map.hallway_south_13 = {
 	enter: descr, 
-	thoughts: "As you walk west, you go around a corner to the south. " + descr, 
+	thoughts: "", 
 	enter_again: descr, 
 	description : [
 		descr, 

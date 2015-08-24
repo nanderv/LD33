@@ -86,19 +86,18 @@ words.in = {type: nil}
 words.on = {type: nil}
 words.at = {type: nil}
 
-words.airduct = {type: obj, long_name: "air duct", is_a: words.enterable}
-words.air = {type: obj, eat: "duct", long_name:"air duct", synonym: words.airduct}
+words.airduct = {type: obj, long_name: "airduct", is_a: words.enterable}
+words.apple = {type: obj, is_a: words.food}
 words.bed = {type: obj, is_a: words.sittable}
 words.blackboard = {type: obj}
 words.bookcase = {type: obj}
 words.boxes = {type: obj, is_a: words.movable}
 words.buttons = {type:obj, synonym: words.panel}
-
 words.cabinet = {type: obj, is_a: words.container}
-
 words.filing = {type: obj, synonym: words.cabinet, eat: "cabinet"}
 words.chair = {type: obj, is_a: words.sittable}
 words.clock = {type: obj}
+words.crates = {type: obj}
 words.countertop = {type: obj}
 words.dial = {type: obj}
 words.desk = {type:obj}
@@ -114,6 +113,8 @@ words.lasagna = {type: obj, is_a: words.food}
 words.rubbish = {type: obj}
 words.safe = {type: obj, is_a: words.container}
 words.sink = {type: obj}
+words.stretcher = {type: obj}
+words.stretchers = {type: obj, synonym: words.stretcher}
 words.stove = {type: obj}
 words.table = {type: obj}
 words.teeth = {type: obj}
@@ -126,7 +127,7 @@ words.equipment = {type: obj, synonym: words.medical}
 
 words.book = {type: item, is_a: words.readable}
 words.coin = {type: item}
-words.documents = {type: item}
+words.document = {type: item, is_a: words.evidence}
 words.file = {type: item, is_a: words.readable}
 words.knife = {type:item}
 words.sedative = {type:item}
@@ -292,7 +293,7 @@ object_reaction.boxes = {examine: ["A pile of boxes filled with broken office su
 		"I feel a strange air current here."],
 	 pickup: ["",
 	 	 "Am I a hacker??"]}
-object_reaction.airduct = {examine: ["An air duct used for ventilation.", 
+object_reaction.airduct = {examine: ["An airduct used for ventilation.", 
 		""],
 	 pickup: ["",
 	 	 "Am I a hacker??"]}
@@ -318,17 +319,17 @@ object_reaction.plant = {examine: ["It's a rather large philodendron. It looks l
 		"Maybe it needs some sunlight?"],
 	 pickup: ["",
 	 	 "Am I a hacker??"]}
-
 object_reaction.log = {examine: ["This is the experiment log of an electro-shock experiment. It appears to be quite brutal.", 
 		"I really don't like this."],
 	 pickup: ["You picked up a log. It seems to be about some research.",
 	 	 ""],
-	 read: ["Test subject 1 name:  *smudged out, unreadable* <br>Test subject 2 name: * smudge * ",
+	 read: ["Test subject 1 name:  *smudged out, unreadable* <br>Test subject 2 name: *smudge* ",
 	 "(pre-printed:) <br> Ojbective of experiment: to find out how likely people are to follow orders <br>" + 
 	 "Method: Researcher asks questions to subject 1. If subject 1 gives a wrong answer, subject 2 has to press a button. The button gives an electrical shock to subject 1. The electrical shock increases every time the button is pressed. <br>" + 
-	 "(written: )<br> Subject 1 wasn't that smart, he asked most questions wrongly. Subject 2 had no problems with applying the shocks to subject 1.<br>" + 
+	 "(written: )<br> Subject 1 wasn't that smart, he answered most questions wrongly. Subject 2 had no problems with applying the shocks to subject 1.<br>" + 
 	 "Even as subject 1 started to scream in true agony, subject 2 continued with their assignment.<br>" + 
 	 "Experiment ended after subject 1 died." ]}
+<<<<<<< HEAD
 
 object_reaction.sedative = {examine: ["", 
 		"I could use this to knock out a guard, without killing him."],
@@ -348,5 +349,29 @@ object_reaction.badge = {examine: ["",
 
 
 
+=======
+object_reaction.document = {examine: ["A document describing a gruesome experiment.", 
+		""],
+	 pickup: ["You picked up the document.",
+	 	 "Do I even want to read this?"],
+	 read: ["This document describes an experiment in which attempts to change the nature of a person through erasing their memories and suggesting a certain past.", 
+	 	 "It specifically describes the attempts to change a regular person into a cold-blooded killer, stating it could have useful military applications. The document describes a detailed experimental setup and extensive log. It appears that subjects are reusable through repeatedly erasing their memories, though most subject seem to expire after about ten resets.<br/>The latest subject in the log is way too familiar."]}
+object_reaction.apple = {examine: ["It's a red apple. It is probably edible.", 
+		"Maybe it needs some sunlight?"],
+	 pickup: ["",
+	 	 "Am I a hacker??"]}
+object_reaction.crates = {examine: ["Metal crates, sealed shut. Marked with a biohazard symbol.", 
+		""],
+	 pickup: ["",
+	 	 "Am I a hacker??"]}
+object_reaction.cabinet = {examine: ["A simple wooden cabinet. Can be opened.", 
+		""],
+	 pickup: ["",
+	 	 "Am I a hacker??"]}
+object_reaction.stretcher = {examine: ["A sturdy metal stretcher with thick straps to completely restrain someone.", 
+		""],
+	 pickup: ["",
+	 	 "Am I a hacker??"]}
+>>>>>>> 5c26e3e9b38ffc780c24fb2571b1fe1e5090de9b
 
 
