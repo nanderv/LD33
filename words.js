@@ -24,9 +24,23 @@ words.go = {type:verb, synonym: words.walk, method: "move"}
 words.jump = {type:verb, method: "move"}
 
 words.kill = {type:verb, method: "kill"}
-
+words.hit = {type: verb, synonym: words.kill}
+words.stab = {type: verb, synonym: words.kill}
+words.slash = {type: verb, synonym: words.kill}
+words.provoke = {type: verb, synonym: words.kill}
+words.push = {type: verb, synonym: words.kill}
+words.shove = {type: verb, synonym: words.kill}
+words.punch = {type: verb, synonym: words.kill}
+words.kick = {type: verb, synonym: words.kill}
+words.headbutt = {type: verb, synonym: words.kill}
+words.slap = {type: verb, synonym: words.kill}
+words.bite = {type: verb, synonym: words.kill}
+words.strangle = {type: verb, synonym: words.kill}
+words.murder = {type: verb, synonym: words.kill}
+words.assassinate = {type: verb, synonym: words.kill}
 
 words.examine = {type:verb, method : "examine"}
+words.look = {type: verb, eat: "around", synonym: words.examine}
 words.read = {type:verb, method: "read"}
 
 words.help = {type: verb, method : "help"}
@@ -36,7 +50,7 @@ words.stand = {type: verb, method: "stand", eat: "up"}
 words.lie = {type: verb, method: "lie", eat: "down"}
 words.sit = {type: verb, eat: "down", method: "sit"}
 
-words.grab = {type:verb, method: "pickup"}
+words.grab = {type: verb, method: "pickup"}
 words.pick = {type: verb, eat: "up", synonym : words.grab}
 words.take = {type: verb, synonym: words.grab}
 
@@ -65,6 +79,7 @@ words.room = {type: here}
 words.from = {type: nil}
 words.in = {type: nil}
 words.on = {type: nil}
+words.at = {type: nil}
 
 words.bed = {type: obj, is_a: words.sittable}
 words.blackboard = {type: obj}
@@ -107,7 +122,8 @@ words.towel = {type : item}
 words.key = {type: abstract}
 words.copper = {type : item, eat: "key", long_name : "copper key", is_a : words.key}
 words.small = {type: item, eat: "key", long_name: "small key", is_a: words.key}
-words.master = {type: item, eat: "key", long_name: "master key", is_a: words.key} // no description
+words.master = {type: item, eat: "key", long_name: "master key", is_a: words.key} // no description, used for specific condition failed message
+words.empty = {type: item} // no description, used for specific condition failed message
 words.badge = {type: item, long_name : "Employee badge"}
 // Secretary
 words.secretary = {type: person}

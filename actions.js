@@ -466,6 +466,9 @@ actions.open = function (tok) {
 				if(code_pointer == code.length)
 				{
 					konsole.print("The lock unlocks itself")
+					konsole.print("You find a parachute in the safe.")
+					konsole.think("Why would someone store a parachute here?")
+					reactions.makevisible(words.parachute)()
 					object_reaction.safe.examine=["","I still don't understand how I managed to unlock it."]
 					map[here].cond["closed"] = 0
 					konsole.over_ride_func = null

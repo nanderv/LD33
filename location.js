@@ -35,8 +35,8 @@ action_reaction = {}
 action_reaction.stand = ["Even though the room is dimly lit, you still see a window on the west, a door on the east, your bed and a sink.", "Damm, I have a headache.", function() { code[code.length] =  Math.floor((Math.random() * 98) + 1); }]
 map.room_west_14 = {enter: "You wake up, alone, in a dark room. <br / > You don't remember this place at all.", 
    thoughts : "Where am I?",
-   enter_again: "You are back at the hospital room where you woke up",
-   description : ["It's a hospital room",""],
+   enter_again: "You are back at the hospital room where you woke up.",
+   description : ["It's a hospital room with a window in the west wall, a door on the east, a bed, and a sink.",""],
    directions: dir,
    objects: objects,
    cond : {"lying down":1, "sitting":0},
@@ -127,12 +127,12 @@ dir = []
 dir[0]      = {to: "hallway_northeast_14", methods  : [words.walk], direction: words.south, hidden: 1, cond: []}
 
 // word, where, explained, visible
-objects = [[words.copper, "", false, true]]
+objects = [[words.copper, "", false, true]/* TODO examine monitors and stuff*/]
 action_reaction = {}
 map.room_northeast_14 = {enter: "This room appears to be a security room. There is a desk with 6 monitors on it. A guard is supposed to look at them, but he's sleeping. In his right hand he has a key.", 
    thoughts : "I should get the key. This guard doesn't look that strong.",
-   enter_again: "Welcome to the guardroom.",
-   description : ["", ""],
+   enter_again: "You are back in the guard room.",
+   description : ["This is the guard room. There is a desk with 6 monitors on it.", ""],
    directions: dir,
    objects: objects,
    cond : {},
