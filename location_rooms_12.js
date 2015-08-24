@@ -21,13 +21,14 @@ map.to_13 ={enter: enterr , enter_again: enter_again,description : [descr,descr_
  dir = []
 dir[0]      = {to: "hallway_north_12", methods  : [words.walk],hidden : 1, direction: words.west, cond: []}
 // word, where, explained, visible
-objects = [[words.cabinet, "", false, true], [words.log, words.cabinet, false,false]]
-
-var enterr  = "You enter a room, seperated in two sides by a wall with a window in it. On  your side is a test subject in a chair, on the other side is a researcher. The test subject appears to have electrodes on arms. There's a filing cabinet in a corner." 
+objects = [[words.cabinet, "", false, true], [words.log, "", false,false]]
+action_reaction = {}
+action_reaction.open = ["You find a log.","",reactions.makevisible(words.log)]
+var enterr  = "You enter a room, seperated in two sides by a wall with a window in it. On  your side is a test subject in a chair, on the other side is a researcher. The test subject appears to have electrodes on arms. There's a cabinet in a corner." 
 var enter_again  = "You enter the business side of the laboratory." 
 var descr  = "It seems a bad experiment is done here." 
 var descr_t = ""
-map.room_experiment_business ={enter: enterr , enter_again: enter_again,description : [descr,descr_t], directions: dir, objects : objects , image: "", cond : {}, action_reaction : {}}
+map.room_experiment_business ={enter: enterr , enter_again: enter_again,description : [descr,descr_t], directions: dir, objects : objects , image: "", cond : { closed:1}, action_reaction : action_reaction}
 
 
 

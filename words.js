@@ -17,12 +17,15 @@ words.movable = {type: abstract}
 words.enterable = {type: abstract}
 words.evidence = {type: abstract} 
 words.pressable = {type: abstract}
+words.credits = {type:verb, method: "credits"}
+words.license = {type:verb, method: "license"}
 
 words.walk = {type:verb, eat : "to", method: "move"}
 words.move = {type: verb, method: "move_obj", synonym: words.walk}
 words.stumble = {type:verb, synonym: words.walk}
 words.run = {type:verb, synonym: words.walk}
 words.head = {type:verb, synonym: words.walk}
+
 words.go = {type:verb, synonym: words.walk, method: "move"}
 words.jump = {type:verb, method: "move"}
 
@@ -101,7 +104,6 @@ words.button = {type: obj, is_a: words.pressable}
 words.buttons = {type:obj, synonym: words.panel, long_name:"big red button"}
 words.cabinet = {type: obj, is_a: words.container}
 words.console = {type: obj}
-words.filing = {type: obj, synonym: words.cabinet, eat: "cabinet"}
 words.chair = {type: obj, is_a: words.sittable}
 words.clock = {type: obj}
 words.crates = {type: obj}

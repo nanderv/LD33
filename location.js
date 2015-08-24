@@ -1,6 +1,6 @@
 map = {}
 
-here = "hallway_entrance_13"
+here = "room_west_14"
 
 
 

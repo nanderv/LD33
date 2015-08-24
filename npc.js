@@ -683,3 +683,70 @@ npc.die = function () {
 
 
 npcs[4] = npc
+
+/* 
+* very final guard
+*/
+
+npc = {}
+npc.talk = "Hello"
+npc.name = "Hank"
+npc.won = false
+npc.type = "Guard"
+npc.hit_points = 9001
+npc.reply = "My name is Hank"
+npc.ticks = 0
+npc.timeout = 2
+npc.current_room = "room_south_13"
+npc.sleeps = true
+npc.in_combat = false
+npc.id = 0
+npc.react = function () {
+	return true
+}
+
+npc.handle = function()
+{
+	if(this.won  || ! this.in_combat)
+		return true
+
+	if( central_time - start_time  > this.ticks * this.timeout)
+	{
+		this.ticks += 1
+			if(hit_points <= 0)
+			{
+				konsole.print("The "+ this.type+ " manages to hit you unconscious.")
+				this.won = true
+				if(murderer)
+				{
+				change_map("death_killed_guilty")()
+				} else
+				{
+				change_map("death_killed_innocent")()
+				}
+			} else {
+		if(this.in_combat &&!this.sleeps)
+		{
+			if(!dodge)
+			{
+				hit_points --
+		konsole.print("You've been hit by " + this.name)
+		} else {
+						dodge = false
+
+			konsole.print("Attack dodged")	
+		}
+
+		}
+	}
+}
+	return true
+}
+npc.die = function () {
+	if(this.hit_points <= 0)
+		return false
+	return true
+}
+
+
+npcs[5] = npc

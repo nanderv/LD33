@@ -1,6 +1,7 @@
 konsole = {}
 konsole.out = document.getElementById("out");
 konsole.input_field = document.getElementById("in");
+konsole.inventory = document.getElementById("inv");
 konsole.history = []
 konsole.back = 0
 konsole.over_ride_func = null
