@@ -65,4 +65,3 @@
  	handle_world_events()
  	handle_npc()
  }
-  setInterval( update_time, dt*1000 );
