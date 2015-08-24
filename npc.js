@@ -471,14 +471,14 @@ npc.type = "Guard"
 npc.hit_points = 30
 npc.reply = "My name is Pipo"
 npc.ticks = 0
-npc.timeout = 1
+npc.timeout = 3
 npc.current_room = "hallway_north_13"
 npc.room_nr = 0
 npc.rooms = ["hallway_north_13", "hallway_center_13", "hallway_south_13", "hallway_center_13"]
 npc.sleeps = false
 npc.in_combat = false
 npc.id = 0
-npc.here = null
+npc.here = "NOWHERE"
 npc.show_next_to_here = true
 npc.show_approach = true
 npc.react = function () {
@@ -523,36 +523,61 @@ npc.handle = function()
 	return true
 	} 
 	// roaming
-	if( central_time - start_time  > this.ticks * this.timeout*2)
+	if( central_time - start_time  > this.ticks * 8)
 	{
 		this.ticks += 1
 		this.here = null
 		this.show_approach = true
+
+		switch(this.room_nr)
+		{
+		case 0: if(here == "hallway_entrance_13") konsole.warn("Guard gone")
+				if(here == "room_northeast_13"  ) konsole.warn("Guard gone")
+				break;
+		case 1: if(here == "room_northwest_13") konsole.warn("Guard gone")
+				if(here == "hallway_north_13") konsole.warn("Guard gone")		
+				if(here == "room_east_13") konsole.warn("Guard gone")
+				break;
+		case 2: if(here == "room_west_13") konsole.warn("guard gone")		
+				if(here == "room_south_13") konsole.warn("guard gone") 
+				break;
+		case 3: if(here == "room_northwest_13") konsole.warn("guard gone")
+				if(here == "room_east_13") konsole.warn("guard gone")
+				if(here == "hallway_south_13") konsole.warn("guard gone")
+					break;
+		defaut: return false;
+		}
+
+
+
 		this.room_nr = (this.room_nr + 1) % this.rooms.length
 		this.current_room = this.rooms[this.room_nr]
+
+		
+
 	}
 	if(this.here != here)
 	{
 
 		switch(this.room_nr)
 		{
-		case 0: if(here == "hallway_entrance_13") konsole.print("Guard to the East")
-				if(here == "hallway_center_13"  ) konsole.print("Guard to the East")
-				if(here == "room_northeast_13"  ) konsole.print("Guard to the West")
+		case 0: if(here == "hallway_entrance_13") konsole.warn("Guard to the East")
+				if(here == "hallway_center_13"  ) konsole.warn("Guard to the East")
+				if(here == "room_northeast_13"  ) konsole.warn("Guard to the West")
 				break;
-		case 1: if(here == "room_northwest_13") konsole.print("guard to the South")
-				if(here == "hallway_north_13") konsole.print("guard to the South")		
-				if(here == "room_east_13") konsole.print("guard to the North")
-				if(here == "hallway_south_13") konsole.print("guard to the North")
+		case 1: if(here == "room_northwest_13") konsole.warn("Guard to the South")
+				if(here == "hallway_north_13") konsole.warn("Guard to the South")		
+				if(here == "room_east_13") konsole.warn("Guard to the North")
+				if(here == "hallway_south_13") konsole.warn("Guard to the North")
 				break;
-		case 2: if(here == "hallway_center_13") konsole.print("guard to the West")
-				if(here == "room_west_13") konsole.print("guard to the East")		
-				if(here == "room_south_13") konsole.print("guard to the North") 
+		case 2: if(here == "hallway_center_13") konsole.warn("Guard to the West")
+				if(here == "room_west_13") konsole.warn("guard to the East")		
+				if(here == "room_south_13") konsole.warn("guard to the North") 
 				break;
-		case 3: if(here == "room_northwest_13") konsole.print("guard to the South")
-				if(here == "hallway_north_13") konsole.print("guard to the South")		
-				if(here == "room_east_13") konsole.print("guard to the North")
-				if(here == "hallway_south_13") konsole.print("guard to the North")
+		case 3: if(here == "room_northwest_13") konsole.warn("guard to the South")
+				if(here == "hallway_north_13") konsole.warn("guard to the South")		
+				if(here == "room_east_13") konsole.warn("guard to the North")
+				if(here == "hallway_south_13") konsole.warn("guard to the North")
 					break;
 		defaut: return false;
 		}

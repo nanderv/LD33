@@ -1,9 +1,7 @@
 map = {}
-<<<<<<< HEAD
+
 here = "hallway_entrance_13"
-=======
-here = "room_south_13"
->>>>>>> c608c7fac19b0f45a941fa73fea97b63a3af98a3
+
 
 
 immovable = ["lying","sleeping"]
