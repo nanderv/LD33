@@ -329,27 +329,18 @@ object_reaction.log = {examine: ["This is the experiment log of an electro-shock
 	 "(written: )<br> Subject 1 wasn't that smart, he answered most questions wrongly. Subject 2 had no problems with applying the shocks to subject 1.<br>" + 
 	 "Even as subject 1 started to scream in true agony, subject 2 continued with their assignment.<br>" + 
 	 "Experiment ended after subject 1 died." ]}
-<<<<<<< HEAD
-
 object_reaction.sedative = {examine: ["", 
 		"I could use this to knock out a guard, without killing him."],
 	 pickup: ["You pick up a sedative injection.",
 	 	 ""],help: "Say sedate + person to sedate the person. It's also useable in combat. Sedation is only used once."}
-
 object_reaction.badge = {examine: ["", 
 		"I could use this pose as a scientist."],
 	 pickup: ["I could use this pose as a scientist",
 	 	 ""]}
-
  object_reaction.lasagna = {examine: ["", 
 		"I love lasagna."],
 	 pickup: ["#",
 	 	 ""]}
-
-
-
-
-=======
 object_reaction.document = {examine: ["A document describing a gruesome experiment.", 
 		""],
 	 pickup: ["You picked up the document.",
@@ -372,6 +363,6 @@ object_reaction.stretcher = {examine: ["A sturdy metal stretcher with thick stra
 		""],
 	 pickup: ["",
 	 	 "Am I a hacker??"]}
->>>>>>> 5c26e3e9b38ffc780c24fb2571b1fe1e5090de9b
+
 
 
