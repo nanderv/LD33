@@ -4,7 +4,7 @@
   *
   *******************************************/
 dir = []
- dir[0]      = {to: "room_west_14", methods  : [words.walk], hidden : 1, direction: words.west, cond: [has_item(words.empty)]}
+ dir[0]      = {to: "room_west_14", methods  : [words.walk], hidden : 1, direction: words.west, cond: []}
  dir[1]      = {to: "hallway_northwest_14", methods  : [words.walk],hidden : 1, direction: words.north, cond: []}
  dir[2]      = {to: "hallway_southwest_14", methods  : [words.walk],hidden : 1, direction: words.south, cond: []}
  dir[3]      = {to: "hallway_centerwest_14", methods  : [words.walk],hidden : 1, direction: words.east, cond: [has_item(words.copper)]}
