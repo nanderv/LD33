@@ -11,6 +11,7 @@ objects =[[words.bookcase, "", false, true],
 	[words.airduct, "", false, false], //make action
 	[words.chair, "", false, true], 
 	[words.desk, "", false, true], 
+	[words.drawer, words.desk, false, true],
 	[words.paper, words.desk, false, false], 
 	[words.trashcan, "", false, true], 
 	[words.rubbish, words.trashcan, false, true],
@@ -32,7 +33,7 @@ map.room_northeast_13 = {
 		""], 
 	directions: dir, 
 	objects : objects , 
-	cond : {"sitting": 0}, 
+	cond : {"sitting": 0, "closed": 1}, 
 	action_reaction : action_reaction}
 
 /*******************************************
