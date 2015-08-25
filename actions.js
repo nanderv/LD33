@@ -306,7 +306,7 @@ actions.help = function(tok)
 {
 	if(tok.person == undefined)
 		{
-		konsole.print("To get help, you must first help yourself.<br>			<br>			<i>Movement</i><br>			You can move in six directions: north, east, south, west, up, down. The options depend on the location, read the text carefully.<br>			Sometimes you need to explicitly say how you want to move.<br>			<br>			<i>Actions</i><br>			Here is an (incomplete) list of actions:<br>			- examine <br>			- open <br>			- attack<br>			- eat <br>			- pick up <br>			- stand <br>			- lie <br>			- sit <br>			<br>			<i>Different input</i><br>			Some sections of the game use different input. In these situations, input is explained on the spot.")		
+		konsole.print("To get help, you must first help yourself.<br>			<br>			<i>Movement</i><br>			You can move in six directions: north, east, south, west, up, down. The options depend on the location, read the text carefully.<br>			Sometimes you need to explicitly say how you want to move.<br>			<br>			<i>Actions</i><br>			Here is an (incomplete) list of actions:<br>			- examine <br>			- open <br>			- attack<br>			- eat <br>			- pick up <br>			- stand <br>			- lie <br>			- sit <br>			<br>			<i>Different input</i><br>			Some sections of the game use different input. In these situations, input is explained on the spot.<br/> When moving, keys are just requirements. You automatically use them when you have them.")		
 		return true
 	}
 	// there is a person given, trying to help person
