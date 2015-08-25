@@ -1,6 +1,14 @@
 
 function tokenize(sentence)
 {
+	if(sentence.toLowerCase() =="e")
+		sentence = "east"
+	if(sentence.toLowerCase() =="n")
+		sentence = "north"
+	if(sentence.toLowerCase() =="s")
+		sentence = "south"
+	if(sentence.toLowerCase() =="w")
+		sentence = "west"
 	var my_words = sentence.split(" ")
 	var result = {}
 	for (var i = 0; i < my_words.length; i++)

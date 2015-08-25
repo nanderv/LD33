@@ -6,7 +6,10 @@ function interpret(t)
 		if(t.direction)
 		{
 			t.verb = words.go
-		}else {
+		}else if(t.object && (t.object == words.lights || t.object == words.light)) {
+			t.verb = words.turn
+
+		} else {
 		konsole.print("no verb, sentence doens't make sense")
 		return false
 	}
