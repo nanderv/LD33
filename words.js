@@ -5,6 +5,7 @@ item = "item"
 nil = "nil"
 person = "person"
 obj = "object"
+objj = "object"
 abstract = "abstract"
 here = "here"
 words = {}
@@ -19,6 +20,8 @@ words.evidence = {type: abstract}
 words.pressable = {type: abstract}
 words.credits = {type:verb, method: "credits"}
 words.license = {type:verb, method: "license"}
+
+words.use = {type:verb}
 
 words.walk = {type:verb, eat : "to", method: "move"}
 words.move = {type: verb, method: "move_obj", synonym: words.walk}
@@ -57,12 +60,13 @@ words.get = {type: verb, eat: "up", method: "pickup", synonym: words.stand}
 words.lie = {type: verb, method: "lie", eat: "down"}
 words.sit = {type: verb, eat: "down", method: "sit"}
 
-words.grab = {type: verb, method: "pickup"}
-words.pick = {type: verb, eat: "up", synonym : words.grab}
+words.grab = {type: verb, }
+words.pick = {type: verb, synonym : words.grab}
 words.take = {type: verb, synonym: words.grab}
+words.unlock = {type: verb}
 
-words.open = {type: verb, method: "open"}
-words.close = {type: verb, method: "close"}
+words.open = {type: verb}
+words.close = {type: verb}
 
 words.brush = {type: verb, method : "brush"}
 
@@ -90,9 +94,17 @@ words.room = {type: here}
 
 words.from = {type: nil}
 words.in = {type: nil}
+words.to = {type: nil}
+words.the = {type: nil}
+words.out = {type: nil}
+words.of = {type: nil}
+words.door = {type: obj}
+
 words.on = {type: nil}
 words.at = {type: nil}
 words.red = {type: nil}
+words["air vent"] = {type: obj, synonym: words.airduct} 
+words["air duct"] = {type: obj, synonym: words.airduct}
 
 words.airduct = {type: obj, long_name: "airduct", is_a: words.enterable}
 words.apple = {type: obj, is_a: words.food}
@@ -148,14 +160,14 @@ words.pencil = {type: item}
 words.note = {type: item, is_a: words.readable}
 words.stapler = {type: item}
 
-words.toothbrush = {type: item, long_name : "dirty toothbrush"}
+words.toothbrush = {type: item, long_name : "toothbrush"}
 words.dirty = {type: item, synonym: words.toothbrush}
 words.towel = {type : item}
 
 words.key = {type: abstract}
-words.copper = {type : item, eat: "key", long_name : "copper key", is_a : words.key}
-words.small = {type: item, eat: "key", long_name: "small key", is_a: words.key}
-words.master = {type: item, eat: "key", long_name: "master key", is_a: words.key} // no description, used for specific condition failed message
+words["copper key"] = {type : item, eat: "key", long_name : "copper key", is_a : words.key}
+words["small key"] = {type: item, eat: "key", long_name: "small key", is_a: words.key}
+words["master key"] = {type: item, eat: "key", long_name: "master key", is_a: words.key} // no description, used for specific condition failed message
 words.empty = {type: item} // no description, used for specific condition failed message
 words.log =  {type: item, is_a: words.evidence}
 words.waiver = {type: item, long_name : "Experiment waiver"}
@@ -201,7 +213,7 @@ object_reaction.towel = {examine: ["",
 		"It's a towel."],
 	 pickup: ["",
 	 	 "I now have a towel"]}	 
-object_reaction.copper = {examine: ["The label states it can be used to open the staff area on floor 14.", 
+object_reaction["copper key"] = {examine: ["The label states it can be used to open the staff area on floor 14.", 
 		""],
 	 pickup: ["",
 	 	 "I found a copper key."]}	 
@@ -237,7 +249,7 @@ object_reaction.dial = {examine: ["A dial with the numbers 1 to 14. It has a poi
 		""],
 	 pickup: ["",
 	 	 "Am I a hacker??"]}
-object_reaction.small = {examine: ["A small key with a label that reads: floors 12 - 14", 
+object_reaction["small key"] = {examine: ["A small key with a label that reads: floors 12 - 14", 
 		""],
 	 pickup: ["You obtained a small key",
 	 	 ""]}

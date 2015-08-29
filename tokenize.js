@@ -10,49 +10,57 @@ function tokenize(sentence)
 	if(sentence.toLowerCase() =="w")
 		sentence = "west"
 	var my_words = sentence.split(" ")
-	var result = {}
-	for (var i = 0; i < my_words.length; i++)
+	var result = []
+	var to_go = 1
+	for (var i = 0; i < my_words.length; i += to_go)
 	{
+		to_go = 1
 		my_words[i] = my_words[i].toLowerCase()
 		var my_word = my_words[i]
+		// TODO : split up word..
 		if(my_word.length < 1)
 			continue
 		var w = words[my_word]
 		if (w== null)
 		{
-			konsole.print(my_words[i])
 			w = get_npc(my_words[i])
 		}
 		if (w == null){
-
+			if(my_words.length >= i  && words[my_words[i] + " "+ my_words[i +1]])
+			{
+				w = words[my_words[i] + " "+ my_words[i +1]]
+				to_go = 2
+			}
+			else
+			{
 			konsole.print( my_word + " - wasn't understood")
 			return false
+		}
 		}
 
 		if(w.type == abstract)
 		{
 			var found = null
 			var err = false
-			for(var i = 0;  i< inventory.length && err == false; i++)
+			for(var t = 0;  t< inventory.length && err == false; t++)
 			{
-				if( inventory[i] == 0 )
+				if( inventory[t] == 0 )
 					continue
-				if (inventory[i].is_a && inventory[i].is_a == w)
+				if (inventory[t].is_a && inventory[t].is_a == w)
 				{
 					if(found != null)
 					{
 						err = true
-						konsole.print("You need to be more specific, I found both "+ get_text(inventory[i])+ " and " + get_text(found) + "!")
+						konsole.print("You need to be more specific, I found both "+ get_text(inventory[t])+ " and " + get_text(found) + "!")
 						return false
 					}
-					found = inventory[i]
+					found = inventory[t]
 				}
 			}
-		for(var i = 0;  i< map[here].objects.length && err == false; i++)
+
+		for(var t = 0;  t< map[here].objects.length && err == false; t++)
 			{
-				var o = map[here].objects[i]
-				
-				if(o[0].is_a)
+				var o = map[here].objects[t]
 
 				if( o == 0 )
 					continue
@@ -73,7 +81,7 @@ function tokenize(sentence)
 		}
 		if(w== null)
 		{
-			konsole.print("Word not understood")
+			konsole.print(my_word+" wasn't  understood. Is it here?")
 			return false
 		}
 
@@ -83,18 +91,18 @@ function tokenize(sentence)
 			return false
 		}
 		if ( w.type != null){
-		result[w.type] = w 
-		if (w.eat != null && i + 1 < my_words.length  && w.eat == my_words[i+1])
+		result[i] = w
+		/*if (w.eat != null && i + 1 < my_words.length  && w.eat == my_words[i+1])
 			{
 				i++
-			}
+			}*/
 
 	}
 	}
 	return result
 
 }
-function autocomplete(word)
+function ac (word)
 {
 	var result = []
 	for (var key in words) {
@@ -106,6 +114,11 @@ function autocomplete(word)
  	 	}
 	}
 	}
+	return result
+}
+function autocomplete(word)
+{
+	var result=  ac(word)
 	if(result.length > 1 && result.length < 5)
 	{
 			konsole.print("Options: " + result)

@@ -89,7 +89,7 @@ map.room_kitchen_14 = {enter: "You enter a dark room and can't really see anythi
   *******************************************/
 dir = []
 dir[0]      = {to: "hallway_south_14", methods  : [words.walk], direction: words.north, hidden: 1, cond: []}
-dir[1]      = {to: "room_elevator_12", methods  : [words.go], direction: words.down, hidden: 1, cond: [has_item(words.small)]}
+dir[1]      = {to: "room_elevator_12", methods  : [words.go], direction: words.down, hidden: 1, cond: [has_item(words["small key"])]}
 // word, where, explained, visible
 objects = [[words.panel, "", false, true], [words.dial, "", false, true]]
 action_reaction = {}
@@ -108,8 +108,8 @@ map.room_elevator_14 = {enter: "You enter the elevator. There is a panel with bu
   *******************************************/
 dir = []
 dir[0]      = {to: "hallway_south_12", methods  : [words.walk], direction: words.north, hidden: 1, cond: []}
-dir[1]      = {to: "room_elevator_14", methods  : [words.go], direction: words.up, hidden: 1, cond: [has_item(words.small)]}
-dir[2]      = {to: "room_elevator_11", methods  : [words.go], direction: words.down, hidden: 1, cond: [has_item(words.master)]}
+dir[1]      = {to: "room_elevator_14", methods  : [words.go], direction: words.up, hidden: 1, cond: [has_item(words["small key"])]}
+dir[2]      = {to: "room_elevator_11", methods  : [words.go], direction: words.down, hidden: 1, cond: [has_item(words["master key"])]}
 // word, where, explained, visible
 objects = [[words.panel, "", false, true], [words.dial, "", false, true]]
 action_reaction = {}
@@ -130,7 +130,7 @@ dir = []
 dir[0]      = {to: "hallway_northeast_14", methods  : [words.walk], direction: words.south, hidden: 1, cond: []}
 
 // word, where, explained, visible
-objects = [[words.copper, "", false, true]/* TODO examine monitors and stuff*/]
+objects = [[words["copper key"], "", false, true]/* TODO examine monitors and stuff*/]
 action_reaction = {}
 map.room_northeast_14 = {enter: "This room appears to be a security room. There is a desk with 6 monitors on it. A guard is supposed to look at them, but he's sleeping. In his right hand he has a key.", 
    thoughts : "I should get the key. This guard doesn't look that strong.",

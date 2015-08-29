@@ -1,41 +1,14 @@
 function interpret(t)
 {
-
-	if (! t.verb)
+	if(!t)
 	{
-		if(t.direction)
-		{
-			t.verb = words.go
-		}else if(t.object && (t.object == words.lights || t.object == words.light)) {
-			t.verb = words.turn
-
-		} else {
-		konsole.print("no verb, sentence doens't make sense")
+		konsole.print("Command wasn't understood. Enter help to find out what's supported.")
 		return false
 	}
-	}
-	action_exec = false
-	if( actions[t.verb.method])
-			if(actions[t.verb.method](t))
-				action_exec = true
-	while((t.verb.synonym != null && t.verb.synonym != undefined) && !action_exec)
-	{
-
-
-		if(! action_exec && t.verb.synonym != null)
-		{
-
-			t.verb = t.verb.synonym
-		}
-		if( actions[t.verb.method])
-			if(actions[t.verb.method](t))
-				action_exec = true
-
-	}
-
 	
-		
-	if(! action_exec)
+	var action_exec = t.cmd(t)
+			
+	if(! konsole.output)
 		konsole.print("Action failed")
 	else
 	{

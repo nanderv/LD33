@@ -7,7 +7,7 @@ dir = []
  dir[0]      = {to: "room_west_14", methods  : [words.walk], hidden : 1, direction: words.west, cond: []}
  dir[1]      = {to: "hallway_northwest_14", methods  : [words.walk],hidden : 1, direction: words.north, cond: []}
  dir[2]      = {to: "hallway_southwest_14", methods  : [words.walk],hidden : 1, direction: words.south, cond: []}
- dir[3]      = {to: "hallway_centerwest_14", methods  : [words.walk],hidden : 1, direction: words.east, cond: [has_item(words.copper)]}
+ dir[3]      = {to: "hallway_centerwest_14", methods  : [words.walk],hidden : 1, direction: words.east, cond: [has_item(words["copper key"])]}
  objects =[]
 descr = "You are in a hallway, which runs north to south. To your west is the room you woke up in. To your east is a locked door." 
 map.hallway_west_14 = {enter: descr , enter_again: descr, description : ["This hallway runs north to south and is on the west side of the building. To your west is the room you woke up in. To your east is a locked door.",""], directions: dir, objects : objects , image: "", cond : {}, action_reaction : {}}
@@ -32,7 +32,7 @@ map.hallway_northwest_14 = {enter: descr , enter_again: descr, description : ["T
 dir = []
  dir[0]      = {to: "hallway_northwest_14", methods  : [words.walk],hidden : 1, direction: words.west, cond: []}
  dir[1]      = {to: "hallway_northeast_14", methods  : [words.walk],hidden : 1, direction: words.east, cond: []}
- dir[2]      = {to: "hallway_centercenter_14", methods  : [words.walk],hidden : 1, direction: words.south, cond: [has_item(words.copper)]}
+ dir[2]      = {to: "hallway_centercenter_14", methods  : [words.walk],hidden : 1, direction: words.south, cond: [has_item(words["copper key"])]}
 descr = "You are in a hallway that runs west to east. To the south is a locked door." 
 
  objects =[]
@@ -59,7 +59,7 @@ dir = []
  dir[0]      = {to: "room_east_14", methods  : [words.walk],hidden : 1, direction: words.east, cond: [has_item(words.empty)]}
  dir[1]      = {to: "hallway_northeast_14", methods  : [words.walk],hidden : 1, direction: words.north, cond: []}
  dir[2]      = {to: "hallway_southeast_14", methods  : [words.walk],hidden : 1, direction: words.south, cond: []}
- dir[3]      = {to: "hallway_centereast_14", methods  : [words.walk],hidden : 1, direction: words.west, cond: [has_item(words.copper)]}
+ dir[3]      = {to: "hallway_centereast_14", methods  : [words.walk],hidden : 1, direction: words.west, cond: [has_item(words["copper key"])]}
  objects =[]
 descr = "You are in a hallway. To the east is a room. The hallway runs north to south. To the west is a locked door." 
 

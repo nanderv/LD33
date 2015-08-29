@@ -33,20 +33,50 @@ function in_array(item, array)
 			return true
 	return false
 }
-
+function has_item_(item)
+{
+	return function(){
+		for(var i = 0; i < inventory.length; i++)
+		{
+			if (inventory[i] == item)
+			{
+				
+				return true
+			}
+		}
+		
+		return false
+		}
+}
 function has_item(item)
 {
 	return function(){
 		for(var i = 0; i < inventory.length; i++)
 		{
 			if (inventory[i] == item)
+			{
+				switch (item) {
+					case words["copper key"]:
+						konsole.print("You use the copper key to unlock this door.")
+
+						break
+					case words["small key"]:
+						konsole.print("You use the small key. The elevator starts moving")
+						break
+					case words["master key"]:
+						konsole.print("You use the master key. Hacker.....")
+						break
+					default:
+						konsole.print("You use a " + get_text(item) + ".")
+		}
 				return true
+			}
 		}
 		switch (item) {
-			case words.small:
+			case words["small key"]:
 				konsole.print("The elevator doesn't respond, you probably need a key to operate it.")
 				break
-			case words.master:
+			case words["master key"]:
 				konsole.print("The elevator doesn't respond, you probably need a different key to go further down.")
 				break
 			case words.empty:
