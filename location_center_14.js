@@ -31,7 +31,7 @@ map.room_reception_14 = {enter: "You are at the reception. You see large desk wi
 dir = []
 dir[0]      = {to: "hallway_centerwest_14", methods  : [words.walk], direction: words.north, hidden: 1, cond: [condition_false("sitting")]}
 // word, where, explained, visible
-objects = [[words.chair, "", false, true], [words.table, "", false, true], [words.rubbish, words.table, false, true], [words.small, words.rubbish, false, false]]
+objects = [[words.chair, "", false, true], [words.table, "", false, true], [words.rubbish, words.table, false, true], [words["small key"], words.rubbish, false, false]]
 action_reaction = {}
 map.room_center_southwest_14 = {
 	enter: "You enter what looks like an examination room. There is a chair in the middle of the room, next to a table with some rubbish on it.", 
