@@ -36,7 +36,7 @@ dir[1]      = {to: "window", methods  : [words.jump], direction: words.west, hid
 objects = [[words.toothbrush, words.sink, false, false], [words.sink,"",  false, true], [words.bed, "", false, true], [words.window, "", false, true]]
 action_reaction = {}
 action_reaction.stand = ["Even though the room is dimly lit, you still see a window on the west, a door on the east, your bed and a sink.", "Damm, I have a headache."]
-map.room_west_14 = {enter: "<i> This is an updated version made after the Ludum Dare event that spawned the original version. This version features improved text input and some bugfixes. </i><br / ><br />You wake up, alone, lying on a bed in a dark room. <br / > You don't remember this place at all. You should stand up.", 
+map.room_west_14 = {enter: "You wake up, alone, lying on a bed in a dark room. <br / > You don't remember this place at all. You should stand up.", 
    thoughts : "Where am I?",
    enter_again: "You are back at the hospital room where you woke up.",
    description : ["It's a hospital room with a window in the west wall, a door on the east, a bed, and a sink.",""],
