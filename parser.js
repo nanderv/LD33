@@ -41,7 +41,7 @@ sentences[25] = [[words.credits]]
 sentences[26] = [[words.license]] 
 sentences[27] = [[words.inventory]] 
 sentences[28] = [[words.turn, null], [words.on, null], [words.light,words.lights]] 
-
+sentences[29] = [[words.press],[words.red,null],[words.button]] 
 
 definitions = []
 definitions[0] = {a:0,cmd: actions.use, 0: word_type.verb, 2: word_type.subject}
@@ -73,6 +73,7 @@ definitions[25] =  {a:7,cmd: actions.credits,verb:words.help}
 definitions[26] =  {a:7,cmd: actions.license,verb:words.help}
 definitions[27] =  {a:7,cmd: actions.inventory,verb:words.help}
 definitions[28] =  {a:7,cmd: actions.turn_lights,verb:words.turn, subject: words.lights}
+definitions[29] =  {a:7,cmd: actions.press,verb:words.help,subject:words.button}
 
 parse_checks = {}
 parse_checks.in_inventory = null
