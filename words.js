@@ -334,7 +334,7 @@ object_reaction.pencil = {examine: ["It sharp pencil used for drawing or writing
 		""],
 	 pickup: ["You picked up a pencil.",
 	 	 ""]}
-object_reaction.stapler = {examine: ["Used to bind paper together by means of staples. Unfortunately, it does not include staples.", 
+object_reaction.stapler = {examine: ["Used to bind paper together by means of staples. Unfortunately, it does not include staples. It's a RED stapler.", 
 		""],
 	 pickup: ["You picked up a stapler.",
 	 	 ""]}
@@ -349,7 +349,7 @@ object_reaction.log = {examine: ["This is the experiment log of an electro-shock
 	 read: ["Test subject 1 name:  *smudged out, unreadable* <br>Test subject 2 name: *smudge* ",
 	 "(pre-printed:) <br> Ojbective of experiment: to find out how likely people are to follow orders <br>" + 
 	 "Method: Researcher asks questions to subject 1. If subject 1 gives a wrong answer, subject 2 has to press a button. The button gives an electrical shock to subject 1. The electrical shock increases every time the button is pressed. <br>" + 
-	 "(written: )<br> Subject 1 wasn't that smart, he answered most questions wrongly. Subject 2 had no problems with applying the shocks to subject 1.<br>" + 
+	 "(written: )<br> Subject 1 wasn't that smart, he answered most questions incorrectly. Subject 2 had no problems with applying the shocks to subject 1.<br>" + 
 	 "Even as subject 1 started to scream in true agony, subject 2 continued with their assignment.<br>" + 
 	 "Experiment ended after subject 1 died." ]}
 
@@ -357,7 +357,7 @@ object_reaction.log = {examine: ["This is the experiment log of an electro-shock
 object_reaction.sedative = {examine: ["A hypodermic needle filled with midazolam.", 
 		"I could use this to knock out a guard, without killing him."],
 	 pickup: ["You pick up a sedative injection.",
-	 	 ""],help: "Say sedate + person to sedate the person. It's also useable in combat. A sedative can only be used once."}
+	 	 ""],help: "Say sedate during combat to sedate the person. It's also useable in combat. A sedative can only be used once."}
 object_reaction.badge = {examine: ["", 
 		"I could use this pose as a scientist."],
 	 pickup: ["I could use this pose as a scientist",
