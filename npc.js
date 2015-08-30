@@ -3,6 +3,7 @@ max_points = 6
 dodging = false
 
 function start_fight (npc) {
+	npc.start_time = central_time
 	return function  ()
 	{
 		var input = konsole.input_field.value
@@ -121,16 +122,17 @@ npc.react = function () {
 
 npc.handle = function()
 {
-	if(this.won )
+	var that  = npcs[0]
+	if(that.won )
 		return true
 
-	if( central_time - start_time  > this.ticks * this.timeout)
+	if( central_time - start_time  > that.ticks * that.timeout)
 	{
-		this.ticks += 1
+		that.ticks += 1
 			if(hit_points <= 0)
 			{
-				konsole.print("The "+ this.type+ " manages to hit you unconscious.")
-				this.won = true
+				konsole.print("The "+ that.type+ " manages to hit you unconscious.")
+				that.won = true
 				if(murderer)
 				{
 				change_map("death_killed_guilty")()
@@ -139,12 +141,12 @@ npc.handle = function()
 				change_map("death_killed_innocent")()
 				}
 			} else {
-		if(this.in_combat &&!this.sleeps)
+		if(that.in_combat &&!that.sleeps)
 		{
 			if(!dodge)
 			{
 				hit_points --
-		konsole.print("You've been hit by " + this.name)
+		konsole.print("You've been hit by " + that.name)
 		} else {
 						dodge = false
 
@@ -157,7 +159,7 @@ npc.handle = function()
 	return true
 }
 npc.die = function () {
-	if(this.hit_points <= 0)
+	if(that.hit_points <= 0)
 		return false
 	return true
 }
@@ -179,7 +181,7 @@ npc.type = "Guard"
 npc.hit_points = 40
 npc.reply = "My name is Roxanne"
 npc.ticks = 0
-npc.timeout = 2
+npc.timeout = 10
 npc.current_room = "hallway_south_12"
 npc.sleeps = true
 npc.in_combat = false
@@ -190,16 +192,17 @@ npc.react = function () {
 }
 npc.handle = function()
 {
-	if(this.won  || ! this.in_combat)
+	var that  = npcs[1]
+	if(that.won  || ! that.in_combat)
 		return true
 
-	if( central_time - start_time  > this.ticks * this.timeout)
+	if( central_time - start_time  > that.ticks * that.timeout)
 	{
-		this.ticks += 1
+		that.ticks += 1
 			if(hit_points <= 0)
 			{
-				konsole.print("The "+ this.type+ " manages to hit you unconscious.")
-				this.won = true
+				konsole.print("The "+ that.type+ " manages to hit you unconscious.")
+				that.won = true
 				if(murderer)
 				{
 				change_map("death_killed_guilty")()
@@ -208,12 +211,12 @@ npc.handle = function()
 				change_map("death_killed_innocent")()
 				}
 			} else {
-		if(this.in_combat &&!this.sleeps)
+		if(that.in_combat &&!that.sleeps)
 		{
 			if(!dodge)
 			{
 				hit_points --
-		konsole.print("You've been hit by " + this.type)
+		konsole.print("You've been hit by " + that.type)
 		} else {
 						dodge = false
 
@@ -227,7 +230,7 @@ npc.handle = function()
 
 }
 npc.die = function () {
-	if(this.hit_points <= 0)
+	if(that.hit_points <= 0)
 		return false
 	return true
 }
@@ -248,7 +251,7 @@ exp.states[2] = ["<i>The subject twitches and screems softly. </i> <br/>Research
 exp.states[3] = ["<i>The subject twitches and the screams intensify. </i> <br/>Researcher: Next question: how many sides does a triangle have? <br />Subject: 4. <br / > Researcher: Wrong again. Press the button. ", "", ["press", "push"],["no","refuse"]]
 exp.states[4] = ["<i>Smoke comes from the electrodes. The subject looks like he's in agony. </i> <br/>Researcher: Next question: In what year was the steam train invented?? <br />Subject: 1824. <br / > Researcher: Wrong again, it was 1804. Press the button. ", "", ["press", "push"],["no","refuse"]]
 
-exp.succesful = ["<i>The subject dies.</i><br>Researcher: excelent, the experiment was succesful.","I don't feel right about this."]
+exp.succesful = ["<i>The subject dies.</i><br>Researcher: excelent, the experiment was succesful.","I don't feel right about that."]
 exp.failed = ["Researcher: experiment failed.. Leave the room now.",""]
 exp.npc = null
 
@@ -261,7 +264,7 @@ npc.type = "Researcher"
 npc.hit_points = 10
 npc.reply = "My name is Ludwig"
 npc.ticks = 0
-npc.timeout = 6
+npc.timeout = 5
 npc.expiriment_ran = false
 npc.current_room = "room_experiment_client"
 npc.sleeps = false
@@ -296,7 +299,7 @@ npc.experiment = function ()
       map.room_experiment_business.enter =  "You enter a room, seperated in two sides by a wall with a window in it. On your side  is a dead test subject in a chair. <b>You</b> killed the test subject." 
 				konsole.print("The researcher leaves the room..")
 				exp.npc.current_room = "room_east_12"
-				exp.npc.rooms=[this.current_room]
+				exp.npc.rooms=[npcs[2].current_room]
 
 			}
 			return true
@@ -324,22 +327,24 @@ npc.experiment = function ()
 	return false
 }
 
-npc.handle = function () {
-	if(this.in_combat)
+npc.handle = function () 
+	{
+		var that  = npcs[2]
+	if(that.in_combat)
 	{
 		// ---------------
 
 
-	if(this.won )
+	if(that.won )
 		return true
 
-	if( central_time - start_time  > this.ticks * this.timeout)
+	if( central_time - that.start_time  > that.ticks * that.timeout)
 	{
-		this.ticks += 1
+		that.ticks += 1
 			if(hit_points <= 0)
 			{
-				konsole.print("The "+ this.type+ " manages to hit you unconscious.")
-				this.won = true
+				konsole.print("The "+ that.type+ " manages to hit you unconscious.")
+				that.won = true
 				if(murderer)
 				{
 				change_map("death_killed_guilty")()
@@ -348,12 +353,12 @@ npc.handle = function () {
 				change_map("death_killed_innocent")()
 				}
 			} else {
-		if(this.in_combat &&!this.sleeps)
+		if(that.in_combat &&!that.sleeps)
 		{
 			if(!dodge)
 			{
 				hit_points --
-		konsole.print("You've been hit by " + this.type)
+		konsole.print("You've been hit by " + that.type)
 		} else {
 						dodge = false
 
@@ -371,25 +376,25 @@ npc.handle = function () {
 
 		// ----------------
 	}
-	if(this.hit_points <= 0)
+	if(that.hit_points <= 0)
 		return false
-	if (this.current_room == here && ! this.expiriment_ran  )
+	if (that.current_room == here && ! that.expiriment_ran  )
 	{
 		if(! ( ! find_in_inventory(words.waiver)))
 		{
-			exp.npc = this
-			konsole.over_ride_func = this.experiment
-			this.start = central_time
-			this.expiriment_ran = true
+			exp.npc = that
+			konsole.over_ride_func = that.experiment
+			that.start = central_time
+			that.expiriment_ran = true
 		}
 		else{
-			if(!this.asked_to_leave )
+			if(!that.asked_to_leave )
 				konsole.print("Researcher: You're not a test subject, leave now.")
 
-			this.asked_to_leave = true
+			that.asked_to_leave = true
 		}
 	} else{
-		if (konsole.over_ride_func == this.experiment)
+		if (konsole.over_ride_func == that.experiment)
 		{
 			if(exp.in_state)
 				if (exp.states[exp.state][0])
@@ -399,11 +404,11 @@ npc.handle = function () {
 			exp.in_state = false
 		}else
 		{
-			if(this.current_room == here   )
+			if(that.current_room == here   )
 		{
 
 		}
-					this.asked_to_leave = false
+					that.asked_to_leave = false
 
 	}
 	}  
@@ -444,16 +449,17 @@ npc.react = function () {
 
 npc.handle = function()
 {
-	if(this.won )
+	var that  = npcs[3]
+	if(that.won )
 		return true
-	if(this.in_combat){
-	if( central_time - start_time  > this.ticks * this.timeout)
+	if(that.in_combat){
+	if( central_time - start_time  > that.ticks * that.timeout)
 	{
-		this.ticks += 1
+		that.ticks += 1
 			if(hit_points <= 0)
 			{
-				konsole.print("The"+ this.type+ " manages to hit you unconscious.")
-				this.won = true
+				konsole.print("The"+ that.type+ " manages to hit you unconscious.")
+				that.won = true
 				if(murderer)
 				{
 				change_map("death_killed_guilty")()
@@ -462,12 +468,12 @@ npc.handle = function()
 				change_map("death_killed_innocent")()
 				}
 			} else {
-		if(this.in_combat &&!this.sleeps)
+		if(that.in_combat &&!that.sleeps)
 		{
 			if(!dodge)
 			{
 				hit_points --
-		konsole.print("You've been hit by " + this.name)
+		konsole.print("You've been hit by " + that.name)
 		} else {
 						dodge = false
 
@@ -480,13 +486,13 @@ npc.handle = function()
 	return true
 	} 
 	// roaming
-	if( central_time - start_time  > this.ticks * 8)
+	if( central_time - start_time  > that.ticks * 8)
 	{
-		this.ticks += 1
-		this.here = null
-		this.show_approach = true
+		that.ticks += 1
+		that.here = null
+		that.show_approach = true
 
-		switch(this.room_nr)
+		switch(that.room_nr)
 		{
 		case 0: if(here == "hallway_entrance_13") konsole.warn("Guard gone")
 				if(here == "room_northeast_13"  ) konsole.warn("Guard gone")
@@ -507,16 +513,16 @@ npc.handle = function()
 
 
 
-		this.room_nr = (this.room_nr + 1) % this.rooms.length
-		this.current_room = this.rooms[this.room_nr]
+		that.room_nr = (that.room_nr + 1) % that.rooms.length
+		that.current_room = that.rooms[that.room_nr]
 
 		
 
 	}
-	if(this.here != here)
+	if(that.here != here)
 	{
 
-		switch(this.room_nr)
+		switch(that.room_nr)
 		{
 		case 0: if(here == "hallway_entrance_13") konsole.warn("Guard to the East")
 				if(here == "hallway_center_13"  ) konsole.warn("Guard to the East")
@@ -538,21 +544,21 @@ npc.handle = function()
 					break;
 		defaut: return false;
 		}
-		this.here = here
+		that.here = here
 	}
-	if(this.show_approach && this.rooms[(this.room_nr + 1) % this.rooms.length] == here)
+	if(that.show_approach && that.rooms[(that.room_nr + 1) % that.rooms.length] == here)
 	{
 		konsole.warn("Guard approaching")
-		this.show_approach = false
+		that.show_approach = false
 	}
-	if(this.current_room == here)
+	if(that.current_room == here)
 	{
 		konsole.warn("The guard found you. He attacks!")
-	this.in_combat = true
-	this.sleeps = false
-	this.won = false
+	that.in_combat = true
+	that.sleeps = false
+	that.won = false
 	dodge = false
-	konsole.over_ride_func = start_fight(this)
+	konsole.over_ride_func = start_fight(that)
 
 
 	konsole.think("Starting combat, type hit or dodge")
@@ -562,7 +568,7 @@ npc.handle = function()
 	}
 }
 npc.die = function () {
-	if(this.hit_points <= 0)
+	if(that.hit_points <= 0)
 		return false
 	return true
 }
@@ -597,16 +603,17 @@ npc.react = function () {
 
 npc.handle = function()
 {
-	if(this.won  || ! this.in_combat)
+	var that  = npcs[4]
+	if(that.won  || ! that.in_combat)
 		return true
 
-	if( central_time - start_time  > this.ticks * this.timeout)
+	if( central_time - start_time  > that.ticks * that.timeout)
 	{
-		this.ticks += 1
+		that.ticks += 1
 			if(hit_points <= 0)
 			{
-				konsole.print("The "+ this.type+ " manages to hit you unconscious.")
-				this.won = true
+				konsole.print("The "+ that.type+ " manages to hit you unconscious.")
+				that.won = true
 				if(murderer)
 				{
 				change_map("death_killed_guilty")()
@@ -615,12 +622,12 @@ npc.handle = function()
 				change_map("death_killed_innocent")()
 				}
 			} else {
-		if(this.in_combat &&!this.sleeps)
+		if(that.in_combat &&!that.sleeps)
 		{
 			if(!dodge)
 			{
 				hit_points --
-		konsole.print("You've been hit by " + this.name)
+		konsole.print("You've been hit by " + that.name)
 		} else {
 						dodge = false
 
@@ -633,7 +640,7 @@ npc.handle = function()
 	return true
 }
 npc.die = function () {
-	if(this.hit_points <= 0)
+	if(that.hit_points <= 0)
 		return false
 	return true
 }
@@ -664,16 +671,17 @@ npc.react = function () {
 
 npc.handle = function()
 {
-	if(this.won  || ! this.in_combat)
+	var that  = npcs[5]
+	if(that.won  || ! that.in_combat)
 		return true
 
-	if( central_time - start_time  > this.ticks * this.timeout)
+	if( central_time - start_time  > that.ticks * that.timeout)
 	{
-		this.ticks += 1
+		that.ticks += 1
 			if(hit_points <= 0)
 			{
-				konsole.print("The "+ this.type+ " manages to hit you unconscious.")
-				this.won = true
+				konsole.print("The "+ that.type+ " manages to hit you unconscious.")
+				that.won = true
 				if(murderer)
 				{
 				change_map("death_killed_guilty")()
@@ -682,12 +690,12 @@ npc.handle = function()
 				change_map("death_killed_innocent")()
 				}
 			} else {
-		if(this.in_combat &&!this.sleeps)
+		if(that.in_combat &&!that.sleeps)
 		{
 			if(!dodge)
 			{
 				hit_points -= 2
-		konsole.print("You've been hit by " + this.name)
+		konsole.print("You've been hit by " + that.name)
 		} else {
 						dodge = false
 
@@ -700,7 +708,7 @@ npc.handle = function()
 	return true
 }
 npc.die = function () {
-	if(this.hit_points <= 0)
+	if(that.hit_points <= 0)
 		return false
 	return true
 }
