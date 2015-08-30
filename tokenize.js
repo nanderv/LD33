@@ -16,6 +16,8 @@ function tokenize(sentence)
 		my_words[0] = "look"
 	if(my_words[0].toLowerCase() == "x")
 		my_words[0] = "examine"
+	if(my_words[0].toLowerCase() == "i")
+		my_words[0] = "inventory"
 	for (var i = 0; i < my_words.length; i += to_go)
 	{
 		to_go = 1

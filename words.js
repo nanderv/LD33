@@ -22,6 +22,7 @@ words.credits = {type:verb, method: "credits"}
 words.license = {type:verb, method: "license"}
 
 words.use = {type:verb}
+words.inventory = {type:verb}
 
 words.walk = {type:verb, eat : "to", method: "move"}
 words.move = {type: verb, method: "move_obj", synonym: words.walk}

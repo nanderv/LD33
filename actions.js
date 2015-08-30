@@ -6,7 +6,19 @@ actions.assist = function(tok)
 	return false;
 
 }
+actions.inventory = function(tok)
+{
+	if(inventory.length == 0)
+	{
+		konsole.print("You don't have anything yet")
+		return false
+	}
+	konsole.print("You have the following items in your inventory")
+	for(var i = 0; i< inventory.length; i++)
+		konsole.print("- "+ get_text(inventory[i]))
+	return true;
 
+}
 
 actions.knife = function(tok)
 {

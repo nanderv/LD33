@@ -39,6 +39,7 @@ sentences[23] = [[words.close], [obj]]
 sentences[24] = [[words.examine]] 
 sentences[25] = [[words.credits]] 
 sentences[26] = [[words.license]] 
+sentences[27] = [[words.inventory]] 
 
 
 definitions = []
@@ -69,6 +70,7 @@ definitions[23] =  {a:23,cmd: actions.close, 0: word_type.verb, 1: word_type.sub
 definitions[24] =  {a:4,cmd: actions.examine, 0: word_type.verb}
 definitions[25] =  {a:7,cmd: actions.credits,verb:words.help}
 definitions[26] =  {a:7,cmd: actions.license,verb:words.help}
+definitions[27] =  {a:7,cmd: actions.inventory,verb:words.help}
 
 parse_checks = {}
 parse_checks.in_inventory = null
