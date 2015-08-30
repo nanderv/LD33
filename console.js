@@ -98,11 +98,16 @@ $(document).keypress(function (e) {
 
           konsole.input_field.value = ""
         }
+
+
         
           } else
             konsole.over_ride_func()
             konsole.output = true
     }
+    
+    konsole.input_field.value = ""
+
 
 if(! konsole.output )
             if(interp)
