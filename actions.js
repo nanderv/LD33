@@ -746,7 +746,7 @@ actions.use = function(tok)
 
 	switch(tok.subject)
 	{
-	case words.panel : case words.button: if(here == "room_elevator_14" )
+	case words.panel : case words.button: case words.buttons: if(here == "room_elevator_14" )
 												if(has_item_(words["small key"])())  return actions.move({verb: words.go, subject: words.down})
 													else {
 														konsole.print("You need an elevator key to use the button")

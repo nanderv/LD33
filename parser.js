@@ -37,6 +37,8 @@ sentences[21] = [[words.move],[words.painting]]
 sentences[22] = [[words.open, words.unlock], [obj]]
 sentences[23] = [[words.close], [obj]]
 sentences[24] = [[words.examine]] 
+sentences[25] = [[words.credits]] 
+sentences[26] = [[words.license]] 
 
 
 definitions = []
@@ -49,7 +51,7 @@ definitions[5] =  {a:5,cmd: actions.eat, 0: word_type.verb, 1: word_type.subject
 definitions[6] =  {a:6,cmd: actions.kill, 0: word_type.verb, 1: word_type.subject}
 definitions[7] =  {a:7,cmd: actions.stand, 0: word_type.verb}
 definitions[8] =  {a:8,cmd: actions.pickup, 0: word_type.verb, 2: word_type.subject}
-definitions[9] =  {a:7,cmd: actions.help,subject:words.help}
+definitions[9] =  {a:7,cmd: actions.help,verb:words.help}
 definitions[10] = {a: 10, cmd: actions.knife	, verb: words.attack, 3:word_type.subject}
 definitions[11] =  {a:11,cmd: actions.sit, 0: word_type.verb, 2: word_type.subject}
 definitions[12] =  {a:12,cmd: actions.lie, 0: word_type.verb}
@@ -65,6 +67,8 @@ definitions[21] =  {a:21,cmd: actions.move_obj, 0: word_type.verb, 1: word_type.
 definitions[22] =  {a:22,cmd: actions.open, verb: words.open, 1: word_type.subject}
 definitions[23] =  {a:23,cmd: actions.close, 0: word_type.verb, 1: word_type.subject}
 definitions[24] =  {a:4,cmd: actions.examine, 0: word_type.verb}
+definitions[25] =  {a:7,cmd: actions.credits,verb:words.help}
+definitions[26] =  {a:7,cmd: actions.license,verb:words.help}
 
 parse_checks = {}
 parse_checks.in_inventory = null

@@ -146,13 +146,14 @@ map.death_escape_innocent = {enter: "The ground is approaching you in an increas
 function switch_evidence()
 {
 	var count = 0
-   if(find_in_inventory(words.parachute))
+  debugger;
+   if(find_in_inventory(words.log))
    {
-
-   }
-   if(find_in_inventory(words.parachute))
+    count ++
+   }  
+   if(find_in_inventory(words.document))
    {
-
+    count ++
    }
    switch(count){
    case 0: change_map("escape_no_evidence")();break;
