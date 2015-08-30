@@ -7,7 +7,6 @@ function interpret(t)
 	}
 	
 	var action_exec = t.cmd(t)
-			
 	if(! konsole.output)
 		konsole.print("Action failed")
 	else

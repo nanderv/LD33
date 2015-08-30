@@ -61,13 +61,13 @@ words.get = {type: verb, eat: "up", method: "pickup", synonym: words.stand}
 words.lie = {type: verb, method: "lie", eat: "down"}
 words.sit = {type: verb, eat: "down", method: "sit"}
 
-words.grab = {type: verb, }
-words.pick = {type: verb, synonym : words.grab}
-words.take = {type: verb, synonym: words.grab}
-words.unlock = {type: verb}
+words.grab = {type: verb,  method: "pickup"}
+words.pick = {type: verb, synonym : words.grab,  method: "pickup"}
+words.take = {type: verb, synonym: words.grab,  method: "pickup"}
+words.unlock = {type: verb, method: "open"}
 
-words.open = {type: verb}
-words.close = {type: verb}
+words.open = {type: verb, method: "open"}
+words.close = {type: verb,  method: "close"}
 
 words.brush = {type: verb, method : "brush"}
 
