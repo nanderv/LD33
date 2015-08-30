@@ -30,7 +30,7 @@ murderer = 0
 
 <body bgcolor="black">
 <div id="wrap">
-    <div id = "top"style='width: 100%; color:white;     font-family: "Courier New", Courier, monospace; border: 3px grey;'><center> ~~~ Out of the Loop - Reloaded ~~~<hr></center></div>
+    <div id = "top" style='width: 100%; color:white;     font-family: "Courier New", Courier, monospace; border: 3px grey;'><center> ~~~ Out of the Loop - Reloaded ~~~<hr></center></div>
     <div id="left_col">
         <div Id="out" style='height: 85%;color:white;     font-family: "Courier New", Courier, monospace; overflow-y: scroll; border: 3px grey;' ></div><hr>
   		<input Id="in" style="width: 100%;  color:grey; background-color:black;">
@@ -38,7 +38,7 @@ murderer = 0
     <div id="right_col" style='height: 90%; color:white;     font-family: "Courier New", Courier, monospace;'><b><center>Inventory</center></b><hr/><div Id="inv" style='height: 100%; color:white;     font-family: "Courier New", Courier, monospace;'></div>
     </div>
 </div>
-
+<script>document.getElementById("out").innerHTML = "<i>Loading game, please wait...</i>"</script>
 <script src="words.js"></script><script src="world_events.js"></script><script src="actions.js"></script><script src="base.js"></script><script src="location_handler.js"></script><script src="npc.js"></script><script src="reactions.js"></script><script src="location.js"></script><script src="location_rooms_12.js"></script><script src="location_hallway_12.js"></script><script src="location_hallway_14.js"></script><script src="location_center_14.js"></script><script src="end.js"></script><script src="interpret.js"></script><script src="parser.js"></script><script src="tokenize.js"></script><script src="real_time.js"></script><script src="console.js"></script><script src="location_hallway_13.js"></script><script src="location_13.js"></script>
 
 <script>
@@ -99,8 +99,9 @@ function reset(b)
 
 <script>
 $( document ).ready(function() {
-enter(map[here]); 
 konsole.over_ride_func = null
+document.getElementById("out").innerHTML = ""
+enter(map[here]); 
 
 });
 </script>
