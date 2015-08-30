@@ -49,7 +49,7 @@ objects =[
 	[words.apple, words.table, false, true], 
 	[words.document, words.table, false, false]]
 
-descr = "This is a lounge, is contains several chairs and table. You see an apple lying on the table. There is a door to the north."
+descr = "This is a lounge, it contains several chairs and table. You see an apple lying on the table. There is a door to the north."
 
 map.room_east_13 = {
 	enter: descr, 
