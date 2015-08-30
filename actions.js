@@ -307,7 +307,7 @@ actions.move = function (tok) {
 	{
 		konsole.print("You can't go there.")
 		if(here =="room_west_14" && tok.subject == words.west)
-			konsole.think("You could try another method")
+			konsole.think("I might be able to jump??")
 		return false
 	}
 	else 
