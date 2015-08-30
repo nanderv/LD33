@@ -12,6 +12,10 @@ function tokenize(sentence)
 	var my_words = sentence.split(" ")
 	var result = []
 	var to_go = 1
+	if(my_words[0].toLowerCase() == "l")
+		my_words[0] = "look"
+	if(my_words[0].toLowerCase() == "x")
+		my_words[0] = "examine"
 	for (var i = 0; i < my_words.length; i += to_go)
 	{
 		to_go = 1
