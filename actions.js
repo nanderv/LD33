@@ -542,7 +542,10 @@ actions.open = function (tok) {
 		konsole.print("You open the " + get_text(tok.subject) + ".")
 		return true
 	} else {
-		konsole.think("I cannot open this.")
+		if(tok.subject == words.door)
+			konsole.print("You don't need to open or unlock doors. Simply type the direction you want to go. Doors open automatically if you have the required key.")
+		else
+			konsole.think("I cannot open this.")
 	}
 	return false
 }
