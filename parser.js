@@ -40,6 +40,7 @@ sentences[24] = [[words.examine]]
 sentences[25] = [[words.credits]] 
 sentences[26] = [[words.license]] 
 sentences[27] = [[words.inventory]] 
+sentences[28] = [[words.turn, null], [words.on, null], [words.light,words.lights]] 
 
 
 definitions = []
@@ -71,6 +72,7 @@ definitions[24] =  {a:4,cmd: actions.examine, 0: word_type.verb}
 definitions[25] =  {a:7,cmd: actions.credits,verb:words.help}
 definitions[26] =  {a:7,cmd: actions.license,verb:words.help}
 definitions[27] =  {a:7,cmd: actions.inventory,verb:words.help}
+definitions[28] =  {a:7,cmd: actions.turn_lights,verb:words.turn, subject: words.lights}
 
 parse_checks = {}
 parse_checks.in_inventory = null
