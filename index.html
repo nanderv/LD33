@@ -66,7 +66,9 @@ script_list = ["words","world_events", "actions","base", "location_handler","npc
         setTimeout(function(){add_sc(b,i+1)},0)
       else
       {
-        setTimeout(function(){ enter(map[here]);   
+        setTimeout(function(){ konsole.over_ride_func = null
+enter(map[here]); 
+   
  }, 10);
       }
 
