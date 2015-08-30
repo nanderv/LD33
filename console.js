@@ -4,7 +4,7 @@ konsole.input_field = document.getElementById("in");
 konsole.inventory = document.getElementById("inv");
 konsole.history = []
 konsole.back = 0
-konsole.over_ride_func = null
+konsole.over_ride_func = no_function
 konsole.output = false
 function capitalizeFirstLetter(string) {
     return string.charAt(0).toUpperCase() + string.slice(1);
