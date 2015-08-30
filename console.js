@@ -100,13 +100,15 @@ $(document).keypress(function (e) {
         }
 
 
+
         
           } else
             konsole.over_ride_func()
-            konsole.output = true
+          konsole.output = true
+         konsole.input_field.value = ""
+
     }
     
-    konsole.input_field.value = ""
 
 
 if(! konsole.output )
