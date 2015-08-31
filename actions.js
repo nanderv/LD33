@@ -774,6 +774,12 @@ actions.use = function(tok)
 														konsole.print("You need an elevator key to use the button")
 														return false
 													}
+											if(here == "room_south_13")
+											{
+			change_map("death_boom")()
+			konsole.think("...")
+			return false
+											}
 											konsole.print("You can't use this here.");break;
 	case words.toothbrush: return actions.brush({verb:words.brush, subject: words.teeth});break;
 	case words["copper key"]: case words["small key"]: konsole.think("I'll use keys automatically when moving in a direction that requires one.");break;

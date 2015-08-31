@@ -100,7 +100,6 @@ time_reaction[8] = [9, "2", "",no_function,false]
 time_reaction[9] = [10, "1", "",no_function,false]
 time_reaction[10] = [11, "The building exploded. You are dead.", "",no_function,false]
 time_reaction[10] = [12, "<br>", "",no_function,false]
-
 time_reaction[11] = [14, "", "You killed a lot of innocent people, along with some criminals. Does this make you a hero? I don't think so. Congratultions, <b> you are a monster </b>.",wait_for_reset,false]
 map.death_boom = {enter: "The ground is approaching you in an increasing pace." , enter_again: "This is really strange, why am I here again?", description : ["You are dead",""], directions: [], objects : [] , image: "", cond: {dead: 1}, action_reaction : {},time_reaction: time_reaction}
 
@@ -121,7 +120,9 @@ var time_reaction = []
 // time, text, reaction, function, used
 time_reaction[0] = [2, "Your parachute opens", "",no_function,false]
 time_reaction[1] = [4, "You go to the police. However, they have already been notified of the fact that you are a murderer.", "",no_function,false]
-time_reaction[2] = [6, "You spend the rest of your life in jail. Congratulations, thanks to you your character spends the rest of his life in jail. <b>You are a monster </b>.", "",wait_for_reset,false]
+time_reaction[2] = [6, "Congratulations, thanks to you your character spends the rest of his life in jail. <b>You are a monster </b>.", "",wait_for_reset,false]
+time_reaction[3] = [8, "", "Thank you for playing our game. We hope you enjoyed it.",no_function,false]
+time_reaction[4] = [9, "", "~ Tim & Nander.",no_function,false]
 map.death_escape_guilty = {enter: "The ground is approaching you in an increasing pace." , enter_again: "This is really strange, why am I here again?", description : ["You are dead",""], directions: [], objects : [] , image: "", cond: {dead: 1}, action_reaction : {},time_reaction: time_reaction}
 
 
