@@ -139,8 +139,7 @@ for (var key in map) {
   *******************************************/
 var time_reaction = []
 // time, text, reaction, function, used
-time_reaction[0] = [2, "Your parachute opens", "",no_function,false]
-time_reaction[1] = [4, "", "You go to the police.",switch_evidence,false]
+time_reaction[0] = [2, "Your parachute opens", "",switch_evidence,false]
 map.death_escape_innocent = {enter: "The ground is approaching you in an increasing pace." , enter_again: "This is really strange, why am I here again?", description : ["You are dead",""], directions: [], objects : [] , image: "", cond: {dead: 1}, action_reaction : {},time_reaction: time_reaction}
 
 function switch_evidence()
@@ -156,9 +155,8 @@ function switch_evidence()
     count ++
    }
    switch(count){
-   case 0: change_map("escape_no_evidence")();break;
-   case 1: change_map("escape_one_evidence")();break;
-   case 2: default: change_map("escape_two_evidence")();
+   default: case 0: case 1: change_map("escape_no_evidence")();break;
+   case 2:  change_map("escape_two_evidence")();
 	}
 }
 /*******************************************
@@ -167,19 +165,13 @@ function switch_evidence()
   *******************************************/
 var time_reaction = []
 // time, text, reaction, function, used
-time_reaction[0] = [2, "The police sees a distressed man. They received a phonecall from a mental hospital, with your description and the information that you are missing. They call the hospital.", "",no_function,false]
-time_reaction[1] = [4, "", "Once you are back you are knocked unconscious.",reset_map,false]
+time_reaction[0] = [2, "You run away. You are free from the researchers..", "",no_function,false]
+time_reaction[1] = [5, "", "Congratulations: <b> You are <u>not</u> a monster</b> ",no_function,false]
+time_reaction[2] = [6, "", " ",no_function,false]
+time_reaction[3] = [7, "", " ",no_function,false]
+time_reaction[4] = [8, "", "Thank you for playing our game. We hope you enjoyed it.",no_function,false]
+time_reaction[5] = [9, "", "~ Tim & Nander.",no_function,false]
 map.escape_no_evidence = {enter: "The ground is approaching you in an increasing pace." , enter_again: "This is really strange, why am I here again?", description : ["You are dead",""], directions: [], objects : [] , image: "", cond: {dead: 1}, action_reaction : {},time_reaction: time_reaction}
-
-/*******************************************
-  * DEATH: escape_one_evidence
-  *
-  *******************************************/
-var time_reaction = []
-// time, text, reaction, function, used
-time_reaction[0] = [2, "The police sees a distressed man. Despite the 'evidence' he hands over, they are not convinced. They received a phonecall from a mental hospital, with your description and the information that you are missing.", "",no_function,false]
-time_reaction[1] = [4, "", "Once you are back in your room you are knocked unconscious.",reset_map,false]
-map.escape_one_evidence = {enter: "The ground is approaching you in an increasing pace." , enter_again: "This is really strange, why am I here again?", description : ["You are dead",""], directions: [], objects : [] , image: "", cond: {dead: 1}, action_reaction : {},time_reaction: time_reaction}
 
 /*******************************************
   * DEATH: escape_two_evidence
