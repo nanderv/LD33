@@ -1,7 +1,14 @@
 hit_points = 5
 max_points = 6
 dodging = false
-
+function get_npc_nr(npc)
+{
+	for(var i=0;i < npcs.length; i++)
+	{
+		if(npcs[i] == npc)
+			return i
+	}
+}
 function start_fight (npc) {
 	npc.start_time = central_time
 	return function  ()
@@ -54,7 +61,7 @@ function start_fight (npc) {
 				murderer = 1
 				npc.die()
 				konsole.over_ride_func = null
-				npcs.splice(npc.identifier,1)
+				npcs.splice(get_npc_nr(npc),1)
 			}
 			return true
 		}
@@ -122,7 +129,7 @@ npc.react = function () {
 
 npc.handle = function()
 {
-	var that  = npcs[0]
+	var that  = np0
 	if(that.won )
 		return true
 
@@ -159,6 +166,7 @@ npc.handle = function()
 	return true
 }
 npc.die = function () {
+	var that = np0
 	if(that.hit_points <= 0)
 		return false
 	return true
@@ -192,7 +200,7 @@ npc.react = function () {
 }
 npc.handle = function()
 {
-	var that  = npcs[1]
+	var that  = np1
 	if(that.won  || ! that.in_combat)
 		return true
 
@@ -230,6 +238,8 @@ npc.handle = function()
 
 }
 npc.die = function () {
+		var that = np1
+
 	if(that.hit_points <= 0)
 		return false
 	return true
@@ -299,7 +309,7 @@ npc.experiment = function ()
       map.room_experiment_business.enter =  "You enter a room, seperated in two sides by a wall with a window in it. On your side  is a dead test subject in a chair. <b>You</b> killed the test subject." 
 				konsole.print("The researcher leaves the room..")
 				exp.npc.current_room = "room_east_12"
-				exp.npc.rooms=[npcs[2].current_room]
+				exp.npc.rooms=[np2.current_room]
 
 			}
 			return true
@@ -329,7 +339,7 @@ npc.experiment = function ()
 
 npc.handle = function () 
 	{
-		var that  = npcs[2]
+		var that  = np2
 	if(that.in_combat)
 	{
 		// ---------------
@@ -414,6 +424,8 @@ npc.handle = function ()
 	}  
 }
 npc.die = function () {
+	var that = np2
+
 	konsole.print("You see that the scientist has a badge. You could pick it up.")
 	map[here].objects[map[here].objects.length]= [words.badge,"",true,true]
 	return true
@@ -449,7 +461,7 @@ npc.react = function () {
 
 npc.handle = function()
 {
-	var that  = npcs[3]
+	var that  = np3
 	if(that.won )
 		return true
 	if(that.in_combat){
@@ -568,6 +580,8 @@ npc.handle = function()
 	}
 }
 npc.die = function () {
+	var that = np3
+
 	if(that.hit_points <= 0)
 		return false
 	return true
@@ -603,7 +617,7 @@ npc.react = function () {
 
 npc.handle = function()
 {
-	var that  = npcs[4]
+	var that  = np4
 	if(that.won  || ! that.in_combat)
 		return true
 
@@ -640,6 +654,8 @@ npc.handle = function()
 	return true
 }
 npc.die = function () {
+		var that = np4
+
 	if(that.hit_points <= 0)
 		return false
 	return true
@@ -671,7 +687,7 @@ npc.react = function () {
 
 npc.handle = function()
 {
-	var that  = npcs[5]
+	var that  = np5
 	if(that.won  || ! that.in_combat)
 		return true
 
@@ -708,6 +724,8 @@ npc.handle = function()
 	return true
 }
 npc.die = function () {
+		var that = np5
+
 	if(that.hit_points <= 0)
 		return false
 	return true
@@ -717,3 +735,9 @@ npc.die = function () {
 npcs[5] = npc
 for(var i =0; i< npcs.length ; i++)
 	npcs[i].identifier = i
+np0 = npcs[0]
+np1 = npcs[1]
+np2 = npcs[2]
+np3 = npcs[3]
+np4 = npcs[4]
+np5 = npcs[5]
