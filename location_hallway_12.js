@@ -25,8 +25,8 @@ dir = []
  dir[1]      = {to: "room_elevator_12", methods  : [words.walk],hidden : 1, direction: words.south, cond: []}
  dir[2]      = {to: "hallway_east_12", methods  : [words.walk],hidden : 1, direction: words.east, cond: []}
  dir[3]      = {to: "hallway_west_12", methods  : [words.walk],hidden : 1, direction: words.west, cond: []}
- objects =[]
- descr = "From where you are hallways leave in every direction. The hallway north seems to be blocked by a guard." 
+ objects =[[words.floorplan12, words.desk, false, true]]
+ descr = "From where you are hallways leave in every direction. The hallway north seems to be blocked by a guard. You notice a floorplan on the wall." 
 
 map.hallway_south_12 ={enter: descr , enter_again: descr,description : [descr,""], directions: dir, objects : objects , image: "", cond : {}, action_reaction : {}}
 

@@ -68,7 +68,7 @@ map.room_east_13 = {
   *
   *******************************************/
 dir = []
-	dir[0] = {to: "hallway_center_13", methods  : [words.walk],hidden : 1, direction: words.south, cond: []}
+	dir[0] = {to: "hallway_center_13", methods  : [words.walk],hidden : 1, direction: words.west, cond: []}
 
 action_reaction = {}
 action_reaction.open = ["You find a sedative inside.","",reactions.makevisible(words.sedative)]

@@ -34,10 +34,10 @@ dir[0]      = {to: "hallway_centerwest_14", methods  : [words.walk], direction: 
 objects = [[words.chair, "", false, true], [words.table, "", false, true], [words.rubbish, words.table, false, true], [words["small key"], words.rubbish, false, false]]
 action_reaction = {}
 map.room_center_southwest_14 = {
-	enter: "You enter what looks like an examination room. There is a chair in the middle of the room, next to a table with some rubbish on it.", 
+	enter: "You enter what looks like an examination room. There is a chair in the middle of the room, next to a table with some rubbish on it.  There's something shiny in the rubbish..", 
 	thoughts : "Have I been here before?",
 	enter_again: "You enter the examination room.",
-	description : ["This is an examination room. The walls a plain but dirty white. There is a chair in the middle of the room, next to a table with some rubbish on it.",""],
+	description : ["This is an examination room. The walls a plain but dirty white. There is a chair in the middle of the room, next to a table with some rubbish on it.  There's something shiny in the rubbish.",""],
 	directions: dir,
 	objects: objects,
 	cond : {"sitting":0},

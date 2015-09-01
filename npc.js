@@ -462,6 +462,8 @@ npc.react = function () {
 npc.handle = function()
 {
 	var that  = np3
+	if(that.hit_points<=0)
+		return false
 	if(that.won )
 		return true
 	if(that.in_combat){
@@ -470,7 +472,7 @@ npc.handle = function()
 		that.ticks += 1
 			if(hit_points <= 0)
 			{
-				konsole.print("The"+ that.type+ " manages to hit you unconscious.")
+				konsole.print("The "+ that.type+ " manages to hit you unconscious.")
 				that.won = true
 				if(murderer)
 				{
@@ -494,7 +496,7 @@ npc.handle = function()
 
 		}
 	}
-	}
+}
 	return true
 	} 
 	// roaming
@@ -537,22 +539,22 @@ npc.handle = function()
 		switch(that.room_nr)
 		{
 		case 0: if(here == "hallway_entrance_13") konsole.warn("Guard to the East")
-				if(here == "hallway_center_13"  ) konsole.warn("Guard to the East")
+				if(here == "hallway_center_13"  ) konsole.warn("Guard to the North")
 				if(here == "room_northeast_13"  ) konsole.warn("Guard to the West")
 				break;
-		case 1: if(here == "room_northwest_13") konsole.warn("Guard to the South")
+		case 1: if(here == "room_northwest_13") konsole.warn("Guard to the West")
 				if(here == "hallway_north_13") konsole.warn("Guard to the South")		
 				if(here == "room_east_13") konsole.warn("Guard to the North")
-				if(here == "hallway_south_13") konsole.warn("Guard to the North")
+				if(here == "hallway_south_13") konsole.warn("Guard to the East")
 				break;
 		case 2: if(here == "hallway_center_13") konsole.warn("Guard to the West")
 				if(here == "room_west_13") konsole.warn("guard to the East")		
 				if(here == "room_south_13") konsole.warn("guard to the North") 
 				break;
-		case 3: if(here == "room_northwest_13") konsole.warn("guard to the South")
-				if(here == "hallway_north_13") konsole.warn("guard to the South")		
-				if(here == "room_east_13") konsole.warn("guard to the North")
-				if(here == "hallway_south_13") konsole.warn("guard to the North")
+		case 3: if(here == "room_northwest_13") konsole.warn("Guard to the West")
+				if(here == "hallway_north_13") konsole.warn("Guard to the South")		
+				if(here == "room_east_13") konsole.warn("Guard to the North")
+				if(here == "hallway_south_13") konsole.warn("Guard to the East")
 					break;
 		defaut: return false;
 		}

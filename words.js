@@ -122,6 +122,12 @@ words.clock = {type: obj}
 words.crates = {type: obj}
 words.countertop = {type: obj}
 words.dial = {type: obj}
+words.floorplan = {type: abstract}
+words.floorplan12 = {type: obj,is_a: words.floorplan}
+words.floorplan13 = {type: obj,is_a: words.floorplan}
+words.floorplan14 = {type: obj,is_a: words.floorplan}
+
+
 words.desk = {type:obj}
 words.drawer = {type:obj, is_a: words.container}
 words.lights = {type: obj}
@@ -411,5 +417,74 @@ object_reaction.button = {examine: ["It's an ominous large red button.",
 
 object_reaction.waiver = {examine: ["A waiver that acknowledges that a subject willingly participates in a research. .", 
 		"It's not very specific"],
+	 pickup: ["",
+	 	 "You pick up the waiver."]}
+object_reaction.floorplan13 = {examine: [
+" <i>Floorplan Secret floor</i>        <br><br/>"+
+"S@--#R <br>"+
+"&nbsp;&nbsp;&nbsp;&nbsp;|       <br>"+
+"&nbsp;&nbsp;&nbsp;&nbsp;|    <br>"+
+"R#--#R <br>"+
+"&nbsp;R&nbsp;&nbsp;R     <br>"+
+"                <br>"+
+" #: Hallway corner  <br> @: You are here.               <br>"+
+" -|: connection                     <br>"+
+" R: Room     <br>S: Staircase <br> <i> Guard patrols from northeast, to southeast, to southwest and back.</i>"
+
+
+
+, 
+		""],
+	 pickup: ["",
+	 	 "You pick up the waiver."]}
+object_reaction.floorplan12 = {examine: [
+" <i>Floorplan 12th floor</i>        <br><br/>"+
+" <br>"+
+"S#-#R       <br>"+
+"&nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;R    <br>"+
+"#--@--# <br>"+
+"R&nbsp;&nbsp;E&nbsp;&nbsp;#     <br>"+
+"                <br>"+
+" #: Hallway corner <br> @: You are here                <br>"+
+" -|: connection                     <br>"+
+" R: Room     <br>E: elevator, S: staircase <br> "
+
+
+
+, 
+		""],
+	 pickup: ["",
+	 	 "You pick up the waiver."]}
+object_reaction.floorplan14 = {examine: [
+	/*
+	"  #----#----#<br>"+
+"  |    D    |<br>"+
+"  |  R | R  |<br>"+
+"  #-D#-#-#D-#<br>"+
+"  |  R D R  |<br>"+
+"  |    C    |<br>"+
+"  #----#----#R<br>"+
+"       E         "*/
+" <i>Floorplan 14th floor</i>        <br>"+
+" <br>"+
+"  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;R<br>"+
+"  &nbsp;#----#----#<br>"+
+"  &nbsp;|&nbsp;&nbsp;&nbsp;&nbsp;D&nbsp;&nbsp;&nbsp;&nbsp;|<br>"+
+"  &nbsp;|&nbsp;&nbsp;R&nbsp;|&nbsp;R&nbsp;&nbsp;|<br>"+
+"  W@-D#-#-#D-#<br>"+
+"  &nbsp;|&nbsp;&nbsp;R&nbsp;D&nbsp;R&nbsp;&nbsp;|<br>"+
+"  &nbsp;|&nbsp;&nbsp;&nbsp;&nbsp;C&nbsp;&nbsp;&nbsp;&nbsp;|<br>"+
+"  &nbsp;#----#----#R<br>"+
+"  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;     E         <br> <br>"
+
+     +
+" #: Hallway corner  <br> @: You are here               <br>"+
+" -|: connection                     <br>"+
+" R: Room     <br>D: locked door <br> C: Reception area <br> W: the room you woke up in."
+
+
+
+, 
+		""],
 	 pickup: ["",
 	 	 "You pick up the waiver."]}
