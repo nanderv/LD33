@@ -493,7 +493,7 @@ actions.open = function (tok) {
 					konsole.think("I already opened the safe.")
 					return false
 				}
-			konsole.think("I have to enter the code. I don't think I have it.")
+			konsole.think("The lock shows the numbers 1 to 99. Please enter the numbers one by one.")
 			konsole.over_ride_func = function()
 			{
 
